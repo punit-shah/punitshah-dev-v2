@@ -1,17 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
+  font-size: 1em;
   box-sizing: border-box;
 }
 
@@ -21,20 +9,37 @@
   box-sizing: inherit;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-
-  &:hover {
-    color: #535bf2;
-  }
-}
-
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #404040;
+  background-color: #f0f0f0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (min-width: 600px) {
+    font-size: 1.125rem;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  border-block-end: 1px solid #404040;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #000;
+    border-color: #000;
+  }
 }
 
 button {
@@ -50,18 +55,5 @@ button {
 
   &:hover {
     border-color: #646cff;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }

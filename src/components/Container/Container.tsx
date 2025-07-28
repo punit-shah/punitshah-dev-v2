@@ -1,15 +1,19 @@
 import classNames from 'classnames';
-import type { ReactNode } from 'react';
 import './Container.css';
 
-type ContainerProps = {
+type ContainerProps = React.JSX.IntrinsicElements['div'] & {
   className?: string;
   centered?: boolean;
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
-const Container = ({ className, centered, children }: ContainerProps) => (
-  <div className={classNames('Container', { centered }, className)}>
+const Container = ({
+  className,
+  centered,
+  children,
+  ...rest
+}: ContainerProps) => (
+  <div className={classNames('Container', { centered }, className)} {...rest}>
     {children}
   </div>
 );
