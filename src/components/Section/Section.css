@@ -1,0 +1,15 @@
+.Section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  p {
+    margin: 0;
+  }
+}
+
+.Section-title {
+  font-size: 1.5em;
+  text-align: center;
+  padding-block-start: 3.6875rem;
+}
