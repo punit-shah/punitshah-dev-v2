@@ -10,6 +10,9 @@ export default tseslint.config([
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
+    rules: {
+      'object-shorthand': 'error',
+    },
     extends: [
       js.configs.recommended,
       tseslint.configs.recommendedTypeChecked,

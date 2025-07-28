@@ -1,7 +1,11 @@
-import './App.css';
+import Container from './components/Container';
 
-function App() {
-  return <h1>punit shah</h1>;
-}
+const App = () => (
+  <>
+    <Container>
+      <h1>punitshah.dev</h1>
+    </Container>
+  </>
+);
 
 export default App;
