@@ -1,0 +1,42 @@
+.Cover {
+  height: 100vh;
+  justify-content: center;
+}
+
+.Cover-name {
+  margin: 0 0 1.5rem;
+  font-family:
+    SFMono-Regular,
+    Consolas,
+    Liberation Mono,
+    Menlo,
+    monospace;
+  font-weight: normal;
+  font-size: 2em;
+  text-transform: lowercase;
+
+  &::before {
+    content: '{';
+  }
+  &::after {
+    content: '}';
+  }
+
+  @media (min-width: 600px) {
+    font-size: 2.25em;
+  }
+}
+
+.Cover-lead {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.Cover-divider {
+  width: 100%;
+  height: 0;
+  border: 0;
+  border-top: solid 1px #555;
+  margin: 1.25rem 0;
+}
