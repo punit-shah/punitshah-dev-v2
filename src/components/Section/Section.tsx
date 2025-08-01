@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import Container from '../Container';
-import './Section.css';
+import classes from './Section.module.css';
 
 type SectionProps = React.JSX.IntrinsicElements['section'] & {
   title?: string;
@@ -16,9 +16,9 @@ const Section = ({
   children,
   ...rest
 }: SectionProps) => (
-  <section className={classNames('Section', className)} {...rest}>
+  <section className={classNames(classes.section, className)} {...rest}>
     <Container centered={centered}>
-      {title && <h2 className="Section-title">{title}</h2>}
+      {title && <h2 className={classes.title}>{title}</h2>}
       {children}
     </Container>
   </section>
