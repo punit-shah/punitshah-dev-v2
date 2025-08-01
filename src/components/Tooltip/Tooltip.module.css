@@ -1,0 +1,58 @@
+.wrapper {
+  position: relative;
+
+  &:hover .tooltip,
+  &:has(:focus-visible) .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    var(--accent-gradient-from),
+    var(--accent-gradient-to)
+  );
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: var(--color-bg);
+  font-family: var(--font-techy);
+  font-weight: 600;
+  font-size: 0.875rem;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    opacity 0.2s;
+
+  &.top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0.75rem;
+  }
+
+  &.bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.75rem;
+  }
+
+  &.left {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 0.75rem;
+  }
+
+  &.right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0.75rem;
+  }
+}

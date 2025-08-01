@@ -4,7 +4,7 @@ import StretchyText from '../../components/StretchyText';
 import classes from './Cover.module.css';
 
 const Cover = () => (
-  <Section className={classes.section}>
+  <Section className={classes.section} id="cover">
     <div className={classes.intro}>
       <h1 className={classes.hey}>
         Hey, I'm <span className={classes.name}>Punit</span>
