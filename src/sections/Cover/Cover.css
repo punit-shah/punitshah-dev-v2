@@ -1,42 +1,33 @@
 .Cover {
-  height: 100vh;
+  min-height: 80vh;
   justify-content: center;
 }
 
-.Cover-name {
-  margin: 0 0 1.5rem;
-  font-family:
-    SFMono-Regular,
-    Consolas,
-    Liberation Mono,
-    Menlo,
-    monospace;
-  font-weight: normal;
+.Cover-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   font-size: 2em;
-  text-transform: lowercase;
+  font-weight: 500;
+}
 
-  &::before {
-    content: '{';
-  }
-  &::after {
-    content: '}';
-  }
+.Cover-hey {
+  margin: 0;
+  font-weight: 600;
+  font-size: 2em;
 
   @media (min-width: 600px) {
     font-size: 2.25em;
   }
 }
 
-.Cover-lead {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-}
-
-.Cover-divider {
-  width: 100%;
-  height: 0;
-  border: 0;
-  border-top: solid 1px #555;
-  margin: 1.25rem 0;
+.Cover-name {
+  font-family: var(--font-techy);
+  background: linear-gradient(
+    90deg,
+    var(--accent-gradient-from),
+    var(--accent-gradient-to)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

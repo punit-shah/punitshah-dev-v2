@@ -1,0 +1,16 @@
+.ColorSwitcher {
+  border: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-techy);
+  font-weight: 600;
+  background: linear-gradient(
+    90deg,
+    var(--accent-gradient-from),
+    var(--accent-gradient-to)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
