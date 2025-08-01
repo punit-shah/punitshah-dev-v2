@@ -23,17 +23,26 @@ const Navbar = () => {
     <nav className={classes.nav}>
       <ul className={classes.list}>
         <li className={classes.item}>
-          <Tooltip text="Top" position="right">
-            <Logo href="#cover" onClick={onLinkClick} aria-label="Top" />
+          <Tooltip text="Top" position="right" id="tooltip-Top">
+            <Logo
+              href="#cover"
+              onClick={onLinkClick}
+              aria-labelledby="tooltip-Top"
+            />
           </Tooltip>
         </li>
         {items.map((item) => (
           <li key={item.label} className={classes.item}>
-            <Tooltip text={item.label} position="right">
+            <Tooltip
+              text={item.label}
+              position="right"
+              id={`tooltip-${item.label}`}
+            >
               <a
                 href={item.href}
                 className={classes.link}
                 onClick={onLinkClick}
+                aria-labelledby={`tooltip-${item.label}`}
               >
                 {item.icon}
               </a>

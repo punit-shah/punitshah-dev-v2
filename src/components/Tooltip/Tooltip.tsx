@@ -6,26 +6,31 @@ type Position = 'top' | 'bottom' | 'left' | 'right';
 type TooltipProps = {
   text: string;
   position?: Position;
+  hasTip?: boolean;
 } & React.JSX.IntrinsicElements['div'];
 
 const Tooltip = ({
   text,
   position = 'top',
+  hasTip = true,
   children,
   className,
   ...props
-}: TooltipProps) => {
-  return (
-    <div className={classes.wrapper}>
-      {children}
-      <div
-        className={classNames(classes.tooltip, classes[position], className)}
-        {...props}
-      >
-        {text}
-      </div>
+}: TooltipProps) => (
+  <div className={classes.wrapper}>
+    {children}
+    <div
+      className={classNames(
+        classes.tooltip,
+        classes[position],
+        { [classes.tip]: hasTip },
+        className,
+      )}
+      {...props}
+    >
+      {text}
     </div>
-  );
-};
+  </div>
+);
 
 export default Tooltip;
