@@ -1,15 +1,15 @@
 import ColorSwitcher from '../../components/ColorSwitcher';
 import Section from '../../components/Section';
 import StretchyText from '../../components/StretchyText';
-import './Cover.css';
+import classes from './Cover.module.css';
 
 const Cover = () => (
-  <Section className="Cover">
-    <div className="Cover-intro">
-      <h1 className="Cover-hey">
-        Hey, I'm <span className="Cover-name">Punit</span>
+  <Section className={classes.section}>
+    <div className={classes.intro}>
+      <h1 className={classes.hey}>
+        Hey, I'm <span className={classes.name}>Punit</span>
       </h1>
-      <p className="Cover-description">
+      <p className={classes.description}>
         Frontend engineer focused on
         <br />
         <ColorSwitcher>function</ColorSwitcher> and{' '}

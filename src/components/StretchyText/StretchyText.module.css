@@ -1,11 +1,11 @@
-.StretchyText {
+.container {
   font-family: var(--font-body);
   font-style: italic;
   color: var(--accent-gradient-to);
   transition: color 0.2s;
 }
 
-.StretchyText-char {
+.char {
   --multiplier: 0;
   position: relative;
   z-index: calc(1 + var(--multiplier) * 2);

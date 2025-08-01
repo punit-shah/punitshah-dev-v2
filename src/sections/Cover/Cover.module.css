@@ -1,9 +1,9 @@
-.Cover {
+.section {
   min-height: 80vh;
   justify-content: center;
 }
 
-.Cover-intro {
+.intro {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -11,7 +11,7 @@
   font-weight: 500;
 }
 
-.Cover-hey {
+.hey {
   margin: 0;
   font-weight: 600;
   font-size: 2em;
@@ -21,7 +21,7 @@
   }
 }
 
-.Cover-name {
+.name {
   font-family: var(--font-techy);
   background: linear-gradient(
     90deg,

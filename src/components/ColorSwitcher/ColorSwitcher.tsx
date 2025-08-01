@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import './ColorSwitcher.css';
+import classes from './ColorSwitcher.module.css';
 
 const colorClasses = [
   'accent-purple',
@@ -28,7 +28,7 @@ const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
 
   return (
     <button
-      className={classNames('ColorSwitcher', className)}
+      className={classNames(classes.colorSwitcher, className)}
       type="button"
       onClick={() => {
         setClassIndex((prev) => (prev + 1) % colorClasses.length);
