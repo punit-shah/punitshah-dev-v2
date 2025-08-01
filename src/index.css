@@ -6,17 +6,22 @@
   --font-techy: 'Hubot Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --color-purple-1: #7c3aed;
-  --color-purple-2: #a333fa;
-  --color-blue-1: #3b82f6;
-  --color-blue-2: #06b6d4;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gray: #404040;
+  --color-purple-1: #a333fa;
+  --color-purple-2: #7c3aed;
+  --color-blue-1: #06b6d4;
+  --color-blue-2: #3b82f6;
   --color-sunset-1: #f59e0b;
   --color-sunset-2: #ef4444;
   --color-lime-1: #84cc16;
   --color-lime-2: #22c55e;
-  --color-pink-1: #ec4899;
-  --color-pink-2: #f472b6;
+  --color-pink-1: #f472b6;
+  --color-pink-2: #ec4899;
 
+  --color-bg: var(--color-white);
+  --color-text: var(--color-gray);
   --accent-gradient-from: var(--color-purple-1);
   --accent-gradient-to: var(--color-purple-2);
 }
@@ -35,8 +40,8 @@ body {
   font-optical-sizing: auto;
   font-size: 1rem;
   line-height: 1.5;
-  color: #404040;
-  background-color: #fff;
+  color: var(--color-text);
+  background-color: var(--color-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -76,29 +81,12 @@ a {
   color: inherit;
   text-decoration: none;
   font-weight: 600;
-  border-block-end: 1px solid #404040;
+  border-block-end: 1px solid var(--color-gray);
 
   &:hover,
-  &:focus,
-  &:active {
-    color: #000;
-    border-color: #000;
-  }
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-
-  &:hover {
-    border-color: #646cff;
+  &:focus-visible {
+    color: var(--color-black);
+    border-color: var(--color-black);
   }
 }
 

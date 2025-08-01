@@ -1,7 +1,7 @@
 import Section from '../../components/Section';
 
 const About = () => (
-  <Section className="About" title="About">
+  <Section className="About" title="About" id="about">
     <p>
       I am a software engineer with a passion for building scalable and
       efficient applications. I enjoy working with modern web technologies and
