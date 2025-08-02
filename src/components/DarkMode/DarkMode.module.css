@@ -1,0 +1,13 @@
+.button {
+  display: flex;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: var(--accent-gradient-to);
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--accent-gradient-from);
+  }
+}
