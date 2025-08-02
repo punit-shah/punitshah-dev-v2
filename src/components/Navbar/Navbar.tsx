@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { AtSign, BookOpenText, FolderCode } from 'lucide-react';
-import { useState } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import LogoSvg from '../Logo';
 import Tooltip from '../Tooltip';
 import classes from './Navbar.module.css';
@@ -17,6 +17,31 @@ type NavbarProps = {
 
 const Navbar = ({ activeSection }: NavbarProps) => {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const [indicatorPosition, setIndicatorPosition] = useState(-1);
+
+  const itemRefs = items.map(() => createRef<HTMLLIElement>());
+
+  useEffect(() => {
+    const updateIndicatorPosition = () => {
+      const activeItemIndex = items.findIndex(
+        (item) => item.sectionId === activeSection,
+      );
+      if (activeItemIndex < 0) {
+        setIndicatorPosition(-1);
+        return;
+      }
+      if (itemRefs[activeItemIndex].current) {
+        const itemElement = itemRefs[activeItemIndex].current;
+        setIndicatorPosition(itemElement.offsetTop);
+      }
+    };
+
+    updateIndicatorPosition();
+    window.addEventListener('resize', updateIndicatorPosition);
+    return () => {
+      window.removeEventListener('resize', updateIndicatorPosition);
+    };
+  }, [activeSection, itemRefs]);
 
   const onLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -46,13 +71,14 @@ const Navbar = ({ activeSection }: NavbarProps) => {
             <LogoSvg isHovered={isLogoHovered} />
           </a>
         </li>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <li
             key={item.label}
             className={classNames([
               classes.item,
               { [classes.active]: activeSection === item.sectionId },
             ])}
+            ref={itemRefs[index]}
           >
             <Tooltip
               text={item.label}
@@ -71,6 +97,12 @@ const Navbar = ({ activeSection }: NavbarProps) => {
           </li>
         ))}
       </ul>
+      <div
+        className={classNames(classes.indicator, {
+          [classes.active]: indicatorPosition >= 0,
+        })}
+        style={{ top: indicatorPosition }}
+      />
     </nav>
   );
 };

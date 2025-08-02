@@ -1,4 +1,5 @@
 .nav {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,26 +21,6 @@
   margin: 0;
 }
 
-.item {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 1px;
-    width: 4px;
-    height: 100%;
-    border-radius: 2px;
-    background: transparent;
-    transition: background 0.3s;
-  }
-
-  &.active::before {
-    background: var(--accent-gradient-from);
-  }
-}
-
 .link {
   display: flex;
   border: none;
@@ -57,12 +38,19 @@
   }
 }
 
-.logoHovered {
-  .inner {
-    opacity: 1;
-  }
+.indicator {
+  position: absolute;
+  left: 1px;
+  width: 4px;
+  height: 64px;
+  border-radius: 2px;
+  background: var(--accent-gradient-from);
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    top 0.3s;
 
-  .text {
-    fill: url(#accentGradient);
+  &.active {
+    opacity: 1;
   }
 }
