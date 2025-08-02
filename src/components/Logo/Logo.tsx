@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import useStyleObserver from '../../hooks/useStyleObserver';
 import classes from './Logo.module.css';
 
 type LogoProps = {
@@ -7,53 +6,46 @@ type LogoProps = {
   isHovered?: boolean;
 };
 
-const Logo = ({ size = 40, isHovered }: LogoProps) => {
-  const bodyStyles = useStyleObserver(document.body, [
-    '--accent-gradient-from',
-    '--accent-gradient-to',
-  ]);
+const Logo = ({ size = 40, isHovered }: LogoProps) => (
+  <svg
+    className={classNames(classes.logo, { [classes.hover]: isHovered })}
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    role="img"
+  >
+    <defs>
+      <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="var(--accent-gradient-from)" />
+        <stop offset="100%" stopColor="var(--accent-gradient-to)" />
+      </linearGradient>
+    </defs>
 
-  return (
-    <svg
-      className={classNames(classes.logo, { [classes.hover]: isHovered })}
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      role="img"
+    <circle
+      className={classes.outer}
+      cx="50"
+      cy="50"
+      r="48"
+      fill="url(#accentGradient)"
+    />
+
+    <circle className={classes.inner} cx="50" cy="50" r="40" fill="white" />
+
+    <text
+      x="50"
+      y="50"
+      textAnchor="middle"
+      dominantBaseline="middle"
+      fontFamily="'JetBrains Mono', monospace"
+      fontWeight={800}
+      fontSize="48"
+      className={classes.text}
+      dx="-2"
+      dy="4"
     >
-      <defs>
-        <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor={bodyStyles['--accent-gradient-from']} />
-          <stop offset="100%" stopColor={bodyStyles['--accent-gradient-to']} />
-        </linearGradient>
-      </defs>
-
-      <circle
-        className={classes.outer}
-        cx="50"
-        cy="50"
-        r="48"
-        fill="url(#accentGradient)"
-      />
-
-      <circle className={classes.inner} cx="50" cy="50" r="40" fill="white" />
-
-      <text
-        x="50"
-        y="50"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fontFamily="'JetBrains Mono', monospace"
-        fontWeight={800}
-        fontSize="48"
-        className={classes.text}
-        dx="-2"
-        dy="4"
-      >
-        :P
-      </text>
-    </svg>
-  );
-};
+      :P
+    </text>
+  </svg>
+);
 
 export default Logo;
