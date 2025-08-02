@@ -1,10 +1,10 @@
 import ColorSwitcher from '../../components/ColorSwitcher';
-import Section from '../../components/Section';
+import Section, { type CustomSectionProps } from '../../components/Section';
 import StretchyText from '../../components/StretchyText';
 import classes from './Cover.module.css';
 
-const Cover = () => (
-  <Section className={classes.section} id="cover">
+const Cover = ({ ...props }: CustomSectionProps) => (
+  <Section className={classes.section} id="cover" {...props}>
     <div className={classes.intro}>
       <h1 className={classes.hey}>
         Hey, I'm <span className={classes.name}>Punit</span>

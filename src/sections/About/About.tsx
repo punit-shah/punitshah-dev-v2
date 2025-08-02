@@ -1,7 +1,7 @@
-import Section from '../../components/Section';
+import Section, { type CustomSectionProps } from '../../components/Section';
 
-const About = () => (
-  <Section className="About" title="About" id="about">
+const About = ({ ...props }: CustomSectionProps) => (
+  <Section className="About" title="About" id="about" {...props}>
     <p>
       I am a software engineer with a passion for building scalable and
       efficient applications. I enjoy working with modern web technologies and

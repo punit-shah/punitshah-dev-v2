@@ -9,6 +9,11 @@ type SectionProps = React.JSX.IntrinsicElements['section'] & {
   children?: React.ReactNode;
 };
 
+export type CustomSectionProps = Omit<
+  SectionProps,
+  'title' | 'centered' | 'className' | 'children' | 'id'
+>;
+
 const Section = ({
   title,
   centered,
