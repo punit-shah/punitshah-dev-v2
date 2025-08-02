@@ -1,5 +1,6 @@
 .wrapper {
   position: relative;
+  display: flex;
 
   &:hover .tooltip,
   &:has(:focus-visible) .tooltip {
