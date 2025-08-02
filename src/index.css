@@ -50,31 +50,6 @@ body {
   @media (min-width: 600px) {
     font-size: 1.125rem;
   }
-
-  &.accent-purple {
-    --accent-gradient-from: var(--color-purple-1);
-    --accent-gradient-to: var(--color-purple-2);
-  }
-
-  &.accent-blue {
-    --accent-gradient-from: var(--color-blue-1);
-    --accent-gradient-to: var(--color-blue-2);
-  }
-
-  &.accent-sunset {
-    --accent-gradient-from: var(--color-sunset-1);
-    --accent-gradient-to: var(--color-sunset-2);
-  }
-
-  &.accent-lime {
-    --accent-gradient-from: var(--color-lime-1);
-    --accent-gradient-to: var(--color-lime-2);
-  }
-
-  &.accent-pink {
-    --accent-gradient-from: var(--color-pink-1);
-    --accent-gradient-to: var(--color-pink-2);
-  }
 }
 
 a {

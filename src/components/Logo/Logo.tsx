@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import useStyleObserver from '../../hooks/useStyleObserver';
 import classes from './Logo.module.css';
 
 type LogoProps = {
@@ -7,10 +8,10 @@ type LogoProps = {
 };
 
 const Logo = ({ size = 40, isHovered }: LogoProps) => {
-  // todo: detect changes in css variables when switching color theme
-  const computedStyle = getComputedStyle(document.body);
-  const fromColor = computedStyle.getPropertyValue('--accent-gradient-from');
-  const toColor = computedStyle.getPropertyValue('--accent-gradient-to');
+  const bodyStyles = useStyleObserver(document.body, [
+    '--accent-gradient-from',
+    '--accent-gradient-to',
+  ]);
 
   return (
     <svg
@@ -19,12 +20,11 @@ const Logo = ({ size = 40, isHovered }: LogoProps) => {
       height={size}
       viewBox="0 0 100 100"
       role="img"
-      aria-label="Home"
     >
       <defs>
         <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor={fromColor} />
-          <stop offset="100%" stopColor={toColor} />
+          <stop offset="0%" stopColor={bodyStyles['--accent-gradient-from']} />
+          <stop offset="100%" stopColor={bodyStyles['--accent-gradient-to']} />
         </linearGradient>
       </defs>
 

@@ -2,13 +2,7 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import classes from './ColorSwitcher.module.css';
 
-const colorClasses = [
-  'accent-purple',
-  'accent-blue',
-  'accent-sunset',
-  'accent-lime',
-  'accent-pink',
-];
+const accentColors = ['purple', 'sunset', 'lime', 'pink', 'blue'];
 
 interface ColorSwitcherProps {
   children: React.ReactNode;
@@ -16,22 +10,25 @@ interface ColorSwitcherProps {
 }
 
 const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
-  const [classIndex, setClassIndex] = useState(0);
+  const [colorIndex, setColorIndex] = useState(0);
 
   useEffect(() => {
-    const body = document.body;
-    colorClasses.forEach((colorClass) => {
-      body.classList.remove(colorClass);
-    });
-    body.classList.add(colorClasses[classIndex]);
-  }, [classIndex]);
+    document.body.style.setProperty(
+      '--accent-gradient-from',
+      `var(--color-${accentColors[colorIndex]}-1)`,
+    );
+    document.body.style.setProperty(
+      '--accent-gradient-to',
+      `var(--color-${accentColors[colorIndex]}-2)`,
+    );
+  }, [colorIndex]);
 
   return (
     <button
       className={classNames(classes.colorSwitcher, className)}
       type="button"
       onClick={() => {
-        setClassIndex((prev) => (prev + 1) % colorClasses.length);
+        setColorIndex((prev) => (prev + 1) % accentColors.length);
         // todo: add sound effect
       }}
       aria-label="Switch color theme"
