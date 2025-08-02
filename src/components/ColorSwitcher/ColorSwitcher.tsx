@@ -4,10 +4,10 @@ import classes from './ColorSwitcher.module.css';
 
 const accentColors = ['purple', 'sunset', 'lime', 'pink', 'blue'];
 
-interface ColorSwitcherProps {
+type ColorSwitcherProps = {
   children: React.ReactNode;
   className?: string;
-}
+};
 
 const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
   const [colorIndex, setColorIndex] = useState(0);
