@@ -24,7 +24,7 @@
 .link {
   display: flex;
   border: none;
-  color: var(--accent-gradient-from);
+  color: var(--accent-gradient-to);
   padding: 1rem;
 
   &.logo {
@@ -33,24 +33,7 @@
 
   &:hover,
   &:focus-visible {
-    color: var(--accent-gradient-to);
+    color: var(--accent-gradient-from);
     border: none;
-  }
-}
-
-.indicator {
-  position: absolute;
-  left: 1px;
-  width: 4px;
-  height: 64px;
-  border-radius: 2px;
-  background: var(--accent-gradient-from);
-  opacity: 0;
-  transition:
-    opacity 0.3s,
-    top 0.3s;
-
-  &.active {
-    opacity: 1;
   }
 }
