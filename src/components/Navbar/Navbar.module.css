@@ -10,7 +10,7 @@
   left: 0;
 
   --navbar-separator-gradient: linear-gradient(
-    to bottom,
+    180deg,
     transparent 0%,
     transparent 10%,
     var(--color-accent-1) 40%,
@@ -22,7 +22,7 @@
 
   &.dark {
     --navbar-separator-gradient: linear-gradient(
-      to bottom,
+      180deg,
       transparent 0%,
       transparent 10%,
       var(--color-accent-2) 40%,
