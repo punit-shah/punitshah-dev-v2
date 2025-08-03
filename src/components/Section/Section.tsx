@@ -6,6 +6,7 @@ type SectionProps = React.JSX.IntrinsicElements['section'] & {
   title?: string;
   centered?: boolean;
   className?: string;
+  containerClassName?: string;
   children?: React.ReactNode;
 };
 
@@ -18,11 +19,12 @@ const Section = ({
   title,
   centered,
   className,
+  containerClassName,
   children,
   ...rest
 }: SectionProps) => (
   <section className={classNames(classes.section, className)} {...rest}>
-    <Container centered={centered}>
+    <Container centered={centered} className={containerClassName}>
       {title && <h2 className={classes.title}>{title}</h2>}
       {children}
     </Container>
