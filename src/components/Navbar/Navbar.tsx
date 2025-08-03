@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { AtSign, BookOpenText, FolderCode } from 'lucide-react';
 import { createRef, useState } from 'react';
+import DarkMode from '../DarkMode';
 import Logo from '../Logo';
 import Tooltip from '../Tooltip';
 import classes from './Navbar.module.css';
@@ -16,19 +17,19 @@ type NavbarProps = {
   activeSection: string | null;
 };
 
+const onLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  event.preventDefault();
+  const targetId = event.currentTarget.getAttribute('href');
+  if (targetId) {
+    const element = document.querySelector(targetId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const Navbar = ({ activeSection }: NavbarProps) => {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
 
   const itemRefs = items.map(() => createRef<HTMLLIElement>());
-
-  const onLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    const targetId = event.currentTarget.getAttribute('href');
-    if (targetId) {
-      const element = document.querySelector(targetId);
-      element?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <nav className={classes.nav}>
@@ -75,6 +76,9 @@ const Navbar = ({ activeSection }: NavbarProps) => {
             </Tooltip>
           </li>
         ))}
+        <li className={classes.item}>
+          <DarkMode />
+        </li>
       </ul>
       <NavbarIndicator activeSection={activeSection} itemRefs={itemRefs} />
     </nav>
