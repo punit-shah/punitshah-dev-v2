@@ -13,11 +13,11 @@ const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
   const [colorIndex, setColorIndex] = useState(0);
 
   useEffect(() => {
-    document.body.style.setProperty(
+    document.documentElement.style.setProperty(
       '--color-accent-1',
       `var(--color-${accentColors[colorIndex]}-1)`,
     );
-    document.body.style.setProperty(
+    document.documentElement.style.setProperty(
       '--color-accent-2',
       `var(--color-${accentColors[colorIndex]}-2)`,
     );
