@@ -6,12 +6,6 @@
   cursor: pointer;
   font-family: var(--font-techy);
   font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--color-accent-1),
-    var(--color-accent-2)
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: background 0.2s;
+  background: none;
+  color: var(--color-accent-1);
 }
