@@ -33,54 +33,50 @@ const Navbar = ({ activeSection }: NavbarProps) => {
 
   return (
     <nav className={classes.nav}>
-      <ul className={classes.list}>
-        <li className={classes.item}>
-          <a
-            href="#cover"
-            className={classNames(classes.link, classes.logo)}
-            onClick={onLinkClick}
-            onMouseEnter={() => {
-              setIsLogoHovered(true);
-            }}
-            onMouseLeave={() => {
-              setIsLogoHovered(false);
-            }}
-            aria-label="Scroll to top"
-          >
-            <Logo isHovered={isLogoHovered} />
-          </a>
-        </li>
-        {items.map((item, index) => (
-          <li
-            key={item.label}
-            className={classNames([
-              classes.item,
-              { [classes.active]: activeSection === item.sectionId },
-            ])}
-            data-section={item.sectionId}
-            ref={itemRefs[index]}
-          >
-            <Tooltip
-              text={item.label}
-              position="right"
-              id={`tooltip-${item.label}`}
+      <a
+        href="#cover"
+        className={classNames(classes.link, classes.logo)}
+        onClick={onLinkClick}
+        onMouseEnter={() => {
+          setIsLogoHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsLogoHovered(false);
+        }}
+        aria-label="Scroll to top"
+      >
+        <Logo isHovered={isLogoHovered} />
+      </a>
+
+      <div>
+        <ul className={classes.list}>
+          {items.map((item, index) => (
+            <li
+              key={item.label}
+              data-section={item.sectionId}
+              ref={itemRefs[index]}
             >
-              <a
-                href={`#${item.sectionId}`}
-                className={classes.link}
-                onClick={onLinkClick}
-                aria-labelledby={`tooltip-${item.label}`}
+              <Tooltip
+                text={item.label}
+                position="right"
+                id={`tooltip-${item.label}`}
               >
-                {item.icon}
-              </a>
-            </Tooltip>
-          </li>
-        ))}
-        <li className={classes.item}>
-          <DarkMode />
-        </li>
-      </ul>
-      <NavbarIndicator activeSection={activeSection} itemRefs={itemRefs} />
+                <a
+                  href={`#${item.sectionId}`}
+                  className={classes.link}
+                  onClick={onLinkClick}
+                  aria-labelledby={`tooltip-${item.label}`}
+                >
+                  {item.icon}
+                </a>
+              </Tooltip>
+            </li>
+          ))}
+        </ul>
+        <NavbarIndicator activeSection={activeSection} itemRefs={itemRefs} />
+      </div>
+
+      <DarkMode />
     </nav>
   );
 };

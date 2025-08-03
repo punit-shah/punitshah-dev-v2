@@ -29,6 +29,18 @@
   --color-link-hover: var(--color-black);
   --color-accent-1: var(--color-purple-1);
   --color-accent-2: var(--color-purple-2);
+
+  --navbar-separator-gradient: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-bg) 10%,
+    var(--color-accent-1) 40%,
+    var(--color-accent-2) 50%,
+    var(--color-accent-1) 60%,
+    var(--color-bg) 90%,
+    var(--color-bg) 100%
+  );
+  --tooltip-text-color: var(--color-white);
 }
 
 .dark {
@@ -36,7 +48,6 @@
   --color-text: var(--color-almost-white);
   --color-link-hover: var(--color-white);
 
-  /* Flip accent colors */
   --color-purple-1: #a333fa;
   --color-purple-2: #7c3aed;
   --color-blue-1: #06b6d4;
@@ -47,6 +58,19 @@
   --color-lime-2: #22c55e;
   --color-pink-1: #f472b6;
   --color-pink-2: #ec4899;
+
+  /* todo: create dark mode context so these can be set in their individual components */
+  --navbar-separator-gradient: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-bg) 10%,
+    var(--color-accent-2) 40%,
+    var(--color-accent-1) 50%,
+    var(--color-accent-2) 60%,
+    var(--color-bg) 90%,
+    var(--color-bg) 100%
+  );
+  --tooltip-text-color: var(--color-almost-white);
 }
 
 *,
