@@ -3,11 +3,12 @@
   padding: 1rem;
   background: none;
   border: none;
-  color: var(--accent-gradient-to);
+  color: var(--color-accent-1);
   cursor: pointer;
+  transition: color 0.2s;
 
   &:hover,
   &:focus-visible {
-    color: var(--accent-gradient-from);
+    color: var(--color-accent-2);
   }
 }

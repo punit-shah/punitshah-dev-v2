@@ -24,9 +24,10 @@
   font-family: var(--font-techy);
   background: linear-gradient(
     90deg,
-    var(--accent-gradient-from),
-    var(--accent-gradient-to)
+    var(--color-accent-1),
+    var(--color-accent-2)
   );
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: background 0.2s;
 }
