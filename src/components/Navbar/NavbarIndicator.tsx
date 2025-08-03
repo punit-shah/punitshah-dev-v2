@@ -20,7 +20,7 @@ const NavbarIndicator = ({ activeSection, itemRefs }: NavbarIndicatorProps) => {
         return;
       }
 
-      setIndicatorPosition(itemRefs[activeItemIndex].current?.offsetTop || -1);
+      setIndicatorPosition(itemRefs[activeItemIndex].current?.offsetTop ?? -1);
     };
 
     updateIndicatorPosition();
