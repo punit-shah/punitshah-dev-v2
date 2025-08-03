@@ -21,6 +21,10 @@ const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
       '--color-accent-2',
       `var(--color-${accentColors[colorIndex]}-2)`,
     );
+    document.documentElement.style.setProperty(
+      '--bg-gradient',
+      `var(--bg-gradient-${accentColors[colorIndex]})`,
+    );
   }, [colorIndex]);
 
   return (

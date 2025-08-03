@@ -15,20 +15,30 @@
 
   --color-purple-1: #7c3aed;
   --color-purple-2: #a333fa;
+  --bg-gradient-purple: linear-gradient(180deg, #ffffff 0%, #f5f2fb 100%);
+
   --color-blue-1: #3b82f6;
   --color-blue-2: #06b6d4;
+  --bg-gradient-blue: linear-gradient(180deg, #ffffff 0%, #f4f9fd 100%);
+
   --color-sunset-1: #ef4444;
   --color-sunset-2: #f59e0b;
+  --bg-gradient-sunset: linear-gradient(180deg, #ffffff 0%, #fdf6f4 100%);
+
   --color-lime-1: #22c55e;
   --color-lime-2: #84cc16;
+  --bg-gradient-lime: linear-gradient(180deg, #ffffff 0%, #f4fbf5 100%);
+
   --color-pink-1: #ec4899;
   --color-pink-2: #f472b6;
+  --bg-gradient-pink: linear-gradient(180deg, #ffffff 0%, #fdf5f9 100%);
 
   --color-bg: var(--color-white);
   --color-text: var(--color-gray-2);
   --color-link-hover: var(--color-black);
   --color-accent-1: var(--color-purple-1);
   --color-accent-2: var(--color-purple-2);
+  --bg-gradient: var(--bg-gradient-purple);
 }
 
 .dark {
@@ -36,16 +46,50 @@
   --color-text: var(--color-almost-white);
   --color-link-hover: var(--color-white);
 
-  --color-purple-1: #a333fa;
-  --color-purple-2: #7c3aed;
+  --color-purple-1: #d946ef;
+  --color-purple-2: #8b5cf6;
+  --bg-gradient-purple: linear-gradient(
+    180deg,
+    #0d0d0d 0%,
+    #0a0a0a 50%,
+    #100024 100%
+  );
+
   --color-blue-1: #06b6d4;
   --color-blue-2: #3b82f6;
+  --bg-gradient-blue: linear-gradient(
+    180deg,
+    #0d0d0d 0%,
+    #0d0f11 50%,
+    #10141b 100%
+  );
+
   --color-sunset-1: #f59e0b;
   --color-sunset-2: #ef4444;
+  --bg-gradient-sunset: linear-gradient(
+    180deg,
+    #0d0d0d 0%,
+    #0f0b0a 50%,
+    #130e0c 100%
+  );
+
   --color-lime-1: #84cc16;
   --color-lime-2: #22c55e;
+  --bg-gradient-lime: linear-gradient(
+    180deg,
+    #0d0d0d 0%,
+    #0d100d 50%,
+    #111711 100%
+  );
+
   --color-pink-1: #f472b6;
   --color-pink-2: #ec4899;
+  --bg-gradient-pink: linear-gradient(
+    180deg,
+    #0d0d0d 0%,
+    #100d0e 50%,
+    #160f13 100%
+  );
 }
 
 *,
@@ -63,14 +107,15 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   color: var(--color-text);
-  background: var(--color-bg);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition:
     color 0.2s,
-    background 0.2s;
+    background 1s;
 
   @media (min-width: 600px) {
     font-size: 1.125rem;
