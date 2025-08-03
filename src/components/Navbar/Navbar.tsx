@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { AtSign, BookOpenText, FolderCode } from 'lucide-react';
-import { createRef, useState } from 'react';
-import DarkMode from '../DarkMode';
+import { AtSign, BookOpenText, FolderCode, Moon, Sun } from 'lucide-react';
+import { createRef, useContext, useState } from 'react';
+import { DarkModeContext } from '../../contexts/DarkMode';
 import Logo from '../Logo';
 import Tooltip from '../Tooltip';
 import classes from './Navbar.module.css';
@@ -28,6 +28,7 @@ const onLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
 
 const Navbar = ({ activeSection }: NavbarProps) => {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   const itemRefs = items.map(() => createRef<HTMLLIElement>());
 
@@ -76,7 +77,14 @@ const Navbar = ({ activeSection }: NavbarProps) => {
         <NavbarIndicator activeSection={activeSection} itemRefs={itemRefs} />
       </div>
 
-      <DarkMode />
+      <button
+        className={classes.button}
+        type="button"
+        aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        onClick={toggleDarkMode}
+      >
+        {isDarkMode ? <Moon size={32} /> : <Sun size={32} />}
+      </button>
     </nav>
   );
 };

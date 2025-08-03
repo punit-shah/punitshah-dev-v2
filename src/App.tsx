@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import Navbar from './components/Navbar';
+import { DarkModeProvider } from './contexts/DarkMode';
 import useScrollSpy from './hooks/useScrollSpy';
 import About from './sections/About';
 import Contact from './sections/Contact';
@@ -18,13 +19,13 @@ const App = () => {
   ]);
 
   return (
-    <>
+    <DarkModeProvider>
       <Navbar activeSection={activeSection} />
       <Cover />
       <About ref={aboutSectionRef} />
       <Projects ref={projectsSectionRef} />
       <Contact ref={contactSectionRef} />
-    </>
+    </DarkModeProvider>
   );
 };
 
