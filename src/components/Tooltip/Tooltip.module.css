@@ -18,7 +18,7 @@
   );
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  color: var(--color-bg);
+  color: var(--tooltip-text-color);
   font-family: var(--font-techy);
   font-weight: 600;
   font-size: 0.875rem;
