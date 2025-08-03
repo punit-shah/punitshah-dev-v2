@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { AtSign, BookOpenText, FolderCode, Moon, Sun } from 'lucide-react';
+import { FolderCode, MessageCircle, Moon, Sun, UserRound } from 'lucide-react';
 import { createRef, useContext, useState } from 'react';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import Logo from '../Logo';
@@ -8,9 +8,9 @@ import classes from './Navbar.module.css';
 import NavbarIndicator from './NavbarIndicator';
 
 const items = [
-  { label: 'About', sectionId: 'about', icon: <BookOpenText size={32} /> },
+  { label: 'About', sectionId: 'about', icon: <UserRound size={32} /> },
   { label: 'Projects', sectionId: 'projects', icon: <FolderCode size={32} /> },
-  { label: 'Contact', sectionId: 'contact', icon: <AtSign size={32} /> },
+  { label: 'Contact', sectionId: 'contact', icon: <MessageCircle size={32} /> },
 ];
 
 type NavbarProps = {
