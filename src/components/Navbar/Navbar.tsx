@@ -33,7 +33,7 @@ const Navbar = ({ activeSection }: NavbarProps) => {
   const itemRefs = items.map(() => createRef<HTMLLIElement>());
 
   return (
-    <nav className={classes.nav}>
+    <nav className={classNames(classes.nav, { [classes.dark]: isDarkMode })}>
       <a
         href="#cover"
         className={classNames(classes.link, classes.logo)}

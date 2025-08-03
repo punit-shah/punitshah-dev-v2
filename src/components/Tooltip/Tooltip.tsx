@@ -1,4 +1,6 @@
 import classNames from 'classnames';
+import { useContext } from 'react';
+import { DarkModeContext } from '../../contexts/DarkMode';
 import classes from './Tooltip.module.css';
 
 type Position = 'top' | 'bottom' | 'left' | 'right';
@@ -16,21 +18,27 @@ const Tooltip = ({
   children,
   className,
   ...props
-}: TooltipProps) => (
-  <div className={classes.wrapper}>
-    {children}
+}: TooltipProps) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
+  return (
     <div
-      className={classNames(
-        classes.tooltip,
-        classes[position],
-        { [classes.tip]: hasTip },
-        className,
-      )}
-      {...props}
+      className={classNames(classes.wrapper, { [classes.dark]: isDarkMode })}
     >
-      {text}
+      {children}
+      <div
+        className={classNames(
+          classes.tooltip,
+          classes[position],
+          { [classes.tip]: hasTip },
+          className,
+        )}
+        {...props}
+      >
+        {text}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Tooltip;
