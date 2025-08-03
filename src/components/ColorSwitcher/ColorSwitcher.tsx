@@ -14,11 +14,11 @@ const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
 
   useEffect(() => {
     document.body.style.setProperty(
-      '--accent-gradient-from',
+      '--color-accent-1',
       `var(--color-${accentColors[colorIndex]}-1)`,
     );
     document.body.style.setProperty(
-      '--accent-gradient-to',
+      '--color-accent-2',
       `var(--color-${accentColors[colorIndex]}-2)`,
     );
   }, [colorIndex]);
