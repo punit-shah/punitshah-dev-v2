@@ -4,22 +4,26 @@ import classes from './ColorSwitcher.module.css';
 
 const accentColors = ['purple', 'sunset', 'lime', 'pink', 'blue'];
 
-interface ColorSwitcherProps {
+type ColorSwitcherProps = {
   children: React.ReactNode;
   className?: string;
-}
+};
 
 const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
   const [colorIndex, setColorIndex] = useState(0);
 
   useEffect(() => {
-    document.body.style.setProperty(
-      '--accent-gradient-from',
+    document.documentElement.style.setProperty(
+      '--color-accent-1',
       `var(--color-${accentColors[colorIndex]}-1)`,
     );
-    document.body.style.setProperty(
-      '--accent-gradient-to',
+    document.documentElement.style.setProperty(
+      '--color-accent-2',
       `var(--color-${accentColors[colorIndex]}-2)`,
+    );
+    document.documentElement.style.setProperty(
+      '--bg-gradient',
+      `var(--bg-gradient-${accentColors[colorIndex]})`,
     );
   }, [colorIndex]);
 

@@ -1,8 +1,8 @@
 import classes from './StretchyText.module.css';
 
-interface StretchyTextProps {
+type StretchyTextProps = {
   children: React.ReactNode;
-}
+};
 
 const StretchyText = ({ children }: StretchyTextProps) => {
   if (typeof children !== 'string') {

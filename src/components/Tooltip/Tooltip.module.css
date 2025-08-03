@@ -2,6 +2,12 @@
   position: relative;
   display: flex;
 
+  --tooltip-text-color: var(--color-white);
+
+  &.dark {
+    --tooltip-text-color: var(--color-almost-white);
+  }
+
   &:hover .tooltip,
   &:has(:focus-visible) .tooltip {
     opacity: 1;
@@ -13,12 +19,12 @@
   position: absolute;
   background: linear-gradient(
     90deg,
-    var(--accent-gradient-from),
-    var(--accent-gradient-to)
+    var(--color-accent-1),
+    var(--color-accent-2)
   );
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  color: var(--color-bg);
+  color: var(--tooltip-text-color);
   font-family: var(--font-techy);
   font-weight: 600;
   font-size: 0.875rem;
@@ -47,7 +53,7 @@
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%);
-      border-bottom-color: var(--accent-gradient-from);
+      border-bottom-color: var(--color-accent-1);
       margin-bottom: -1px;
     }
   }
@@ -62,7 +68,7 @@
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      border-top-color: var(--accent-gradient-from);
+      border-top-color: var(--color-accent-1);
       margin-top: -1px;
     }
   }
@@ -77,7 +83,7 @@
       left: 100%;
       top: 50%;
       transform: translateY(-50%);
-      border-left-color: var(--accent-gradient-to);
+      border-left-color: var(--color-accent-2);
       margin-left: -1px;
     }
   }
@@ -92,7 +98,7 @@
       right: 100%;
       top: 50%;
       transform: translateY(-50%);
-      border-right-color: var(--accent-gradient-from);
+      border-right-color: var(--color-accent-1);
       margin-right: -1px;
     }
   }

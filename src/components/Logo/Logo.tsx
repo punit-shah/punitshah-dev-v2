@@ -16,8 +16,8 @@ const Logo = ({ size = 40, isHovered }: LogoProps) => (
   >
     <defs>
       <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="var(--accent-gradient-from)" />
-        <stop offset="100%" stopColor="var(--accent-gradient-to)" />
+        <stop offset="0%" stopColor="var(--color-accent-1)" />
+        <stop offset="100%" stopColor="var(--color-accent-2)" />
       </linearGradient>
     </defs>
 
