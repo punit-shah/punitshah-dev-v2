@@ -2,6 +2,12 @@
   position: relative;
   display: flex;
 
+  --tooltip-text-color: var(--color-white);
+
+  &.dark {
+    --tooltip-text-color: var(--color-almost-white);
+  }
+
   &:hover .tooltip,
   &:has(:focus-visible) .tooltip {
     opacity: 1;

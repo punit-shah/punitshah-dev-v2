@@ -9,6 +9,30 @@
   top: 0;
   left: 0;
 
+  --navbar-separator-gradient: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-bg) 10%,
+    var(--color-accent-1) 40%,
+    var(--color-accent-2) 50%,
+    var(--color-accent-1) 60%,
+    var(--color-bg) 90%,
+    var(--color-bg) 100%
+  );
+
+  &.dark {
+    --navbar-separator-gradient: linear-gradient(
+      to bottom,
+      var(--color-bg) 0%,
+      var(--color-bg) 10%,
+      var(--color-accent-2) 40%,
+      var(--color-accent-1) 50%,
+      var(--color-accent-2) 60%,
+      var(--color-bg) 90%,
+      var(--color-bg) 100%
+    );
+  }
+
   &::after {
     content: '';
     position: absolute;
