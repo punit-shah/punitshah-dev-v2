@@ -11,8 +11,8 @@
   font-weight: calc(200 + var(--multiplier) * 700);
   font-stretch: calc(100% + var(--multiplier) * 25%);
   transition:
-    font-stretch 0.2s,
-    font-weight 0.2s;
+    font-stretch var(--duration),
+    font-weight var(--duration);
 
   &:hover {
     --multiplier: 1;

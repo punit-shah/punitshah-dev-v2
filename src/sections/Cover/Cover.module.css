@@ -35,5 +35,4 @@
   );
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: background 0.2s;
 }
