@@ -4,9 +4,9 @@ import { DarkModeContext } from '../../contexts/DarkMode';
 import useSound from '../../hooks/useSound';
 import classes from './Orb.module.css';
 import Pixels from './Pixels';
-import beep from './beep.mp3';
 import { happy, openMouth, smile } from './faces';
 import { getRandomMessage } from './messages';
+import orbChirp from './orb-chirp.mp3';
 
 const Orb = () => {
   const { isDarkMode } = useContext(DarkModeContext);
@@ -16,7 +16,7 @@ const Orb = () => {
   const happyFaceTimeout = useRef<number>(null);
   const bubbleTimeout = useRef<number>(null);
 
-  const [playBeep] = useSound(beep);
+  const [playOrbChirp] = useSound(orbChirp);
 
   // clean up timeouts on unmount
   useEffect(() => {
@@ -48,8 +48,6 @@ const Orb = () => {
       bubbleTimeout.current = null;
     }
 
-    playBeep();
-
     setFace(happy);
     happyFaceTimeout.current = setTimeout(() => {
       setFace(smile);
@@ -60,6 +58,8 @@ const Orb = () => {
     bubbleTimeout.current = setTimeout(() => {
       setIsBubbleVisible(false);
     }, 2500);
+
+    playOrbChirp();
   };
 
   return (
