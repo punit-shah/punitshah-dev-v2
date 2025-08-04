@@ -2,12 +2,6 @@
   position: relative;
   display: flex;
 
-  --tooltip-text-color: var(--color-white);
-
-  &.dark {
-    --tooltip-text-color: var(--color-almost-white);
-  }
-
   &:hover .tooltip,
   &:has(:focus-visible) .tooltip {
     opacity: 1;
@@ -24,16 +18,13 @@
   );
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  color: var(--tooltip-text-color);
+  color: var(--color-white);
   font-family: var(--font-techy);
   font-weight: 600;
   font-size: 0.875rem;
   opacity: 0;
   visibility: hidden;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    opacity 0.2s;
+  transition: opacity 0.2s;
 
   &.tip::before {
     content: '';

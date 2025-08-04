@@ -1,3 +1,39 @@
+@property --color-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fff;
+}
+
+@property --color-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #404040;
+}
+
+@property --color-accent-1 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #7c3aed;
+}
+
+@property --color-accent-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #a333fa;
+}
+
+@property --color-accent-bg-mid {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f9f6fd;
+}
+
+@property --color-accent-bg-end {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f5f2fb;
+}
+
 :root {
   font-size: 1em;
   box-sizing: border-box;
@@ -15,30 +51,51 @@
 
   --color-purple-1: #7c3aed;
   --color-purple-2: #a333fa;
-  --bg-gradient-purple: linear-gradient(180deg, #ffffff 0%, #f5f2fb 100%);
+  --color-purple-bg-mid: #faf9fd;
+  --color-purple-bg-end: #f5f2fb;
 
   --color-blue-1: #3b82f6;
   --color-blue-2: #06b6d4;
-  --bg-gradient-blue: linear-gradient(180deg, #ffffff 0%, #f4f9fd 100%);
+  --color-blue-bg-mid: #fafcff;
+  --color-blue-bg-end: #f4f9fd;
 
   --color-sunset-1: #ef4444;
   --color-sunset-2: #f59e0b;
-  --bg-gradient-sunset: linear-gradient(180deg, #ffffff 0%, #fdf6f4 100%);
+  --color-sunset-bg-mid: #fffbfa;
+  --color-sunset-bg-end: #fdf6f4;
 
   --color-lime-1: #22c55e;
   --color-lime-2: #84cc16;
-  --bg-gradient-lime: linear-gradient(180deg, #ffffff 0%, #f4fbf5 100%);
+  --color-lime-bg-mid: #fafffa;
+  --color-lime-bg-end: #f4fbf5;
 
   --color-pink-1: #ec4899;
   --color-pink-2: #f472b6;
-  --bg-gradient-pink: linear-gradient(180deg, #ffffff 0%, #fdf5f9 100%);
+  --color-pink-bg-mid: #fffafc;
+  --color-pink-bg-end: #fdf5f9;
 
   --color-bg: var(--color-white);
   --color-text: var(--color-gray-2);
   --color-link-hover: var(--color-black);
   --color-accent-1: var(--color-purple-1);
   --color-accent-2: var(--color-purple-2);
-  --bg-gradient: var(--bg-gradient-purple);
+  --color-accent-bg-mid: var(--color-purple-bg-mid);
+  --color-accent-bg-end: var(--color-purple-bg-end);
+
+  --bg-gradient: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    var(--color-accent-bg-mid) 50%,
+    var(--color-accent-bg-end) 100%
+  );
+
+  transition:
+    --color-bg 0.2s,
+    --color-text 0.2s,
+    --color-accent-1 0.2s,
+    --color-accent-2 0.2s,
+    --color-accent-bg-mid 0.2s,
+    --color-accent-bg-end 0.2s;
 }
 
 .dark {
@@ -48,48 +105,28 @@
 
   --color-purple-1: #d946ef;
   --color-purple-2: #8b5cf6;
-  --bg-gradient-purple: linear-gradient(
-    180deg,
-    #0d0d0d 0%,
-    #0a0a0a 50%,
-    #100024 100%
-  );
+  --color-purple-bg-mid: #0a0a0a;
+  --color-purple-bg-end: #100024;
 
   --color-blue-1: #06b6d4;
   --color-blue-2: #3b82f6;
-  --bg-gradient-blue: linear-gradient(
-    180deg,
-    #0d0d0d 0%,
-    #0d0f11 50%,
-    #10141b 100%
-  );
+  --color-blue-bg-mid: #0d0f11;
+  --color-blue-bg-end: #10141b;
 
   --color-sunset-1: #f59e0b;
   --color-sunset-2: #ef4444;
-  --bg-gradient-sunset: linear-gradient(
-    180deg,
-    #0d0d0d 0%,
-    #0f0b0a 50%,
-    #130e0c 100%
-  );
+  --color-sunset-bg-mid: #0f0b0a;
+  --color-sunset-bg-end: #130e0c;
 
   --color-lime-1: #84cc16;
   --color-lime-2: #22c55e;
-  --bg-gradient-lime: linear-gradient(
-    180deg,
-    #0d0d0d 0%,
-    #0d100d 50%,
-    #111711 100%
-  );
+  --color-lime-bg-mid: #0d100d;
+  --color-lime-bg-end: #111711;
 
   --color-pink-1: #f472b6;
   --color-pink-2: #ec4899;
-  --bg-gradient-pink: linear-gradient(
-    180deg,
-    #0d0d0d 0%,
-    #100d0e 50%,
-    #160f13 100%
-  );
+  --color-pink-bg-mid: #100d0e;
+  --color-pink-bg-end: #160f13;
 }
 
 *,
@@ -113,9 +150,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition:
-    color 0.2s,
-    background 1s;
 
   @media (min-width: 600px) {
     font-size: 1.125rem;
@@ -127,7 +161,6 @@ a {
   text-decoration: none;
   font-weight: 600;
   border-block-end: 1px solid currentColor;
-  transition: color 0.2s;
 
   &:hover,
   &:focus-visible {
