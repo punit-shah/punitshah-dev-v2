@@ -1,52 +1,91 @@
 import classNames from 'classnames';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { DarkModeContext } from '../../contexts/DarkMode';
-import styles from './Orb.module.css';
+import classes from './Orb.module.css';
 import Pixels from './Pixels';
 import { happy, openMouth, smile } from './faces';
+import { getRandomMessage } from './messages';
 
 const Orb = () => {
   const { isDarkMode } = useContext(DarkModeContext);
-  const [isHovered, setIsHovered] = useState(false);
-  const [wasJustClicked, setWasJustClicked] = useState(false);
   const [face, setFace] = useState(smile);
+  const [message, setMessage] = useState('');
+  const [isBubbleVisible, setIsBubbleVisible] = useState(false);
+  const happyFaceTimeout = useRef<number>(null);
+  const bubbleTimeout = useRef<number>(null);
 
+  // clean up timeouts on unmount
   useEffect(() => {
-    if (wasJustClicked) {
-      setFace(happy);
-      return;
+    return () => {
+      if (happyFaceTimeout.current) {
+        clearTimeout(happyFaceTimeout.current);
+        happyFaceTimeout.current = null;
+      }
+      if (bubbleTimeout.current) {
+        clearTimeout(bubbleTimeout.current);
+        bubbleTimeout.current = null;
+      }
+    };
+  }, []);
+
+  const onHover = (isHovering: boolean) => {
+    if (face !== happy) {
+      setFace(isHovering ? openMouth : smile);
+    }
+  };
+
+  const onClick = () => {
+    if (happyFaceTimeout.current) {
+      clearTimeout(happyFaceTimeout.current);
+      happyFaceTimeout.current = null;
+    }
+    if (bubbleTimeout.current) {
+      clearTimeout(bubbleTimeout.current);
+      bubbleTimeout.current = null;
     }
 
-    if (isHovered) {
-      setFace(openMouth);
-      return;
-    }
+    setFace(happy);
+    happyFaceTimeout.current = setTimeout(() => {
+      setFace(smile);
+    }, 800);
 
-    setFace(smile);
-  }, [isHovered, wasJustClicked]);
+    setMessage(getRandomMessage());
+    setIsBubbleVisible(true);
+    bubbleTimeout.current = setTimeout(() => {
+      setIsBubbleVisible(false);
+    }, 2500);
+  };
 
   return (
     <div
-      className={classNames(styles.container, { [styles.dark]: isDarkMode })}
+      className={classNames(classes.container, { [classes.dark]: isDarkMode })}
     >
-      <button
-        className={classNames(styles.orb)}
-        type="button"
-        onMouseEnter={() => {
-          setIsHovered(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovered(false);
-        }}
-        onClick={() => {
-          setWasJustClicked(true);
-          setTimeout(() => {
-            setWasJustClicked(false);
-          }, 1000);
-        }}
-      >
-        <Pixels config={face} />
-      </button>
+      <div className={classes.inner}>
+        <button
+          className={classNames(classes.orb)}
+          type="button"
+          onMouseEnter={() => onHover(true)}
+          onMouseLeave={() => onHover(false)}
+          onFocus={(event) => {
+            if (event.currentTarget.matches(':focus-visible')) {
+              onHover(true);
+            }
+          }}
+          onBlur={() => onHover(false)}
+          onClick={onClick}
+          aria-label="Interact with Orb"
+        >
+          <Pixels config={face} />
+        </button>
+        <div
+          className={classNames([
+            classes.bubble,
+            { [classes.visible]: isBubbleVisible },
+          ])}
+        >
+          {message}
+        </div>
+      </div>
     </div>
   );
 };
