@@ -1,69 +1,52 @@
 import classNames from 'classnames';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import styles from './Orb.module.css';
-
-const Pixels = ({ config }: { config: string }) => (
-  <div className={styles.face}>
-    {config
-      .trim()
-      .split('\n')
-      .map((row, index) => (
-        <div key={index} className={styles.pixelRow}>
-          {row.split('').map((char, charIndex) => (
-            <div
-              key={charIndex}
-              className={`${styles.pixel} ${char === '_' ? styles.off : ''}`}
-            />
-          ))}
-        </div>
-      ))}
-  </div>
-);
-
-const smile = `
-_x__x_
-_x__x_
-
-
-x___x
-_xxx_
-`;
-
-const happy = `
-_x____x_
-x_x__x_x
-
-
-xxxxx
-_xxx_
-`;
-
-const u_u = `
-x_x__x_x
-_x____x_
-
-
-x__x
-_xx_
-`;
-
-const faces = [smile, happy, u_u];
+import Pixels from './Pixels';
+import { happy, openMouth, smile } from './faces';
 
 const Orb = () => {
   const { isDarkMode } = useContext(DarkModeContext);
-  const [faceIndex, setFaceIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [wasJustClicked, setWasJustClicked] = useState(false);
+  const [face, setFace] = useState(smile);
+
+  useEffect(() => {
+    if (wasJustClicked) {
+      setFace(happy);
+      return;
+    }
+
+    if (isHovered) {
+      setFace(openMouth);
+      return;
+    }
+
+    setFace(smile);
+  }, [isHovered, wasJustClicked]);
 
   return (
-    <div className={styles.container}>
-      <div
-        className={classNames(styles.orb, { [styles.dark]: isDarkMode })}
+    <div
+      className={classNames(styles.container, { [styles.dark]: isDarkMode })}
+    >
+      <button
+        className={classNames(styles.orb)}
+        type="button"
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
+        }}
         onClick={() => {
-          setFaceIndex((prevIndex) => (prevIndex + 1) % faces.length);
+          setWasJustClicked(true);
+          setTimeout(() => {
+            setWasJustClicked(false);
+          }, 1000);
         }}
       >
-        <Pixels config={faces[faceIndex]} />
-      </div>
+        <Pixels config={face} />
+      </button>
     </div>
   );
 };
