@@ -9,8 +9,7 @@ export const getRandomMessage = (): string => {
     "I'm just pixels on your screen, not a genie.",
     'I can do tricks, but not the ones you think.',
     'Punit is such a nerd.',
-    'Punit is such a great guy, right?',
-    "I can't tell you the meaning of life, but I can tell you to click me again.",
+    'Punit built me specifically to impress you.',
     "Clicking me won't solve your problems, but it might make you smile.",
     'Hello, human. Hope you enjoyed clicking me.',
     'This counts as social interaction.',
@@ -31,10 +30,10 @@ export const getRandomMessage = (): string => {
     "Punit spent way too long building me, but I'm so glad he did.",
   ];
 
-  if (
+  const wasAccentColorChanged =
     document.documentElement.style.getPropertyValue('--color-accent-1') !==
-    'var(--color-purple-1)'
-  ) {
+    'var(--color-purple-1)';
+  if (wasAccentColorChanged) {
     messages.push(
       'You picked this colour? Excellent choice.',
       'Colour vibes: immaculate.',
@@ -42,7 +41,8 @@ export const getRandomMessage = (): string => {
     );
   }
 
-  if (document.documentElement.classList.contains('dark')) {
+  const isDarkMode = document.documentElement.classList.contains('dark');
+  if (isDarkMode) {
     messages.push(
       "I look good in dark mode, don't I?",
       'Dark mode is the best mode.',
