@@ -80,14 +80,11 @@
 .bubble {
   position: absolute;
   bottom: calc(100% + 40px);
-  right: 50%;
-  transform: translateX(70px);
-  background: linear-gradient(
-    90deg,
-    var(--color-accent-1),
-    var(--color-accent-2)
-  );
-  color: var(--color-white);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg);
+  border: 2px solid var(--color-accent-1);
+  color: var(--color-text);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   font-family: var(--font-mono);
@@ -100,15 +97,30 @@
   width: max-content;
   max-width: 250px;
 
+  &::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 14px solid transparent;
+    position: absolute;
+    right: 36px;
+    bottom: -14px;
+    border-top: solid 12px var(--color-accent-1);
+    border-bottom: 0;
+    border-left: 0;
+  }
+
   &::after {
     content: '';
     width: 0;
     height: 0;
-    border: 6px solid transparent;
+    border: 10px solid transparent;
     position: absolute;
-    right: 16px;
-    bottom: -16px;
-    border-top: solid 10px var(--color-accent-2);
+    right: 38px;
+    bottom: -10px;
+    border-top: solid 10px var(--color-bg);
+    border-bottom: 0;
+    border-left: 0;
   }
 
   &.visible {
