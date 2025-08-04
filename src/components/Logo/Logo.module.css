@@ -2,7 +2,7 @@
   .inner {
     fill: var(--color-bg);
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity var(--duration);
   }
 
   .text {

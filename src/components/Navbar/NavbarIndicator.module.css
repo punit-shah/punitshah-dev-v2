@@ -12,8 +12,8 @@
   );
   opacity: 0;
   transition:
-    opacity 0.2s,
-    top 0.2s;
+    opacity var(--duration),
+    top var(--duration);
 
   &.active {
     opacity: 1;

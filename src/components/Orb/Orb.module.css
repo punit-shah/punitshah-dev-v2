@@ -56,7 +56,7 @@
   justify-content: center;
   cursor: pointer;
   animation: glowAndFloat 3s ease-in-out infinite;
-  transition: box-shadow 0.2s;
+  transition: box-shadow var(--duration);
 }
 @keyframes glowAndFloat {
   0% {

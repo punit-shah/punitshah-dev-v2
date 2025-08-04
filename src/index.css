@@ -89,13 +89,15 @@
     var(--color-accent-bg-end) 100%
   );
 
+  --duration: 0.2s;
+
   transition:
-    --color-bg 0.2s,
-    --color-text 0.2s,
-    --color-accent-1 0.2s,
-    --color-accent-2 0.2s,
-    --color-accent-bg-mid 0.2s,
-    --color-accent-bg-end 0.2s;
+    --color-bg var(--duration),
+    --color-text var(--duration),
+    --color-accent-1 var(--duration),
+    --color-accent-2 var(--duration),
+    --color-accent-bg-mid var(--duration),
+    --color-accent-bg-end var(--duration);
 }
 
 .dark {

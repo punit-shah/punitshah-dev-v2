@@ -24,7 +24,7 @@
   font-size: 0.875rem;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s;
+  transition: opacity var(--duration);
 
   &.tip::before {
     content: '';
