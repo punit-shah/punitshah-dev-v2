@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px var(--color-white));
+}
+
+.pixelRow {
+  display: flex;
+  height: 4px;
+}
+
+.pixel {
+  width: 4px;
+  height: 4px;
+  background: var(--color-gray-1);
+  opacity: 0.8;
+
+  .dark & {
+    background: var(--color-white);
+  }
+
+  &.off {
+    background: transparent;
+    box-shadow: none;
+  }
+}
