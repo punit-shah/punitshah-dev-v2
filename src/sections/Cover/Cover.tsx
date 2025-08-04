@@ -1,10 +1,16 @@
 import ColorSwitcher from '../../components/ColorSwitcher';
+import Orb from '../../components/Orb';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import StretchyText from '../../components/StretchyText';
 import classes from './Cover.module.css';
 
 const Cover = ({ ...props }: CustomSectionProps) => (
-  <Section className={classes.section} id="cover" {...props}>
+  <Section
+    className={classes.section}
+    containerClassName={classes.container}
+    id="cover"
+    {...props}
+  >
     <div className={classes.intro}>
       <h1 className={classes.hey}>
         Hey, I'm <span className={classes.name}>Punit</span>
@@ -16,6 +22,7 @@ const Cover = ({ ...props }: CustomSectionProps) => (
         <StretchyText>feel</StretchyText>.
       </p>
     </div>
+    <Orb />
   </Section>
 );
 

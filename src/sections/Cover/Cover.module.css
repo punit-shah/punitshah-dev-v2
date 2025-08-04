@@ -2,12 +2,18 @@
   justify-content: center;
 }
 
+.container {
+  flex-direction: row;
+  gap: 2rem;
+}
+
 .intro {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   font-size: 2em;
   font-weight: 500;
+  flex-grow: 1;
 }
 
 .hey {
