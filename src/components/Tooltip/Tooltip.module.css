@@ -1,12 +1,6 @@
 .wrapper {
   position: relative;
   display: flex;
-
-  &:hover .tooltip,
-  &:has(:focus-visible) .tooltip {
-    opacity: 1;
-    visibility: visible;
-  }
 }
 
 .tooltip {
@@ -24,7 +18,16 @@
   font-size: 0.875rem;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--duration);
+  pointer-events: none;
+  transition:
+    opacity var(--duration),
+    visibility var(--duration);
+
+  .wrapper:hover &,
+  .wrapper:has(:focus-visible) & {
+    visibility: visible;
+    opacity: 1;
+  }
 
   &.tip::before {
     content: '';
