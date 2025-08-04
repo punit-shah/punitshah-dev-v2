@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useRef, useState } from 'react';
-import useSound from 'use-sound';
 import { DarkModeContext } from '../../contexts/DarkMode';
+import useSound from '../../hooks/useSound';
 import classes from './Orb.module.css';
 import Pixels from './Pixels';
 import beep from './beep.mp3';
