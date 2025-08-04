@@ -4,14 +4,18 @@ import { DarkModeContext } from '../../contexts/DarkMode';
 import { SoundContext } from '../../contexts/Sound';
 import useSound from '../../hooks/useSound';
 import classes from './Navbar.module.css';
-import switchOff from './switch-off.mp3';
-import switchOn from './switch-on.mp3';
+import lightOff from './sounds/light-off.mp3';
+import lightOn from './sounds/light-on.mp3';
+import soundOff from './sounds/sound-off.mp3';
+import soundOn from './sounds/sound-on.mp3';
 
 const Settings = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
   const { isSoundEnabled, toggleSound } = useContext(SoundContext);
-  const [playSwitchOn] = useSound(switchOn);
-  const [playSwitchOff] = useSound(switchOff);
+  const [playLightOn] = useSound(lightOn);
+  const [playLightOff] = useSound(lightOff);
+  const [playSoundOn] = useSound(soundOn);
+  const [playSoundOff] = useSound(soundOff);
 
   const items = [
     {
@@ -22,9 +26,9 @@ const Settings = () => {
         toggleDarkMode();
 
         if (isDarkMode) {
-          playSwitchOff();
+          playLightOff();
         } else {
-          playSwitchOn();
+          playLightOn();
         }
       },
     },
@@ -32,7 +36,15 @@ const Settings = () => {
       key: 'soundToggle',
       label: isSoundEnabled ? 'Disable sounds' : 'Enable sounds',
       icon: isSoundEnabled ? <Volume2 size={32} /> : <VolumeX size={32} />,
-      onClick: toggleSound,
+      onClick: () => {
+        toggleSound();
+
+        if (isSoundEnabled) {
+          playSoundOff();
+        } else {
+          playSoundOn({ forceSoundEnabled: true });
+        }
+      },
     },
   ];
 
