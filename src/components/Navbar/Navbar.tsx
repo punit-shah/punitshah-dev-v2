@@ -28,6 +28,7 @@ const onLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
 
 const Navbar = ({ activeSection }: NavbarProps) => {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const [isLogoFocusVisible, setIsLogoFocusVisible] = useState(false);
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   const itemRefs = items.map(() => createRef<HTMLLIElement>());
@@ -44,9 +45,17 @@ const Navbar = ({ activeSection }: NavbarProps) => {
         onMouseLeave={() => {
           setIsLogoHovered(false);
         }}
+        onFocus={(event) => {
+          if (event.currentTarget.matches(':focus-visible')) {
+            setIsLogoFocusVisible(true);
+          }
+        }}
+        onBlur={() => {
+          setIsLogoFocusVisible(false);
+        }}
         aria-label="Scroll to top"
       >
-        <Logo isHovered={isLogoHovered} />
+        <Logo isHovered={isLogoHovered || isLogoFocusVisible} />
       </a>
 
       <div>
