@@ -3,8 +3,13 @@
 }
 
 .container {
-  flex-direction: row;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 8rem;
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
+    gap: 4rem;
+  }
 }
 
 .intro {
@@ -35,4 +40,10 @@
   );
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.description {
+  font-family: var(--font-techy);
+  font-weight: 400;
+  max-width: 500px;
 }
