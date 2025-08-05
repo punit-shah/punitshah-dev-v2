@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import useSound from '../../hooks/useSound';
 import classes from './ColorSwitcher.module.css';
+import changeColor from './change-color.mp3';
 
 const accentColors = ['purple', 'sunset', 'lime', 'pink', 'blue'];
 
@@ -11,6 +13,7 @@ type ColorSwitcherProps = {
 
 const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
   const [colorIndex, setColorIndex] = useState(0);
+  const [playChangeColor] = useSound(changeColor);
 
   useEffect(() => {
     document.documentElement.style.setProperty(
@@ -37,7 +40,7 @@ const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
       type="button"
       onClick={() => {
         setColorIndex((prev) => (prev + 1) % accentColors.length);
-        // todo: add sound effect
+        playChangeColor();
       }}
       aria-label="Switch color theme"
     >
