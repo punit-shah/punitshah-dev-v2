@@ -1,16 +1,16 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { DarkModeContext } from '../../contexts/DarkMode';
+import { faces, OrbContext } from '../../contexts/Orb';
 import useSound from '../../hooks/useSound';
 import classes from './Orb.module.css';
 import Pixels from './Pixels';
-import { happy, openMouth, smile } from './faces';
 import { getRandomMessage } from './messages';
 import orbChirp from './orb-chirp.mp3';
 
 const Orb = () => {
   const { isDarkMode } = useContext(DarkModeContext);
-  const [face, setFace] = useState(smile);
+  const { face, setFace } = useContext(OrbContext);
   const [message, setMessage] = useState('');
   const [isBubbleVisible, setIsBubbleVisible] = useState(false);
   const happyFaceTimeout = useRef<number>(null);
@@ -33,8 +33,9 @@ const Orb = () => {
   }, []);
 
   const onHover = (isHovering: boolean) => {
-    if (face !== happy) {
-      setFace(isHovering ? openMouth : smile);
+    if (face !== faces.happy) {
+      console.log('Setting face on hover:', isHovering);
+      setFace(isHovering ? faces.openMouth : faces.smile);
     }
   };
 
@@ -48,9 +49,9 @@ const Orb = () => {
       bubbleTimeout.current = null;
     }
 
-    setFace(happy);
+    setFace(faces.happy);
     happyFaceTimeout.current = setTimeout(() => {
-      setFace(smile);
+      setFace(faces.smile);
     }, 800);
 
     setMessage(getRandomMessage());

@@ -33,3 +33,13 @@ _x__x_
 xxx
 xxx
 `;
+
+export const tongueOut = `
+_x____x_
+x_x__x_x
+
+
+xxxxxx
+___x_x
+___xx_
+`;
