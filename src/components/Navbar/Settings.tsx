@@ -26,9 +26,9 @@ const Settings = () => {
         toggleDarkMode();
 
         if (isDarkMode) {
-          playLightOff();
-        } else {
           playLightOn();
+        } else {
+          playLightOff();
         }
       },
     },
