@@ -1,15 +1,15 @@
-import { DarkModeProvider } from './DarkMode';
-import { OrbProvider } from './Orb';
-import { SoundProvider } from './Sound';
+import { DarkModeProvider } from './DarkMode/DarkModeProvider';
+import { OrbProvider } from './Orb/OrbProvider';
+import { SoundProvider } from './Sound/SoundProvider';
 
 type ProvidersProps = { children: React.ReactNode };
 
 const Providers = ({ children }: ProvidersProps) => (
-  <OrbProvider>
+  <DarkModeProvider>
     <SoundProvider>
-      <DarkModeProvider>{children}</DarkModeProvider>
+      <OrbProvider>{children}</OrbProvider>
     </SoundProvider>
-  </OrbProvider>
+  </DarkModeProvider>
 );
 
 export default Providers;
