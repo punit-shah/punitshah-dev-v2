@@ -4,7 +4,11 @@
 
 .container {
   flex-direction: column;
-  gap: 8rem;
+  gap: 6rem;
+
+  @media (min-height: 800px) {
+    gap: 8rem;
+  }
 
   @media (min-width: 1000px) {
     flex-direction: row;
