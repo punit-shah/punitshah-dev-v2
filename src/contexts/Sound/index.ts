@@ -1,3 +1,1 @@
-export { SoundContext } from './SoundContext';
-export type { SoundState } from './SoundContext';
-export { SoundProvider } from './SoundProvider';
+export { SoundContext, type SoundState } from './SoundContext';

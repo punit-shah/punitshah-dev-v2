@@ -98,6 +98,8 @@
     --color-accent-2 var(--duration),
     --color-accent-bg-mid var(--duration),
     --color-accent-bg-end var(--duration);
+
+  background: var(--color-bg);
 }
 
 .dark {

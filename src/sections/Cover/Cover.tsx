@@ -33,12 +33,10 @@ const Cover = ({ ...props }: CustomSectionProps) => {
       {...props}
     >
       <div className={classes.intro}>
-        <h1 className={classes.hey}>Hey, I'm {name}</h1>
+        <h1 className={classes.hey}>Hey, I'm&nbsp;{name}</h1>
         <p className={classes.description}>
-          Frontend engineer focused on
-          <br />
-          <ColorSwitcher>function</ColorSwitcher> and{' '}
-          <StretchyText>feel</StretchyText>.
+          Frontend engineer focused on <ColorSwitcher>function</ColorSwitcher>{' '}
+          and <StretchyText>feel</StretchyText>.
         </p>
       </div>
       <Orb />

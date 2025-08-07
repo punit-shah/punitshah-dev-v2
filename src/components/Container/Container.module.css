@@ -3,17 +3,13 @@
   flex-direction: column;
   width: 100%;
   margin-inline: auto;
-  padding-inline: 0.5rem;
+  padding-inline: 1rem;
 
-  @media (min-width: 400px) {
-    padding-inline: 1rem;
-  }
-
-  @media (min-width: 600px) {
+  @media (min-width: 500px) {
     padding-inline: 8.1%;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     padding-inline: 16.4%;
   }
 

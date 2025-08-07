@@ -1,3 +1,1 @@
-export { DarkModeContext } from './DarkModeContext';
-export type { DarkModeState } from './DarkModeContext';
-export { DarkModeProvider } from './DarkModeProvider';
+export { DarkModeContext, type DarkModeState } from './DarkModeContext';

@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import LogoItem from './LogoItem';
 import classes from './Navbar.module.css';
-import Sections from './Sections';
+import SectionLinks from './SectionLinks';
 import Settings from './Settings';
 
 type NavbarProps = {
@@ -16,7 +16,7 @@ const Navbar = ({ activeSection }: NavbarProps) => {
   return (
     <nav className={classNames(classes.nav, { [classes.dark]: isDarkMode })}>
       <LogoItem />
-      <Sections activeSection={activeSection} />
+      <SectionLinks activeSection={activeSection} />
       <Settings />
     </nav>
   );
