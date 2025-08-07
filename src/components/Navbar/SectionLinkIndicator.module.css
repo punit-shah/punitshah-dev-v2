@@ -10,14 +10,8 @@
     var(--color-accent-2),
     var(--color-accent-1)
   );
-  opacity: 0;
-  transition:
-    opacity var(--duration),
-    top var(--duration),
-    left var(--duration),
-    bottom var(--duration),
-    width var(--duration),
-    height var(--duration);
+  pointer-events: none;
+  will-change: transform, opacity;
 
   @media (min-width: 600px) {
     --gradient-direction: 180deg;
