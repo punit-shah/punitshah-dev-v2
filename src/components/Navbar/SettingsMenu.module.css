@@ -1,0 +1,51 @@
+.container {
+  position: relative;
+}
+
+.button {
+  display: flex;
+  padding: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-accent-1);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-2);
+  }
+}
+
+.menu {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--color-bg);
+  border-radius: 0.5rem;
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.1),
+    0 3px 8px 2px rgb(from var(--color-accent-1) r g b / 0.2);
+
+  @media (min-width: 600px) {
+    right: auto;
+    bottom: 0;
+    left: calc(100% + 0.25rem);
+    flex-direction: row;
+  }
+
+  .dark & {
+    background: rgb(from var(--color-bg) r g b / 0.5);
+    backdrop-filter: blur(16px);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 2px 8px rgb(from var(--color-accent-1) r g b / 0.3);
+  }
+}
