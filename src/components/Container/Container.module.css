@@ -5,11 +5,11 @@
   margin-inline: auto;
   padding-inline: 1rem;
 
-  @media (min-width: 600px) {
+  @media (min-width: 500px) {
     padding-inline: 8.1%;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     padding-inline: 16.4%;
   }
 
