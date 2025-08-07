@@ -1,14 +1,17 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import useMediaQuery from '../../hooks/useMediaQuery';
-import classes from './NavbarIndicator.module.css';
+import classes from './SectionLinkIndicator.module.css';
 
-type NavbarIndicatorProps = {
+type SectionLinkIndicatorProps = {
   activeSection: string | null;
   itemsRef: React.RefObject<(HTMLLIElement | null)[]>;
 };
 
-const NavbarIndicator = ({ activeSection, itemsRef }: NavbarIndicatorProps) => {
+const SectionLinkIndicator = ({
+  activeSection,
+  itemsRef,
+}: SectionLinkIndicatorProps) => {
   const [isActive, setIsActive] = useState(false);
   const [style, setStyle] = useState<React.CSSProperties>({});
   const isVertical = useMediaQuery('(min-width: 600px)');
@@ -75,4 +78,4 @@ const NavbarIndicator = ({ activeSection, itemsRef }: NavbarIndicatorProps) => {
   );
 };
 
-export default NavbarIndicator;
+export default SectionLinkIndicator;

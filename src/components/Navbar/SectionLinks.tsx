@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import Tooltip from '../Tooltip';
 import classes from './Navbar.module.css';
-import NavbarIndicator from './NavbarIndicator';
+import SectionLinkIndicator from './SectionLinkIndicator';
 
 const items = [
   { label: 'About', sectionId: 'about', icon: <UserRound /> },
@@ -77,7 +77,7 @@ const SectionLinks = ({ activeSection }: SectionsProps) => {
           </li>
         ))}
       </ul>
-      <NavbarIndicator activeSection={activeSection} itemsRef={itemsRef} />
+      <SectionLinkIndicator activeSection={activeSection} itemsRef={itemsRef} />
     </div>
   );
 };
