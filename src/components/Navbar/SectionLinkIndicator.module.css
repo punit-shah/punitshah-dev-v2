@@ -2,19 +2,25 @@
   --gradient-direction: 90deg;
 
   position: absolute;
+  bottom: 0;
+  left: 0;
   width: 5px;
   height: 5px;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   background: linear-gradient(
     var(--gradient-direction),
     var(--color-accent-2),
     var(--color-accent-1)
   );
   pointer-events: none;
-  will-change: transform, opacity;
+  will-change: transform, opacity, height, width;
 
   @media (min-width: 600px) {
     --gradient-direction: 180deg;
+
+    top: 0;
+    bottom: auto;
+    border-radius: 0 4px 4px 0;
   }
 
   &.active {

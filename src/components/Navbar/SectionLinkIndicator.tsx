@@ -1,36 +1,8 @@
-import {
-  AnimatePresence,
-  motion,
-  type TargetAndTransition,
-} from 'framer-motion';
+import classNames from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import classes from './SectionLinkIndicator.module.css';
-
-const verticalBaseStyles: TargetAndTransition = {
-  top: 0,
-  bottom: 'auto',
-  left: 0,
-  right: 'auto',
-  width: 5,
-  height: 0,
-  borderTopLeftRadius: 0,
-  borderTopRightRadius: 4,
-  borderBottomLeftRadius: 0,
-  borderBottomRightRadius: 4,
-};
-const horizontalBaseStyles: TargetAndTransition = {
-  top: 'auto',
-  bottom: 0,
-  left: 0,
-  right: 'auto',
-  width: 0,
-  height: 5,
-  borderTopLeftRadius: 4,
-  borderTopRightRadius: 4,
-  borderBottomLeftRadius: 0,
-  borderBottomRightRadius: 0,
-};
 
 type SectionLinkIndicatorProps = {
   activeSection: string | null;
@@ -42,7 +14,8 @@ const SectionLinkIndicator = ({
   itemsRef,
 }: SectionLinkIndicatorProps) => {
   const [isActive, setIsActive] = useState(false);
-  const [style, setStyle] = useState<TargetAndTransition>({});
+  const [position, setPosition] = useState(0);
+  const [size, setSize] = useState(0);
   const isVertical = useMediaQuery('(min-width: 600px)');
 
   const inactivePosition = isVertical ? { x: -5 } : { y: 5 };
@@ -50,7 +23,7 @@ const SectionLinkIndicator = ({
   const active = { opacity: 1, scale: 1, x: 0, y: 0 };
 
   useEffect(() => {
-    const updateStyle = () => {
+    const update = () => {
       const activeItemIndex = itemsRef.current.findIndex(
         (ref) => ref?.getAttribute('data-section') === activeSection,
       );
@@ -58,40 +31,37 @@ const SectionLinkIndicator = ({
       const activeItem = itemsRef.current[activeItemIndex];
       if (!activeItem) {
         setIsActive(false);
-        setStyle({});
         return;
       }
 
       setIsActive(true);
       if (isVertical) {
-        setStyle({
-          ...verticalBaseStyles,
-          top: activeItem.offsetTop,
-          height: activeItem.offsetHeight,
-        });
+        setPosition(activeItem.offsetTop);
+        setSize(activeItem.offsetHeight);
       } else {
-        setStyle({
-          ...horizontalBaseStyles,
-          left: activeItem.offsetLeft,
-          width: activeItem.offsetWidth,
-        });
+        setPosition(activeItem.offsetLeft);
+        setSize(activeItem.offsetWidth);
       }
     };
 
-    updateStyle();
-    window.addEventListener('resize', updateStyle);
+    update();
+    window.addEventListener('resize', update);
     return () => {
-      window.removeEventListener('resize', updateStyle);
+      window.removeEventListener('resize', update);
     };
   }, [activeSection, isVertical, itemsRef]);
+
+  const dynamicStyles = isVertical
+    ? { y: position, width: 5, height: size }
+    : { x: position, width: size, height: 5 };
 
   return (
     <AnimatePresence>
       {isActive && (
         <motion.div
-          className={classes.indicator}
-          initial={{ ...inactive, ...style }}
-          animate={{ ...active, ...style }}
+          className={classNames(classes.indicator)}
+          initial={{ ...inactive, ...dynamicStyles }}
+          animate={{ ...active, ...dynamicStyles }}
           exit={inactive}
           transition={{
             type: 'spring',
