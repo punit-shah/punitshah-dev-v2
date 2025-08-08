@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import useMediaQuery from '../../hooks/useMediaQuery';
@@ -13,17 +14,16 @@ const SectionLinkIndicator = ({
   itemsRef,
 }: SectionLinkIndicatorProps) => {
   const [isActive, setIsActive] = useState(false);
-  const [style, setStyle] = useState<React.CSSProperties>({});
+  const [position, setPosition] = useState(0);
+  const [size, setSize] = useState(0);
   const isVertical = useMediaQuery('(min-width: 600px)');
 
   const inactivePosition = isVertical ? { x: -5 } : { y: 5 };
   const inactive = { opacity: 0, scale: 0.8, ...inactivePosition };
-
-  const activePosition = isVertical ? { x: 0 } : { y: 0 };
-  const active = { opacity: 1, scale: 1, ...activePosition };
+  const active = { opacity: 1, scale: 1, x: 0, y: 0 };
 
   useEffect(() => {
-    const updateStyle = () => {
+    const update = () => {
       const activeItemIndex = itemsRef.current.findIndex(
         (ref) => ref?.getAttribute('data-section') === activeSection,
       );
@@ -31,47 +31,44 @@ const SectionLinkIndicator = ({
       const activeItem = itemsRef.current[activeItemIndex];
       if (!activeItem) {
         setIsActive(false);
-        setStyle({});
         return;
       }
 
       setIsActive(true);
       if (isVertical) {
-        setStyle({
-          top: activeItem.offsetTop,
-          left: 0,
-          height: activeItem.offsetHeight,
-          borderTopLeftRadius: 0,
-          borderBottomLeftRadius: 0,
-        });
+        setPosition(activeItem.offsetTop);
+        setSize(activeItem.offsetHeight);
       } else {
-        setStyle({
-          left: activeItem.offsetLeft,
-          bottom: 0,
-          width: activeItem.offsetWidth,
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
-        });
+        setPosition(activeItem.offsetLeft);
+        setSize(activeItem.offsetWidth);
       }
     };
 
-    updateStyle();
-    window.addEventListener('resize', updateStyle);
+    update();
+    window.addEventListener('resize', update);
     return () => {
-      window.removeEventListener('resize', updateStyle);
+      window.removeEventListener('resize', update);
     };
   }, [activeSection, isVertical, itemsRef]);
+
+  const dynamicStyles = isVertical
+    ? { y: position, width: 5, height: size }
+    : { x: position, width: size, height: 5 };
 
   return (
     <AnimatePresence>
       {isActive && (
         <motion.div
-          className={classes.indicator}
-          initial={inactive}
-          animate={active}
+          className={classNames(classes.indicator)}
+          initial={{ ...inactive, ...dynamicStyles }}
+          animate={{ ...active, ...dynamicStyles }}
           exit={inactive}
-          transition={{ duration: 0.2 }}
-          style={style}
+          transition={{
+            type: 'spring',
+            stiffness: 500,
+            damping: 30,
+            mass: 0.3,
+          }}
         />
       )}
     </AnimatePresence>
