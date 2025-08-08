@@ -9,8 +9,8 @@
   border-radius: 4px 4px 0 0;
   background: linear-gradient(
     var(--gradient-direction),
-    var(--color-accent-2),
-    var(--color-accent-1)
+    var(--color-accent-1),
+    var(--color-accent-2)
   );
   pointer-events: none;
   will-change: transform, opacity, height, width;
