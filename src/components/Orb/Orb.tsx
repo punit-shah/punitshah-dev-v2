@@ -34,7 +34,6 @@ const Orb = () => {
 
   const onHover = (isHovering: boolean) => {
     if (face !== faces.happy) {
-      console.log('Setting face on hover:', isHovering);
       setFace(isHovering ? faces.openMouth : faces.smile);
     }
   };
