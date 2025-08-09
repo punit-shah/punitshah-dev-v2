@@ -2,7 +2,7 @@
 
 ## Local development
 
-Requires [Node.js](https://nodejs.org/en/download) 22 or higher, and the [Vercel CLI](https://vercel.com/docs/cli).
+Requires [Node.js](https://nodejs.org/en/download) 22 or higher.
 
 - Install dependencies
 
@@ -10,18 +10,25 @@ Requires [Node.js](https://nodejs.org/en/download) 22 or higher, and the [Vercel
   npm install
   ```
 
-- Run development environment
+- Start development environment
 
   ```
-  npm run dev
+  npm start
   ```
 
-- Press `o + enter` to open in browser
+### Environment setup
 
-## Deployment
+The contact API requires the following environment variables to be set:
 
+```sh
+## .env
+
+# Recipient email address for contact form messages
+EMAIL_TO=recipient@example.com
+
+# Gmail account username
+GMAIL_USER=gmail-username@gmail.com
+
+# Gmail app password
+GMAIL_PASS=gmail-app-password
 ```
-vercel
-```
-
-When running for the first time, answer the prompts to set up the Vercel Project.
