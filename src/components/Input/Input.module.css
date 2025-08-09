@@ -45,6 +45,10 @@
 textarea.input {
   resize: vertical;
   min-height: 120px;
+
+  @media (min-height: 600px) {
+    min-height: 200px;
+  }
 }
 
 .label {
