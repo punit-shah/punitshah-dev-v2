@@ -76,7 +76,7 @@
 
   --color-bg: var(--color-white);
   --color-text: var(--color-gray-2);
-  --color-link-hover: var(--color-black);
+  --color-100: var(--color-black);
   --color-accent-1: var(--color-purple-1);
   --color-accent-2: var(--color-purple-2);
   --color-accent-bg-mid: var(--color-purple-bg-mid);
@@ -105,7 +105,7 @@
 .dark {
   --color-bg: var(--color-almost-black);
   --color-text: var(--color-almost-white);
-  --color-link-hover: var(--color-white);
+  --color-100: var(--color-white);
 
   --color-purple-1: #d946ef;
   --color-purple-2: #8b5cf6;
@@ -168,8 +168,8 @@ a {
 
   &:hover,
   &:focus-visible {
-    color: var(--color-link-hover);
-    border-color: var(--color-link-hover);
+    color: var(--color-100);
+    border-color: var(--color-100);
   }
 }
 
