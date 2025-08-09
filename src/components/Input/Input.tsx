@@ -4,6 +4,7 @@ import { DarkModeContext } from '../../contexts/DarkMode';
 import classes from './Input.module.css';
 
 type InputProps = {
+  className?: string;
   label: string;
   type?: string;
   value?: string;
@@ -15,6 +16,7 @@ type InputProps = {
 };
 
 const Input = ({
+  className,
   label,
   type = 'text',
   value = '',
@@ -43,6 +45,7 @@ const Input = ({
       className={classNames([
         classes.inputContainer,
         { [classes.dark]: isDarkMode },
+        className,
       ])}
     >
       {inputElement}

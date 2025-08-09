@@ -49,6 +49,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             you.
           </p>
           <Input
+            className={classes.input}
             label="Name"
             name="name"
             value={name}
@@ -56,6 +57,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             required
           />
           <Input
+            className={classes.input}
             label="Email"
             name="email"
             value={email}
@@ -64,6 +66,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             required
           />
           <Input
+            className={classes.input}
             label="Message"
             name="message"
             value={message}
