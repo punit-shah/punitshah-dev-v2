@@ -1,4 +1,6 @@
+import { SendIcon } from 'lucide-react';
 import { useState } from 'react';
+import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import classes from './Contact.module.css';
@@ -26,16 +28,33 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             Have a question or just want to say hi? I’d be happy to hear from
             you.
           </p>
-          <Input label="Name" name="name" value={name} onChange={setName} />
-          <Input label="Email" name="email" value={email} onChange={setEmail} />
+          <Input
+            label="Name"
+            name="name"
+            value={name}
+            onChange={setName}
+            required
+          />
+          <Input
+            label="Email"
+            name="email"
+            value={email}
+            onChange={setEmail}
+            type="email"
+            required
+          />
           <Input
             label="Message"
             name="message"
             value={message}
             onChange={setMessage}
             type="textarea"
+            required
+            placeholder="Hey Punit, ..."
           />
-          {/* <Button type="submit">Send</Button> */}
+          <Button type="submit">
+            <SendIcon /> Send
+          </Button>
         </form>
       </div>
     </Section>
