@@ -25,7 +25,12 @@ const Section = ({
 }: SectionProps) => (
   <section className={classNames(classes.section, className)} {...rest}>
     <Container centered={centered} className={containerClassName}>
-      {title && <h2 className={classes.title}>{title}</h2>}
+      {title && (
+        <h2 className={classes.title}>
+          {title}
+          <div className={classes.titleUnderline} />
+        </h2>
+      )}
       {children}
     </Container>
   </section>
