@@ -6,8 +6,10 @@
   position: relative;
   flex-grow: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
   margin-block-end: 5.5rem;
 
   &::before {
@@ -47,4 +49,36 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socialsList {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.socialItem {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 100px;
+
+  @media (min-width: 600px) {
+    min-width: 108px;
+  }
 }

@@ -1,18 +1,38 @@
+import classNames from 'classnames';
 import { SendIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Section, { type CustomSectionProps } from '../../components/Section';
+import { DarkModeContext } from '../../contexts/DarkMode';
 import classes from './Contact.module.css';
+import { GitHubIcon, LinkedInIcon } from './icons';
+
+const links = [
+  {
+    href: 'https://www.linkedin.com/in/punitshah/',
+    label: 'LinkedIn',
+    icon: <LinkedInIcon />,
+  },
+  {
+    href: 'https://github.com/punit-shah',
+    label: 'GitHub',
+    icon: <GitHubIcon />,
+  },
+];
 
 const Contact = ({ ...props }: CustomSectionProps) => {
+  const { isDarkMode } = useContext(DarkModeContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   return (
     <Section
-      containerClassName={classes.container}
+      containerClassName={classNames([
+        classes.container,
+        { [classes.dark]: isDarkMode },
+      ])}
       title="Contact"
       id="contact"
       {...props}
@@ -56,6 +76,25 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             <SendIcon /> Send
           </Button>
         </form>
+
+        <div className={classes.socials}>
+          <p>Or find me on:</p>
+          <ul className={classes.socialsList}>
+            {links.map(({ href, label, icon }) => (
+              <li key={href} className={classes.socialItem}>
+                <a
+                  className={classes.link}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {icon}
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Section>
   );
