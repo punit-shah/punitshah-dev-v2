@@ -1,0 +1,52 @@
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1.125rem 1rem 0.375rem;
+  border: solid 1px rgb(from var(--color-100) r g b / 0.15);
+  border-radius: 1rem;
+  background: rgb(from var(--color-100) r g b / 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font: inherit;
+  color: inherit;
+  transition:
+    border-color var(--duration),
+    background var(--duration);
+
+  &:focus {
+    outline: none;
+    border-color: rgb(from var(--color-accent-1) r g b / 0.6);
+    background: rgb(from var(--color-100) r g b / 0.05);
+    box-shadow: 0 0 10px rgb(from var(--color-accent-1) r g b / 0.4);
+
+    .dark & {
+      box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.2);
+    }
+  }
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.label {
+  position: absolute;
+  top: calc(1px + 0.75rem);
+  left: calc(1px + 1rem);
+  transition: transform var(--duration);
+  transform-origin: left center;
+
+  .input:focus + &,
+  &.hasValue {
+    transform: translateY(-0.85rem) scale(0.75);
+    color: rgb(from var(--color-text) r g b / 0.8);
+  }
+}
