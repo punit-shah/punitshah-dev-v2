@@ -11,6 +11,7 @@ type InputProps = {
   name?: string;
   required?: boolean;
   disabled?: boolean;
+  placeholder?: string;
 };
 
 const Input = ({
@@ -18,9 +19,7 @@ const Input = ({
   type = 'text',
   value = '',
   onChange,
-  name,
-  required,
-  disabled,
+  ...rest
 }: InputProps) => {
   const { isDarkMode } = useContext(DarkModeContext);
 
@@ -29,9 +28,7 @@ const Input = ({
     value,
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       onChange?.(e.target.value),
-    name,
-    required,
-    disabled,
+    ...rest,
   };
 
   const inputElement =

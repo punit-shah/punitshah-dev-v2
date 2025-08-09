@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  width: 100%;
   font-size: 1rem;
 }
 
@@ -20,11 +21,20 @@
     border-color var(--duration),
     background var(--duration);
 
+  &::placeholder {
+    opacity: 0;
+    transition: opacity var(--duration);
+  }
+
   &:focus {
     outline: none;
     border-color: rgb(from var(--color-accent-1) r g b / 0.6);
     background: rgb(from var(--color-100) r g b / 0.05);
     box-shadow: 0 0 10px rgb(from var(--color-accent-1) r g b / 0.4);
+
+    &::placeholder {
+      opacity: 1;
+    }
 
     .dark & {
       box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.2);
