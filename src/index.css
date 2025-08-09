@@ -76,6 +76,7 @@
 
   --color-bg: var(--color-white);
   --color-text: var(--color-gray-2);
+  --color-0: var(--color-white);
   --color-100: var(--color-black);
   --color-accent-1: var(--color-purple-1);
   --color-accent-2: var(--color-purple-2);
@@ -105,6 +106,7 @@
 .dark {
   --color-bg: var(--color-almost-black);
   --color-text: var(--color-almost-white);
+  --color-0: var(--color-black);
   --color-100: var(--color-white);
 
   --color-purple-1: #d946ef;
