@@ -19,6 +19,7 @@
   color: inherit;
   transition:
     border-color var(--duration),
+    box-shadow var(--duration),
     background var(--duration);
 
   &::placeholder {
@@ -37,8 +38,40 @@
     }
 
     .dark & {
-      box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.2);
+      box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);
     }
+  }
+
+  /* autofill styles */
+  --autofill-bg-color: rgb(from var(--color-accent-2) r g b / 0.2);
+  --autofill-shadow: 0 0 0 1000px var(--autofill-bg-color) inset;
+  /* chrome, edge, safari */
+  &:-webkit-autofill {
+    box-shadow: var(--autofill-shadow);
+    -webkit-text-fill-color: var(--color-text);
+    caret-color: var(--color-text);
+    transition:
+      border-color var(--duration),
+      box-shadow var(--duration),
+      background 5000s ease 0s;
+
+    &:focus {
+      box-shadow:
+        var(--autofill-shadow),
+        0 0 10px rgb(from var(--color-accent-1) r g b / 0.4);
+
+      .dark & {
+        box-shadow:
+          var(--autofill-shadow),
+          0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);
+      }
+    }
+  }
+  /* firefox */
+  &:-moz-autofill {
+    background-color: var(--autofill-bg-color) !important;
+    color: var(--color-text) !important;
+    caret-color: var(--color-text) !important;
   }
 }
 
