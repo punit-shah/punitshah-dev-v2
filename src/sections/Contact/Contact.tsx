@@ -1,12 +1,20 @@
 import classNames from 'classnames';
-import { SendIcon } from 'lucide-react';
+import { LoaderCircleIcon, SendIcon } from 'lucide-react';
 import { useContext, useState } from 'react';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import { DarkModeContext } from '../../contexts/DarkMode';
+import useApiRequest from '../../hooks/useApiRequest';
+import CheckIcon from './CheckIcon';
 import classes from './Contact.module.css';
 import { GitHubIcon, LinkedInIcon } from './icons';
+
+type ContactRequestBody = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 const links = [
   {
@@ -21,11 +29,38 @@ const links = [
   },
 ];
 
+const getSubmitButtonContent = (isLoading: boolean, isSuccess: boolean) => {
+  if (isLoading) {
+    return (
+      <>
+        <LoaderCircleIcon className={classes.sendingIcon} /> Sending...
+      </>
+    );
+  }
+  if (isSuccess) {
+    return (
+      <>
+        <CheckIcon /> Sent!
+      </>
+    );
+  }
+  return (
+    <>
+      <SendIcon /> Send
+    </>
+  );
+};
+
 const Contact = ({ ...props }: CustomSectionProps) => {
   const { isDarkMode } = useContext(DarkModeContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const { apiRequest, isLoading, isSuccess } =
+    useApiRequest<ContactRequestBody>('/api/contact', 'POST');
+  // todo: handle error state
+
+  const isDisabled = isLoading || isSuccess;
 
   return (
     <Section
@@ -42,6 +77,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
           className={classes.form}
           onSubmit={(e) => {
             e.preventDefault();
+            void apiRequest({ name, email, message });
           }}
         >
           <p>
@@ -55,6 +91,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             value={name}
             onChange={setName}
             required
+            disabled={isDisabled}
           />
           <Input
             className={classes.input}
@@ -64,6 +101,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             onChange={setEmail}
             type="email"
             required
+            disabled={isDisabled}
           />
           <Input
             className={classes.input}
@@ -74,9 +112,10 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             type="textarea"
             required
             placeholder="Hey Punit, ..."
+            disabled={isDisabled}
           />
-          <Button type="submit">
-            <SendIcon /> Send
+          <Button type="submit" disabled={isDisabled}>
+            {getSubmitButtonContent(isLoading, isSuccess)}
           </Button>
         </form>
 
