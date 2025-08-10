@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
+import { createTransport } from 'nodemailer';
 
 type RequestBody = {
   name: string;
@@ -11,7 +11,7 @@ export default async function contactHandler(
   request: VercelRequest,
   response: VercelResponse,
 ) {
-  const transporter = nodemailer.createTransport({
+  const transporter = createTransport({
     service: 'gmail',
     auth: {
       user: process.env.GMAIL_USER,
