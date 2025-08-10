@@ -14,7 +14,7 @@ class HttpError extends Error {
 const useApiRequest = <RequestBody = any, ResponseData = any>(
   url: string,
   method: string,
-  isTesting = false,
+  testResult?: 'success' | 'error',
 ) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -26,11 +26,12 @@ const useApiRequest = <RequestBody = any, ResponseData = any>(
     setIsError(false);
     setIsSuccess(false);
 
-    if (isTesting) {
+    if (testResult) {
       setTimeout(() => {
-        setData({ message: 'Test successful' } as ResponseData);
-        setIsSuccess(true);
+        setData({ message: 'Test' } as ResponseData);
         setIsLoading(false);
+        setIsError(testResult === 'error');
+        setIsSuccess(testResult === 'success');
       }, 2000);
       return;
     }
