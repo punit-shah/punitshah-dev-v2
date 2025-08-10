@@ -16,7 +16,7 @@ const CheckIcon = () => (
       d="M4 12l5 5L20 6"
       initial={{ pathLength: 0 }}
       animate={{ pathLength: 1 }}
-      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      transition={{ duration: 0.2, ease: 'easeInOut' }}
     />
   </motion.svg>
 );
