@@ -13,8 +13,8 @@ const Orb = () => {
   const { face, setFace } = useContext(OrbContext);
   const [message, setMessage] = useState('');
   const [isBubbleVisible, setIsBubbleVisible] = useState(false);
-  const happyFaceTimeout = useRef<number>(null);
-  const bubbleTimeout = useRef<number>(null);
+  const happyFaceTimeout = useRef<ReturnType<typeof setTimeout>>(null);
+  const bubbleTimeout = useRef<ReturnType<typeof setTimeout>>(null);
 
   const [playOrbChirp] = useSound(orbChirp);
 
