@@ -8,13 +8,26 @@ type ButtonProps = {
   className?: string;
   children: React.ReactNode;
 
+  // button props
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+
   // link props
   href?: string;
   target?: React.HTMLAttributeAnchorTarget;
   rel?: string;
 };
 
-const Button = ({ type, className, children, ...linkProps }: ButtonProps) => {
+const Button = ({
+  type,
+  className,
+  children,
+  onClick,
+  disabled,
+  href,
+  target,
+  rel,
+}: ButtonProps) => {
   const { isDarkMode } = useContext(DarkModeContext);
 
   if (type === 'link') {
@@ -25,7 +38,9 @@ const Button = ({ type, className, children, ...linkProps }: ButtonProps) => {
           { [classes.dark]: isDarkMode },
           className,
         ])}
-        {...linkProps}
+        href={href}
+        target={target}
+        rel={rel}
       >
         {children}
       </a>
@@ -40,6 +55,8 @@ const Button = ({ type, className, children, ...linkProps }: ButtonProps) => {
         { [classes.dark]: isDarkMode },
         className,
       ])}
+      onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
