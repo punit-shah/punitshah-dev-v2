@@ -56,9 +56,8 @@ const Contact = ({ ...props }: CustomSectionProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const { apiRequest, isLoading, isSuccess } =
+  const { apiRequest, isLoading, isError, isSuccess } =
     useApiRequest<ContactRequestBody>('/api/contact', 'POST');
-  // todo: handle error state
 
   const isDisabled = isLoading || isSuccess;
 
@@ -117,6 +116,17 @@ const Contact = ({ ...props }: CustomSectionProps) => {
           <Button type="submit" disabled={isDisabled}>
             {getSubmitButtonContent(isLoading, isSuccess)}
           </Button>
+          <p
+            className={classNames(classes.resultMessage, {
+              [classes.error]: isError,
+              [classes.success]: isSuccess,
+            })}
+          >
+            {isError &&
+              'There was a problem sending your message - please try again.'}
+            {isSuccess &&
+              "Thanks for the message! I'll get back to you as soon as I can."}
+          </p>
         </form>
 
         <div className={classes.socials}>

@@ -72,6 +72,10 @@
   }
 }
 
+.resultMessage {
+  font-size: 1rem;
+}
+
 .socials {
   --gradient-direction: 90deg;
 
