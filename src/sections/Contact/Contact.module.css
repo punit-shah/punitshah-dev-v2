@@ -60,18 +60,6 @@
   width: 100%;
 }
 
-.sendingIcon {
-  animation: spin 0.85s linear infinite;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .socials {
   --gradient-direction: 90deg;
 
