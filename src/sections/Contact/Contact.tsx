@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import { CircleCheck, CircleX, LoaderCircleIcon, SendIcon } from 'lucide-react';
+import { LoaderCircleIcon, SendIcon } from 'lucide-react';
 import { useContext, useState } from 'react';
 import Button from '../../components/Button';
+import FormMessage from '../../components/FormMessage';
 import Input from '../../components/Input';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import { DarkModeContext } from '../../contexts/DarkMode';
@@ -117,26 +118,14 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             {getSubmitButtonContent(isLoading, isSuccess)}
           </Button>
 
-          <p
-            className={classNames(classes.resultMessage, {
-              [classes.show]: isError || isSuccess,
-              [classes.error]: isError,
-              [classes.success]: isSuccess,
-            })}
+          <FormMessage
+            type={isError ? 'error' : isSuccess ? 'success' : 'hidden'}
           >
-            {isError && (
-              <>
-                <CircleX />
-                There was a problem sending your message - please try again.
-              </>
-            )}
-            {isSuccess && (
-              <>
-                <CircleCheck />
-                Thanks for the message! I'll get back to you as soon as I can.
-              </>
-            )}
-          </p>
+            {isError &&
+              'There was a problem sending your message - please try again.'}
+            {isSuccess &&
+              "Thanks for the message! I'll get back to you as soon as I can."}
+          </FormMessage>
         </form>
 
         <div className={classes.socials}>
