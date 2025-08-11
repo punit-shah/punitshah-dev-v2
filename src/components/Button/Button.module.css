@@ -65,12 +65,15 @@
 
 .measure {
   position: absolute;
-  top: 100%;
-  left: 100%;
   visibility: hidden;
   white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border: 1px solid;
+  border: 1px solid #000;
+  border-radius: 3rem;
   font-size: 1rem;
   font-weight: 600;
 }

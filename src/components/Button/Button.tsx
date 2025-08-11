@@ -25,7 +25,7 @@ const Button = ({
 
   useEffect(() => {
     if (measureRef.current) {
-      setWidth(measureRef.current.offsetWidth);
+      setWidth(measureRef.current.getBoundingClientRect().width);
     }
   }, [children]);
 
