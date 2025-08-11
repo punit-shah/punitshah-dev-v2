@@ -7,9 +7,8 @@ import Input from '../../components/Input';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import useApiRequest from '../../hooks/useApiRequest';
-import CheckIcon from './CheckIcon';
 import classes from './Contact.module.css';
-import { GitHubIcon, LinkedInIcon } from './icons';
+import { CheckIcon, GitHubIcon, LinkedInIcon } from './icons';
 
 type ContactRequestBody = {
   name: string;
