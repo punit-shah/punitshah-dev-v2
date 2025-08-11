@@ -42,7 +42,6 @@ const ColorSwitcher = ({ children, className }: ColorSwitcherProps) => {
         setColorIndex((prev) => (prev + 1) % accentColors.length);
         playChangeColor();
       }}
-      aria-label="Switch color theme"
     >
       {children}
     </button>
