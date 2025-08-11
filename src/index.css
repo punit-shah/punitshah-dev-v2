@@ -83,6 +83,11 @@
   --color-accent-bg-mid: var(--color-purple-bg-mid);
   --color-accent-bg-end: var(--color-purple-bg-end);
 
+  --color-error-bg: rgba(214, 69, 69, 0.1);
+  --color-error-fg: #a32020;
+  --color-success-bg: rgba(46, 204, 113, 0.12);
+  --color-success-fg: #1b7f4b;
+
   --bg-gradient: linear-gradient(
     180deg,
     var(--color-bg) 0%,
@@ -133,6 +138,11 @@
   --color-pink-2: #ec4899;
   --color-pink-bg-mid: #100d0e;
   --color-pink-bg-end: #160f13;
+
+  --color-error-bg: rgba(255, 107, 107, 0.12);
+  --color-error-fg: #ff6b6b;
+  --color-success-bg: rgba(46, 204, 113, 0.15);
+  --color-success-fg: #2ecc71;
 }
 
 *,

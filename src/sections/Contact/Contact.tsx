@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { LoaderCircleIcon, SendIcon } from 'lucide-react';
+import { CircleCheck, CircleX, LoaderCircleIcon, SendIcon } from 'lucide-react';
 import { useContext, useState } from 'react';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -116,16 +116,26 @@ const Contact = ({ ...props }: CustomSectionProps) => {
           <Button type="submit" disabled={isDisabled}>
             {getSubmitButtonContent(isLoading, isSuccess)}
           </Button>
+
           <p
             className={classNames(classes.resultMessage, {
+              [classes.show]: isError || isSuccess,
               [classes.error]: isError,
               [classes.success]: isSuccess,
             })}
           >
-            {isError &&
-              'There was a problem sending your message - please try again.'}
-            {isSuccess &&
-              "Thanks for the message! I'll get back to you as soon as I can."}
+            {isError && (
+              <>
+                <CircleX />
+                There was a problem sending your message - please try again.
+              </>
+            )}
+            {isSuccess && (
+              <>
+                <CircleCheck />
+                Thanks for the message! I'll get back to you as soon as I can.
+              </>
+            )}
           </p>
         </form>
 
