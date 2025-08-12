@@ -1,21 +1,29 @@
 import classNames from 'classnames';
-import { useContext, useState } from 'react';
-import FormInput from '../../components/FormInput';
-import FormStatusMessage from '../../components/FormStatusMessage';
-import FormSubmit from '../../components/FormSubmit';
+import { useContext } from 'react';
+import Form, {
+  type Field,
+  type FormStatusMessages,
+} from '../../components/Form';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import { DarkModeContext } from '../../contexts/DarkMode';
-import useApiRequest from '../../hooks/useApiRequest';
-import useSound from '../../hooks/useSound';
 import classes from './Contact.module.css';
 import { GitHubIcon, LinkedInIcon } from './icons';
-import error from './sounds/error.mp3';
-import success from './sounds/success.mp3';
 
-type ContactRequestBody = {
-  name: string;
-  email: string;
-  message: string;
+const fields: Field[] = [
+  { label: 'Name', name: 'name', required: true },
+  { label: 'Email', name: 'email', type: 'email', required: true },
+  {
+    label: 'Message',
+    name: 'message',
+    type: 'textarea',
+    required: true,
+    placeholder: 'Hey Punit, ...',
+  },
+];
+
+const statusMessages: FormStatusMessages = {
+  error: 'There was a problem sending your message - please try again.',
+  success: "Thanks for the message! I'll get back to you as soon as I can.",
 };
 
 const links = [
@@ -34,22 +42,6 @@ const links = [
 const Contact = ({ ...props }: CustomSectionProps) => {
   const { isDarkMode } = useContext(DarkModeContext);
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const [playSuccess] = useSound(success);
-  const [playError] = useSound(error, { volume: 0.5 });
-  const { sendRequest, isLoading, isSuccess, status } =
-    useApiRequest<ContactRequestBody>('/api/contact', 'POST', {
-      onSuccess: () => {
-        playSuccess();
-      },
-      onError: () => {
-        playError();
-      },
-    });
-
   return (
     <Section
       containerClassName={classNames([
@@ -61,59 +53,17 @@ const Contact = ({ ...props }: CustomSectionProps) => {
       {...props}
     >
       <div className={classes.content}>
-        <form
+        <Form
+          fields={fields}
+          apiEndpoint="/api/contact"
+          statusMessages={statusMessages}
           className={classes.form}
-          onSubmit={(e) => {
-            e.preventDefault();
-            void sendRequest({ name, email, message });
-          }}
         >
           <p>
             Have a question or just want to say hi? I’d be happy to hear from
             you.
           </p>
-          <FormInput
-            className={classes.input}
-            label="Name"
-            name="name"
-            value={name}
-            onChange={setName}
-            required
-            disabled={isLoading || isSuccess}
-          />
-          <FormInput
-            className={classes.input}
-            label="Email"
-            name="email"
-            value={email}
-            onChange={setEmail}
-            type="email"
-            required
-            disabled={isLoading || isSuccess}
-          />
-          <FormInput
-            className={classes.input}
-            label="Message"
-            name="message"
-            value={message}
-            onChange={setMessage}
-            type="textarea"
-            required
-            placeholder="Hey Punit, ..."
-            disabled={isLoading || isSuccess}
-          />
-          <FormSubmit isLoading={isLoading} isSuccess={isSuccess} />
-
-          <FormStatusMessage
-            status={status}
-            messages={{
-              error:
-                'There was a problem sending your message - please try again.',
-              success:
-                "Thanks for the message! I'll get back to you as soon as I can.",
-            }}
-          />
-        </form>
+        </Form>
 
         <div className={classes.socials}>
           <p>Or find me on:</p>
