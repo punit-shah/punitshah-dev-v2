@@ -1,17 +1,14 @@
 import { LoaderCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Button from '../../Button';
-import classes from './FormSubmit.module.css';
+import classes from './Submit.module.css';
 import { CheckIcon, SendIcon } from './icons';
 
-type FormSubmitProps = {
-  isLoading: boolean;
-  isSuccess: boolean;
-};
+type SubmitProps = { isLoading: boolean; isSuccess: boolean };
 type Icon = 'plane' | 'loader' | 'check';
 type Text = 'Send' | 'Sending...' | 'Sent!';
 
-const FormSubmit = ({ isLoading, isSuccess }: FormSubmitProps) => {
+const Submit = ({ isLoading, isSuccess }: SubmitProps) => {
   const [icon, setIcon] = useState<Icon>('plane');
   const [text, setText] = useState<Text>('Send');
 
@@ -45,4 +42,4 @@ const FormSubmit = ({ isLoading, isSuccess }: FormSubmitProps) => {
   );
 };
 
-export default FormSubmit;
+export default Submit;

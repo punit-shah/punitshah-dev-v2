@@ -6,10 +6,10 @@ import classes from './Form.module.css';
 import FormStatusMessage, {
   type FormStatusMessages,
 } from './FormStatusMessage';
-import FormSubmit from './FormSubmit';
 import Input from './Input';
 import error from './sounds/error.mp3';
 import success from './sounds/success.mp3';
+import Submit from './Submit';
 
 export type Field = {
   label: string;
@@ -79,7 +79,7 @@ const Form = ({
           disabled={isLoading || isSuccess}
         />
       ))}
-      <FormSubmit isLoading={isLoading} isSuccess={isSuccess} />
+      <Submit isLoading={isLoading} isSuccess={isSuccess} />
       {statusMessages && (
         <FormStatusMessage status={status} messages={statusMessages} />
       )}
