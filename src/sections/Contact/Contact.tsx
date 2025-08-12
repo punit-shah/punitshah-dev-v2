@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
 import FormButton from '../../components/FormButton';
+import FormInput from '../../components/FormInput';
 import FormMessage from '../../components/FormMessage';
-import Input from '../../components/Input';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import useApiRequest from '../../hooks/useApiRequest';
@@ -67,7 +67,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             Have a question or just want to say hi? I’d be happy to hear from
             you.
           </p>
-          <Input
+          <FormInput
             className={classes.input}
             label="Name"
             name="name"
@@ -76,7 +76,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             required
             disabled={isLoading || isSuccess}
           />
-          <Input
+          <FormInput
             className={classes.input}
             label="Email"
             name="email"
@@ -86,7 +86,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             required
             disabled={isLoading || isSuccess}
           />
-          <Input
+          <FormInput
             className={classes.input}
             label="Message"
             name="message"

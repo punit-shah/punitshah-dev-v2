@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../contexts/DarkMode';
-import classes from './Input.module.css';
+import classes from './FormInput.module.css';
 
-type InputProps = {
+type FormInputProps = {
   className?: string;
   label: string;
   type?: string;
@@ -15,14 +15,14 @@ type InputProps = {
   placeholder?: string;
 };
 
-const Input = ({
+const FormInput = ({
   className,
   label,
   type = 'text',
   value = '',
   onChange,
   ...rest
-}: InputProps) => {
+}: FormInputProps) => {
   const { isDarkMode } = useContext(DarkModeContext);
 
   const inputProps = {
@@ -58,4 +58,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default FormInput;
