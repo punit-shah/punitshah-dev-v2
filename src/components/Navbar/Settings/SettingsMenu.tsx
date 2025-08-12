@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SettingsIcon } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { DarkModeContext } from '../../contexts/DarkMode';
-import useMediaQuery from '../../hooks/useMediaQuery';
+import { DarkModeContext } from '../../../contexts/DarkMode';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 import classes from './SettingsMenu.module.css';
 
 type SettingsMenuProps = {
