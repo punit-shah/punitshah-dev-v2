@@ -33,7 +33,7 @@ const Form = ({
   className,
 }: FormProps) => {
   const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
-  const [playSuccess] = useSound(success);
+  const [playSuccess] = useSound(success, { volume: 0.5 });
   const [playError] = useSound(error, { volume: 0.4 });
   const { sendRequest, status, isLoading, isSuccess } = useApiRequest(
     apiEndpoint,
