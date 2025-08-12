@@ -34,11 +34,14 @@ const Form = ({
 }: FormProps) => {
   const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
   const [playSuccess] = useSound(success);
-  const [playError] = useSound(error, { volume: 0.5 });
+  const [playError] = useSound(error, { volume: 0.4 });
   const { sendRequest, status, isLoading, isSuccess } = useApiRequest(
     apiEndpoint,
     'POST',
-    { onSuccess: () => playSuccess(), onError: () => playError() },
+    {
+      onSuccess: () => playSuccess(),
+      onError: () => playError(),
+    },
   );
 
   useEffect(() => {
@@ -77,7 +80,7 @@ const Form = ({
           disabled={isLoading || isSuccess}
         />
       ))}
-      <Submit isLoading={isLoading} isSuccess={isSuccess} />
+      <Submit status={status} />
       {statusMessages && (
         <StatusMessage status={status} messages={statusMessages} />
       )}

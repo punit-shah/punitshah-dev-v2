@@ -1,19 +1,20 @@
 import { LoaderCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import type { Status } from '../../../hooks/useApiRequest';
 import Button from '../../Button';
 import classes from './Submit.module.css';
 import { CheckIcon, SendIcon } from './icons';
 
-type SubmitProps = { isLoading: boolean; isSuccess: boolean };
+type SubmitProps = { status: Status };
 type Icon = 'plane' | 'loader' | 'check';
 type Text = 'Send' | 'Sending...' | 'Sent!';
 
-const Submit = ({ isLoading, isSuccess }: SubmitProps) => {
+const Submit = ({ status }: SubmitProps) => {
   const [icon, setIcon] = useState<Icon>('plane');
   const [text, setText] = useState<Text>('Send');
 
   useEffect(() => {
-    if (isSuccess) {
+    if (status === 'success') {
       setIcon('check');
       setText('Sent!');
       return;
@@ -21,13 +22,16 @@ const Submit = ({ isLoading, isSuccess }: SubmitProps) => {
 
     setIcon('plane');
     setText('Send');
-  }, [isSuccess, isLoading]);
+  }, [status]);
 
   return (
-    <Button type="submit" disabled={isLoading || isSuccess}>
+    <Button
+      type="submit"
+      disabled={status === 'loading' || status === 'success'}
+    >
       {icon === 'plane' && (
         <SendIcon
-          isSending={isLoading}
+          isSending={status === 'loading'}
           onAnimationComplete={() => {
             setIcon('loader');
             setText('Sending...');
