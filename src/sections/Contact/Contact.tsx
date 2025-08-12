@@ -19,7 +19,7 @@ type ContactRequestBody = {
 
 const links = [
   {
-    href: 'https://www.linkedin.com/in/punitshah/',
+    href: 'https://www.linkedin.com/in/punit-shah/',
     label: 'LinkedIn',
     icon: <LinkedInIcon />,
   },
