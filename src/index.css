@@ -108,7 +108,7 @@
   background: var(--color-bg);
 }
 
-.dark {
+[data-dark-mode] {
   --color-bg: var(--color-almost-black);
   --color-text: var(--color-almost-white);
   --color-0: var(--color-black);

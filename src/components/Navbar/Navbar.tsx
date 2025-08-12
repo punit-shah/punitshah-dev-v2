@@ -1,6 +1,4 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
-import { DarkModeContext } from '../../contexts/DarkMode';
 import LogoItem from './LogoItem';
 import classes from './Navbar.module.css';
 import SectionLinks from './SectionLinks';
@@ -10,16 +8,12 @@ type NavbarProps = {
   activeSection: string | null;
 };
 
-const Navbar = ({ activeSection }: NavbarProps) => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
-  return (
-    <nav className={classNames(classes.nav, { [classes.dark]: isDarkMode })}>
-      <LogoItem />
-      <SectionLinks activeSection={activeSection} />
-      <Settings />
-    </nav>
-  );
-};
+const Navbar = ({ activeSection }: NavbarProps) => (
+  <nav className={classNames(classes.nav)}>
+    <LogoItem />
+    <SectionLinks activeSection={activeSection} />
+    <Settings />
+  </nav>
+);
 
 export default Navbar;

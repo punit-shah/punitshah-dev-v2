@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { DarkModeContext } from '../../contexts/DarkMode';
 import { faces, OrbContext } from '../../contexts/Orb';
 import useSound from '../../hooks/useSound';
 import classes from './Orb.module.css';
@@ -9,7 +8,6 @@ import { getRandomMessage } from './messages';
 import orbChirp from './orb-chirp.mp3';
 
 const Orb = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
   const { face, setFace } = useContext(OrbContext);
   const [message, setMessage] = useState('');
   const [isBubbleVisible, setIsBubbleVisible] = useState(false);
@@ -63,9 +61,7 @@ const Orb = () => {
   };
 
   return (
-    <div
-      className={classNames(classes.container, { [classes.dark]: isDarkMode })}
-    >
+    <div className={classNames(classes.container)}>
       <div className={classes.inner}>
         <button
           className={classNames(classes.orb)}

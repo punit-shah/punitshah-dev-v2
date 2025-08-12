@@ -43,7 +43,7 @@
     transform: none;
   }
 
-  &.dark {
+  [data-dark-mode] & {
     box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);
     border-color: rgb(from var(--color-100) r g b / 0.3);
 

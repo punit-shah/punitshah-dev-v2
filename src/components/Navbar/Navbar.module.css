@@ -22,7 +22,7 @@
   padding: 0 1rem;
   background: var(--color-bg);
 
-  &.dark {
+  [data-dark-mode] & {
     --separator-gradient: linear-gradient(
       var(--separator-gradient-dir),
       transparent 0%,

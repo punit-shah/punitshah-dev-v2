@@ -13,9 +13,9 @@ export const DarkModeProvider = ({ children }: DarkModeProviderProps) => {
 
   useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.dataset.darkMode = '';
     } else {
-      document.documentElement.classList.remove('dark');
+      delete document.documentElement.dataset.darkMode;
     }
   }, [isDarkMode]);
 
