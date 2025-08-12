@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, type AnimationDefinition } from 'framer-motion';
 
 export const CheckIcon = () => (
   <motion.svg
@@ -24,9 +24,14 @@ export const CheckIcon = () => (
 
 type SendIconProps = {
   isSending?: boolean;
-  onAnimationComplete?: () => void;
+  isHovered?: boolean;
+  onAnimationComplete?: (definition: AnimationDefinition) => void;
 };
-export const SendIcon = ({ isSending, onAnimationComplete }: SendIconProps) => (
+export const SendIcon = ({
+  isSending,
+  isHovered,
+  onAnimationComplete,
+}: SendIconProps) => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -41,20 +46,23 @@ export const SendIcon = ({ isSending, onAnimationComplete }: SendIconProps) => (
   >
     <motion.g
       initial={{ x: 0, y: 0, scale: 1 }}
-      animate={
-        isSending
-          ? {
-              scale: [1, 0.8, 1],
-              x: [0, '-10%', '100%'],
-              y: [0, '10%', '-100%'],
-              transition: {
-                ease: 'easeInOut',
-                duration: 0.6,
-                times: [0, 0.25, 0.6],
-              },
-            }
-          : {}
-      }
+      variants={{
+        send: {
+          scale: [1, 0.8, 1],
+          x: [0, '-10%', '100%'],
+          y: [0, '10%', '-100%'],
+          transition: {
+            ease: 'easeInOut',
+            duration: 0.6,
+            times: [0, 0.25, 0.6],
+          },
+        },
+        hover: {
+          rotate: [0, -5, 5, 0],
+          transition: { ease: 'easeInOut', duration: 0.4 },
+        },
+      }}
+      animate={isSending ? 'send' : isHovered ? 'hover' : {}}
       onAnimationComplete={onAnimationComplete}
     >
       <motion.path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />

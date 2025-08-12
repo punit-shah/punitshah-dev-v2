@@ -12,6 +12,7 @@ type Text = 'Send' | 'Sending...' | 'Sent!';
 const Submit = ({ status }: SubmitProps) => {
   const [icon, setIcon] = useState<Icon>('plane');
   const [text, setText] = useState<Text>('Send');
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (status === 'success') {
@@ -28,13 +29,18 @@ const Submit = ({ status }: SubmitProps) => {
     <Button
       type="submit"
       disabled={status === 'loading' || status === 'success'}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {icon === 'plane' && (
         <SendIcon
           isSending={status === 'loading'}
-          onAnimationComplete={() => {
-            setIcon('loader');
-            setText('Sending...');
+          isHovered={isHovered}
+          onAnimationComplete={(definition) => {
+            if (definition === 'send') {
+              setIcon('loader');
+              setText('Sending...');
+            }
           }}
         />
       )}

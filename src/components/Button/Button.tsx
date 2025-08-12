@@ -8,6 +8,8 @@ type ButtonProps = {
   className?: string;
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
+  onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
 };
 
@@ -16,6 +18,8 @@ const Button = ({
   className,
   children,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
   disabled,
 }: ButtonProps) => {
   const [width, setWidth] = useState<number | null>(null);
@@ -32,8 +36,10 @@ const Button = ({
       <motion.button
         type={type}
         className={classNames(classes.button, className)}
-        onClick={onClick}
         disabled={disabled}
+        onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         animate={width !== null ? { width } : undefined}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
       >
