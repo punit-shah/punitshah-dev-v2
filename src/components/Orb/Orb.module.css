@@ -16,7 +16,7 @@
     -5px 0 40px var(--color-accent-2),
     5px 0 40px var(--color-accent-1);
 
-  &.dark {
+  [data-dark-mode] & {
     /* prettier-ignore */
     --shadow-glow-0:
       inset 0 0 20px var(--color-white),

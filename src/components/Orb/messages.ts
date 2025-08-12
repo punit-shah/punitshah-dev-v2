@@ -1,6 +1,12 @@
 let previousMessage = '';
 
-export const getRandomMessage = (): string => {
+type MessageOptions = {
+  isDarkMode?: boolean;
+};
+
+export const getRandomMessage = ({
+  isDarkMode,
+}: MessageOptions = {}): string => {
   const messages = [
     'Hey! Click me again, I dare you.',
     "I'm not AI... or am I?",
@@ -41,7 +47,6 @@ export const getRandomMessage = (): string => {
     );
   }
 
-  const isDarkMode = document.documentElement.classList.contains('dark');
   if (isDarkMode) {
     messages.push(
       "I look good in dark mode, don't I?",

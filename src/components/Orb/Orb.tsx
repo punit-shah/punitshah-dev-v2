@@ -9,10 +9,12 @@ import { getRandomMessage } from './messages';
 import orbChirp from './orb-chirp.mp3';
 
 const Orb = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
   const { face, setFace } = useContext(OrbContext);
+  const { isDarkMode } = useContext(DarkModeContext);
+
   const [message, setMessage] = useState('');
   const [isBubbleVisible, setIsBubbleVisible] = useState(false);
+
   const happyFaceTimeout = useRef<ReturnType<typeof setTimeout>>(null);
   const bubbleTimeout = useRef<ReturnType<typeof setTimeout>>(null);
 
@@ -53,7 +55,7 @@ const Orb = () => {
       setFace(faces.smile);
     }, 800);
 
-    setMessage(getRandomMessage());
+    setMessage(getRandomMessage({ isDarkMode }));
     setIsBubbleVisible(true);
     bubbleTimeout.current = setTimeout(() => {
       setIsBubbleVisible(false);
@@ -63,9 +65,7 @@ const Orb = () => {
   };
 
   return (
-    <div
-      className={classNames(classes.container, { [classes.dark]: isDarkMode })}
-    >
+    <div className={classNames(classes.container)}>
       <div className={classes.inner}>
         <button
           className={classNames(classes.orb)}

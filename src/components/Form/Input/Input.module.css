@@ -37,7 +37,7 @@
       opacity: 1;
     }
 
-    .dark & {
+    [data-dark-mode] & {
       box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);
     }
   }
@@ -60,7 +60,7 @@
         var(--autofill-shadow),
         0 0 10px rgb(from var(--color-accent-1) r g b / 0.4);
 
-      .dark & {
+      [data-dark-mode] & {
         box-shadow:
           var(--autofill-shadow),
           0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);

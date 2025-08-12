@@ -18,7 +18,7 @@
   background: var(--color-gray-1);
   opacity: 0.8;
 
-  .dark & {
+  [data-dark-mode] & {
     background: var(--color-white);
   }
 

@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SettingsIcon } from 'lucide-react';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { DarkModeContext } from '../../contexts/DarkMode';
+import { useEffect, useRef, useState } from 'react';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import classes from './SettingsMenu.module.css';
 
@@ -17,7 +16,6 @@ type SettingsMenuProps = {
 
 const SettingsMenu = ({ items }: SettingsMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isDarkMode } = useContext(DarkModeContext);
   const isHorizontal = useMediaQuery('(min-width: 600px)');
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -41,10 +39,7 @@ const SettingsMenu = ({ items }: SettingsMenuProps) => {
   const openPosition = isHorizontal ? { x: 0 } : { y: 0 };
 
   return (
-    <div
-      className={classNames(classes.container, { [classes.dark]: isDarkMode })}
-      ref={containerRef}
-    >
+    <div className={classNames(classes.container)} ref={containerRef}>
       <button
         className={classes.button}
         type="button"
