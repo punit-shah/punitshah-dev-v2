@@ -10,6 +10,8 @@ class HttpError extends Error {
   }
 }
 
+export type Status = 'idle' | 'loading' | 'success' | 'error';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const useApiRequest = <RequestBody = any, ResponseData = any>(
   url: string,
@@ -21,7 +23,7 @@ const useApiRequest = <RequestBody = any, ResponseData = any>(
   const [isSuccess, setIsSuccess] = useState(false);
   const [data, setData] = useState<ResponseData | null>(null);
 
-  const apiRequest = async (body?: RequestBody) => {
+  const sendRequest = async (body?: RequestBody) => {
     setIsLoading(true);
     setIsError(false);
     setIsSuccess(false);
@@ -59,7 +61,12 @@ const useApiRequest = <RequestBody = any, ResponseData = any>(
     }
   };
 
-  return { apiRequest, isLoading, isError, isSuccess, data };
+  let status: Status = 'idle';
+  if (isLoading) status = 'loading';
+  if (isError) status = 'error';
+  if (isSuccess) status = 'success';
+
+  return { sendRequest, isLoading, isError, isSuccess, data, status };
 };
 
 export default useApiRequest;

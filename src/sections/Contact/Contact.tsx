@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
 import FormInput from '../../components/FormInput';
-import FormMessage from '../../components/FormMessage';
+import FormStatusMessage from '../../components/FormStatusMessage';
 import FormSubmit from '../../components/FormSubmit';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import { DarkModeContext } from '../../contexts/DarkMode';
@@ -35,7 +35,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const { apiRequest, isLoading, isError, isSuccess } =
+  const { sendRequest, isLoading, isSuccess, status } =
     useApiRequest<ContactRequestBody>('/api/contact', 'POST');
   const [playSuccess] = useSound(success);
 
@@ -60,7 +60,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
           className={classes.form}
           onSubmit={(e) => {
             e.preventDefault();
-            void apiRequest({ name, email, message });
+            void sendRequest({ name, email, message });
           }}
         >
           <p>
@@ -99,14 +99,15 @@ const Contact = ({ ...props }: CustomSectionProps) => {
           />
           <FormSubmit isLoading={isLoading} isSuccess={isSuccess} />
 
-          <FormMessage
-            type={isError ? 'error' : isSuccess ? 'success' : 'hidden'}
-          >
-            {isError &&
-              'There was a problem sending your message - please try again.'}
-            {isSuccess &&
-              "Thanks for the message! I'll get back to you as soon as I can."}
-          </FormMessage>
+          <FormStatusMessage
+            status={status}
+            messages={{
+              error:
+                'There was a problem sending your message - please try again.',
+              success:
+                "Thanks for the message! I'll get back to you as soon as I can.",
+            }}
+          />
         </form>
 
         <div className={classes.socials}>

@@ -1,24 +1,23 @@
 .message {
   display: flex;
   gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  max-height: 92px;
+  border-radius: 4px;
   font-size: 1rem;
   font-weight: 500;
-  border-radius: 4px;
-  font-weight: 500;
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-4px);
   overflow: hidden;
+  opacity: 1;
   transition:
     max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     opacity var(--duration),
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
-  &.show {
-    padding: 0.6rem 0.8rem;
-    max-height: 92px;
-    opacity: 1;
-    transform: translateY(0);
+  &.hidden {
+    padding: 0;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-4px);
   }
 
   &.error {
