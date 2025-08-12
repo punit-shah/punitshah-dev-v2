@@ -4,7 +4,7 @@ import { DarkModeContext } from '../../../contexts/DarkMode';
 import { SoundContext } from '../../../contexts/Sound';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import useSound from '../../../hooks/useSound';
-import SoundIcon from '../icons/SoundIcon';
+import { SoundIcon } from '../icons';
 import classes from '../Navbar.module.css';
 import lightOff from '../sounds/light-off.mp3';
 import lightOn from '../sounds/light-on.mp3';
