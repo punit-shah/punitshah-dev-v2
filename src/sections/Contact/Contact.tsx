@@ -1,13 +1,15 @@
 import classNames from 'classnames';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FormButton from '../../components/FormButton';
 import FormMessage from '../../components/FormMessage';
 import Input from '../../components/Input';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import useApiRequest from '../../hooks/useApiRequest';
+import useSound from '../../hooks/useSound';
 import classes from './Contact.module.css';
 import { GitHubIcon, LinkedInIcon } from './icons';
+import success from './success.mp3';
 
 type ContactRequestBody = {
   name: string;
@@ -35,6 +37,13 @@ const Contact = ({ ...props }: CustomSectionProps) => {
   const [message, setMessage] = useState('');
   const { apiRequest, isLoading, isError, isSuccess } =
     useApiRequest<ContactRequestBody>('/api/contact', 'POST');
+  const [playSuccess] = useSound(success);
+
+  useEffect(() => {
+    if (isSuccess) {
+      playSuccess();
+    }
+  }, [isSuccess, playSuccess]);
 
   return (
     <Section
