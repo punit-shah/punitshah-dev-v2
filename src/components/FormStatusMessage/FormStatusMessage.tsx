@@ -3,9 +3,11 @@ import { CircleCheck, CircleX } from 'lucide-react';
 import type { Status } from '../../hooks/useApiRequest';
 import classes from './FormStatusMessage.module.css';
 
+export type FormStatusMessages = { error: string; success: string };
+
 type FormStatusMessageProps = {
   status: Status;
-  messages: { error: string; success: string };
+  messages: FormStatusMessages;
   className?: string;
 };
 
