@@ -1,15 +1,8 @@
-import { FolderCode, MessageCircle, UserRound } from 'lucide-react';
 import { useRef } from 'react';
-import useMediaQuery from '../../hooks/useMediaQuery';
-import Tooltip from '../Tooltip';
-import classes from './Navbar.module.css';
-import SectionLinkIndicator from './SectionLinkIndicator';
-
-const items = [
-  { label: 'About', sectionId: 'about', icon: <UserRound /> },
-  { label: 'Projects', sectionId: 'projects', icon: <FolderCode /> },
-  { label: 'Contact', sectionId: 'contact', icon: <MessageCircle /> },
-];
+import useMediaQuery from '../../../hooks/useMediaQuery';
+import Tooltip from '../../Tooltip';
+import classes from '../Navbar.module.css';
+import SectionLinkIndicator from '../SectionLinkIndicator';
 
 const onLinkClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
   event.preventDefault();
@@ -20,7 +13,7 @@ const onLinkClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
   }
 };
 
-type SectionLinkProps = {
+export type SectionLinkProps = {
   label: string;
   sectionId: string;
   icon: React.ReactNode;
@@ -57,9 +50,10 @@ const SectionLink = ({ label, sectionId, icon }: SectionLinkProps) => {
 
 type SectionsProps = {
   activeSection: string | null;
+  items?: SectionLinkProps[];
 };
 
-const SectionLinks = ({ activeSection }: SectionsProps) => {
+const SectionLinks = ({ activeSection, items = [] }: SectionsProps) => {
   const itemsRef = useRef<Array<HTMLLIElement | null>>(items.map(() => null));
 
   return (
