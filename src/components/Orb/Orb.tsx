@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useRef, useState } from 'react';
+import { DarkModeContext } from '../../contexts/DarkMode';
 import { faces, OrbContext } from '../../contexts/Orb';
 import useSound from '../../hooks/useSound';
 import classes from './Orb.module.css';
@@ -9,8 +10,11 @@ import orbChirp from './orb-chirp.mp3';
 
 const Orb = () => {
   const { face, setFace } = useContext(OrbContext);
+  const { isDarkMode } = useContext(DarkModeContext);
+
   const [message, setMessage] = useState('');
   const [isBubbleVisible, setIsBubbleVisible] = useState(false);
+
   const happyFaceTimeout = useRef<ReturnType<typeof setTimeout>>(null);
   const bubbleTimeout = useRef<ReturnType<typeof setTimeout>>(null);
 
@@ -51,7 +55,7 @@ const Orb = () => {
       setFace(faces.smile);
     }, 800);
 
-    setMessage(getRandomMessage());
+    setMessage(getRandomMessage({ isDarkMode }));
     setIsBubbleVisible(true);
     bubbleTimeout.current = setTimeout(() => {
       setIsBubbleVisible(false);
