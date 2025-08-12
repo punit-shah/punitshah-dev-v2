@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useContext, type HTMLInputTypeAttribute } from 'react';
 import { DarkModeContext } from '../../../contexts/DarkMode';
-import classes from './FormInput.module.css';
+import classes from './Input.module.css';
 
 type FormInputProps = {
   className?: string;

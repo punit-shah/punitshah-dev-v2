@@ -3,11 +3,11 @@ import { useEffect, useState, type HTMLInputTypeAttribute } from 'react';
 import useApiRequest from '../../hooks/useApiRequest';
 import useSound from '../../hooks/useSound';
 import classes from './Form.module.css';
-import FormInput from './FormInput';
 import FormStatusMessage, {
   type FormStatusMessages,
 } from './FormStatusMessage';
 import FormSubmit from './FormSubmit';
+import Input from './Input';
 import error from './sounds/error.mp3';
 import success from './sounds/success.mp3';
 
@@ -66,7 +66,7 @@ const Form = ({
       {children}
 
       {fields.map((field) => (
-        <FormInput
+        <Input
           key={field.name}
           {...field}
           value={fieldValues[field.name]}
