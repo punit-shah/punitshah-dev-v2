@@ -3,17 +3,17 @@ import { motion, type Variants } from 'framer-motion';
 const duration = 0.15;
 const delay = 0.15;
 const waveVariants: Variants = {
-  enabled: {
+  enabled: (i: number) => ({
     opacity: 1,
     scale: 1,
-    transition: { duration, delay },
-  },
-  disabled: {
+    transition: { duration, delay: delay + i * 0.1 },
+  }),
+  disabled: (i: number) => ({
     opacity: 0,
     scale: 0,
     x: -5,
-    transition: { duration },
-  },
+    transition: { duration, delay: (1 - i) * 0.1 },
+  }),
 };
 const xVariants: Variants = {
   enabled: (i: number) => ({
@@ -52,11 +52,13 @@ const SoundIcon = ({ isEnabled }: SoundIconProps) => (
       d="M16 9a5 5 0 0 1 0 6"
       style={{ originX: 0, originY: 0.5 }}
       variants={waveVariants}
+      custom={0}
     />
     <motion.path
       d="M19.364 18.364a9 9 0 0 0 0-12.728"
       style={{ originX: 0, originY: 0.5 }}
       variants={waveVariants}
+      custom={1}
     />
 
     {/* x */}
