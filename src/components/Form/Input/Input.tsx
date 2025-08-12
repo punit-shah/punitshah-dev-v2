@@ -3,7 +3,7 @@ import { useContext, type HTMLInputTypeAttribute } from 'react';
 import { DarkModeContext } from '../../../contexts/DarkMode';
 import classes from './Input.module.css';
 
-type FormInputProps = {
+type InputProps = {
   className?: string;
   label: string;
   type?: HTMLInputTypeAttribute | 'textarea';
@@ -15,14 +15,14 @@ type FormInputProps = {
   placeholder?: string;
 };
 
-const FormInput = ({
+const Input = ({
   className,
   label,
   type = 'text',
   value = '',
   onChange,
   ...rest
-}: FormInputProps) => {
+}: InputProps) => {
   const { isDarkMode } = useContext(DarkModeContext);
 
   const inputProps = {
@@ -58,4 +58,4 @@ const FormInput = ({
   );
 };
 
-export default FormInput;
+export default Input;
