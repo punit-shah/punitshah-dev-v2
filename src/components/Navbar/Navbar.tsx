@@ -5,7 +5,7 @@ import { DarkModeContext } from '../../contexts/DarkMode';
 import LogoItem from './LogoItem';
 import classes from './Navbar.module.css';
 import SectionLinks, { type SectionLinkItem } from './SectionLinks';
-import Settings from './Settings/Settings';
+import Settings from './Settings';
 
 const sectionLinks: SectionLinkItem[] = [
   { label: 'About', sectionId: 'about', icon: <UserRound /> },
