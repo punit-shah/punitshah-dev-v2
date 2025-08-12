@@ -1,12 +1,12 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
+import { useContext, type HTMLInputTypeAttribute } from 'react';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import classes from './FormInput.module.css';
 
 type FormInputProps = {
   className?: string;
   label: string;
-  type?: string;
+  type?: HTMLInputTypeAttribute | 'textarea';
   value?: string;
   onChange?: (value: string) => void;
   name?: string;
