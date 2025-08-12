@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useContext } from 'react';
 import Form, {
-  type Field,
+  type FormField,
   type FormStatusMessages,
 } from '../../components/Form';
 import Section, { type CustomSectionProps } from '../../components/Section';
@@ -9,7 +9,7 @@ import { DarkModeContext } from '../../contexts/DarkMode';
 import classes from './Contact.module.css';
 import { GitHubIcon, LinkedInIcon } from './icons';
 
-const fields: Field[] = [
+const fields: FormField[] = [
   { label: 'Name', name: 'name', required: true },
   { label: 'Email', name: 'email', type: 'email', required: true },
   {

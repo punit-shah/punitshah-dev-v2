@@ -3,12 +3,10 @@ import { useEffect, useState, type HTMLInputTypeAttribute } from 'react';
 import useApiRequest from '../../hooks/useApiRequest';
 import useSound from '../../hooks/useSound';
 import classes from './Form.module.css';
-import FormStatusMessage, {
-  type FormStatusMessages,
-} from './FormStatusMessage';
 import Input from './Input';
 import error from './sounds/error.mp3';
 import success from './sounds/success.mp3';
+import StatusMessage, { type StatusMessages } from './StatusMessage';
 import Submit from './Submit';
 
 export type Field = {
@@ -22,7 +20,7 @@ export type Field = {
 type FormProps = {
   fields?: Field[];
   apiEndpoint: string;
-  statusMessages?: FormStatusMessages;
+  statusMessages?: StatusMessages;
   children?: React.ReactNode;
   className?: string;
 };
@@ -81,7 +79,7 @@ const Form = ({
       ))}
       <Submit isLoading={isLoading} isSuccess={isSuccess} />
       {statusMessages && (
-        <FormStatusMessage status={status} messages={statusMessages} />
+        <StatusMessage status={status} messages={statusMessages} />
       )}
     </form>
   );

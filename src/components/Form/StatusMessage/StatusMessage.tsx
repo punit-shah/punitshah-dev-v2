@@ -1,21 +1,17 @@
 import classNames from 'classnames';
 import { CircleCheck, CircleX } from 'lucide-react';
 import type { Status } from '../../../hooks/useApiRequest';
-import classes from './FormStatusMessage.module.css';
+import classes from './StatusMessage.module.css';
 
-export type FormStatusMessages = { error: string; success: string };
+export type StatusMessages = { error: string; success: string };
 
-type FormStatusMessageProps = {
+type StatusMessageProps = {
   status: Status;
-  messages: FormStatusMessages;
+  messages: StatusMessages;
   className?: string;
 };
 
-const FormStatusMessage = ({
-  status,
-  messages,
-  className,
-}: FormStatusMessageProps) => {
+const StatusMessage = ({ status, messages, className }: StatusMessageProps) => {
   const isHidden = status !== 'error' && status !== 'success';
 
   return (
@@ -32,4 +28,4 @@ const FormStatusMessage = ({
   );
 };
 
-export default FormStatusMessage;
+export default StatusMessage;
