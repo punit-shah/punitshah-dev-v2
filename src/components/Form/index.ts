@@ -1,2 +1,2 @@
-export type { FormStatusMessages } from '../FormStatusMessage';
 export { default, type Field } from './Form';
+export type { FormStatusMessages } from './FormStatusMessage';

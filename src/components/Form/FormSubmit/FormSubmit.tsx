@@ -1,6 +1,6 @@
 import { LoaderCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import Button from '../Button';
+import Button from '../../Button';
 import classes from './FormSubmit.module.css';
 import { CheckIcon, SendIcon } from './icons';
 

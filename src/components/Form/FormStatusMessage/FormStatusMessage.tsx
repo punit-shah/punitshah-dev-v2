@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { CircleCheck, CircleX } from 'lucide-react';
-import type { Status } from '../../hooks/useApiRequest';
+import type { Status } from '../../../hooks/useApiRequest';
 import classes from './FormStatusMessage.module.css';
 
 export type FormStatusMessages = { error: string; success: string };
