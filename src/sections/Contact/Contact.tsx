@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
-import FormButton from '../../components/FormButton';
 import FormInput from '../../components/FormInput';
 import FormMessage from '../../components/FormMessage';
+import FormSubmit from '../../components/FormSubmit';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import useApiRequest from '../../hooks/useApiRequest';
@@ -97,7 +97,7 @@ const Contact = ({ ...props }: CustomSectionProps) => {
             placeholder="Hey Punit, ..."
             disabled={isLoading || isSuccess}
           />
-          <FormButton isLoading={isLoading} isSuccess={isSuccess} />
+          <FormSubmit isLoading={isLoading} isSuccess={isSuccess} />
 
           <FormMessage
             type={isError ? 'error' : isSuccess ? 'success' : 'hidden'}
