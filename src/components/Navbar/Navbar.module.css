@@ -2,13 +2,11 @@
   --separator-gradient-dir: 90deg;
   --separator-gradient: linear-gradient(
     var(--separator-gradient-dir),
-    transparent 0%,
     transparent 10%,
     var(--color-accent-1) 40%,
     var(--color-accent-2) 50%,
     var(--color-accent-1) 60%,
-    transparent 90%,
-    transparent 100%
+    transparent 90%
   );
 
   position: fixed;
@@ -22,16 +20,14 @@
   padding: 0 1rem;
   background: var(--color-bg);
 
-  &.dark {
+  [data-dark-mode] & {
     --separator-gradient: linear-gradient(
       var(--separator-gradient-dir),
-      transparent 0%,
       transparent 10%,
       var(--color-accent-2) 40%,
       var(--color-accent-1) 50%,
       var(--color-accent-2) 60%,
-      transparent 90%,
-      transparent 100%
+      transparent 90%
     );
   }
 

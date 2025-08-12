@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { DarkModeContext } from '../../contexts/DarkMode';
+import { useEffect, useRef, useState } from 'react';
 import classes from './Button.module.css';
 
 type ButtonProps = {
@@ -19,7 +18,6 @@ const Button = ({
   onClick,
   disabled,
 }: ButtonProps) => {
-  const { isDarkMode } = useContext(DarkModeContext);
   const [width, setWidth] = useState<number | null>(null);
   const measureRef = useRef<HTMLSpanElement>(null);
 
@@ -33,11 +31,7 @@ const Button = ({
     <>
       <motion.button
         type={type}
-        className={classNames([
-          classes.button,
-          { [classes.dark]: isDarkMode },
-          className,
-        ])}
+        className={classNames(classes.button, className)}
         onClick={onClick}
         disabled={disabled}
         animate={width !== null ? { width } : undefined}

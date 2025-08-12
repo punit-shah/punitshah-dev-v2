@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import { useContext, type HTMLInputTypeAttribute } from 'react';
-import { DarkModeContext } from '../../../contexts/DarkMode';
+import { type HTMLInputTypeAttribute } from 'react';
 import classes from './Input.module.css';
 
 type InputProps = {
@@ -23,8 +22,6 @@ const Input = ({
   onChange,
   ...rest
 }: InputProps) => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
   const inputProps = {
     className: classes.input,
     value,
@@ -41,13 +38,7 @@ const Input = ({
     );
 
   return (
-    <label
-      className={classNames([
-        classes.inputContainer,
-        { [classes.dark]: isDarkMode },
-        className,
-      ])}
-    >
+    <label className={classNames(classes.inputContainer, className)}>
       {inputElement}
       <span
         className={classNames(classes.label, { [classes.hasValue]: value })}
