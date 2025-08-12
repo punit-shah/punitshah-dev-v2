@@ -19,8 +19,8 @@ const FormStatusMessage = ({
   return (
     <p
       className={classNames(classes.message, className, {
-        [status]: !isHidden,
-        hidden: isHidden,
+        [classes[status]]: !isHidden,
+        [classes.hidden]: isHidden,
       })}
     >
       {status === 'error' && <CircleX />}
