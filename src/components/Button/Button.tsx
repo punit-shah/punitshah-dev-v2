@@ -31,7 +31,7 @@ const Button = ({
     <>
       <motion.button
         type={type}
-        className={classNames([classes.button, className])}
+        className={classNames(classes.button, className)}
         onClick={onClick}
         disabled={disabled}
         animate={width !== null ? { width } : undefined}
