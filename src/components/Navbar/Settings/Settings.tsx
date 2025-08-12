@@ -1,15 +1,15 @@
 import { Moon, Sun, Volume2, VolumeX } from 'lucide-react';
 import { useContext } from 'react';
-import { DarkModeContext } from '../../contexts/DarkMode';
-import { SoundContext } from '../../contexts/Sound';
-import useMediaQuery from '../../hooks/useMediaQuery';
-import useSound from '../../hooks/useSound';
-import classes from './Navbar.module.css';
+import { DarkModeContext } from '../../../contexts/DarkMode';
+import { SoundContext } from '../../../contexts/Sound';
+import useMediaQuery from '../../../hooks/useMediaQuery';
+import useSound from '../../../hooks/useSound';
+import classes from '../Navbar.module.css';
+import lightOff from '../sounds/light-off.mp3';
+import lightOn from '../sounds/light-on.mp3';
+import soundOff from '../sounds/sound-off.mp3';
+import soundOn from '../sounds/sound-on.mp3';
 import SettingsMenu from './SettingsMenu';
-import lightOff from './sounds/light-off.mp3';
-import lightOn from './sounds/light-on.mp3';
-import soundOff from './sounds/sound-off.mp3';
-import soundOn from './sounds/sound-on.mp3';
 
 const Settings = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);

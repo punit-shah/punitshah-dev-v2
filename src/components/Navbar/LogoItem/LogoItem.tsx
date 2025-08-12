@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
-import Logo from '../Logo';
-import classes from './Navbar.module.css';
+import Logo from '../../Logo';
+import classes from '../Navbar.module.css';
 
 const LogoItem = () => {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
