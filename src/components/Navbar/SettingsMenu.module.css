@@ -44,6 +44,7 @@
   .dark & {
     background: rgb(from var(--color-bg) r g b / 0.5);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.1),
       0 2px 8px rgb(from var(--color-accent-1) r g b / 0.3);

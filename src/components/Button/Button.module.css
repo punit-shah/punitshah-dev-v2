@@ -1,0 +1,79 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: solid 1px rgb(from var(--color-100) r g b / 0.2);
+  border-radius: 3rem;
+  background: rgb(from var(--color-0) r g b / 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 4px rgb(from var(--color-accent-1) r g b / 0.25);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background var(--duration),
+    box-shadow var(--duration),
+    border-color var(--duration),
+    transform 0.1s ease-out;
+
+  &:hover,
+  &:focus-visible {
+    background: rgb(from var(--color-0) r g b / 0.8);
+    box-shadow: 0 3px 5px rgb(from var(--color-accent-1) r g b / 0.4);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    box-shadow: 0 1px 3px rgb(from var(--color-accent-1) r g b / 0.4);
+    border-color: rgb(from var(--color-accent-1) r g b / 0.6);
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    cursor: default;
+    background: rgb(from var(--color-0) r g b / 0.6);
+    border-color: rgb(from var(--color-100) r g b / 0.2);
+    box-shadow: 0 2px 4px rgb(from var(--color-accent-1) r g b / 0.25);
+    transform: none;
+  }
+
+  &.dark {
+    box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);
+    border-color: rgb(from var(--color-100) r g b / 0.3);
+
+    &:hover,
+    &:focus-visible {
+      box-shadow: 0 0 18px rgb(from var(--color-accent-1) r g b / 0.5);
+    }
+
+    &:active {
+      border-color: rgb(from var(--color-accent-1) r g b / 0.6);
+    }
+
+    &:disabled {
+      border-color: rgb(from var(--color-100) r g b / 0.3);
+      box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);
+    }
+  }
+}
+
+.measure {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #000;
+  border-radius: 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+}

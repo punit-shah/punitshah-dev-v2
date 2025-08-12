@@ -1,0 +1,95 @@
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1.125rem 1rem 0.375rem;
+  border: solid 1px rgb(from var(--color-100) r g b / 0.15);
+  border-radius: 1rem;
+  background: rgb(from var(--color-100) r g b / 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font: inherit;
+  color: inherit;
+  transition:
+    border-color var(--duration),
+    box-shadow var(--duration),
+    background var(--duration);
+
+  &::placeholder {
+    opacity: 0;
+    transition: opacity var(--duration);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgb(from var(--color-accent-1) r g b / 0.6);
+    background: rgb(from var(--color-100) r g b / 0.05);
+    box-shadow: 0 0 10px rgb(from var(--color-accent-1) r g b / 0.4);
+
+    &::placeholder {
+      opacity: 1;
+    }
+
+    .dark & {
+      box-shadow: 0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);
+    }
+  }
+
+  /* autofill styles */
+  --autofill-bg-color: rgb(from var(--color-accent-2) r g b / 0.2);
+  --autofill-shadow: 0 0 0 1000px var(--autofill-bg-color) inset;
+  /* chrome, edge, safari */
+  &:-webkit-autofill {
+    box-shadow: var(--autofill-shadow);
+    -webkit-text-fill-color: var(--color-text);
+    caret-color: var(--color-text);
+    transition:
+      border-color var(--duration),
+      box-shadow var(--duration),
+      background 5000s ease 0s;
+
+    &:focus {
+      box-shadow:
+        var(--autofill-shadow),
+        0 0 10px rgb(from var(--color-accent-1) r g b / 0.4);
+
+      .dark & {
+        box-shadow:
+          var(--autofill-shadow),
+          0 0 8px rgb(from var(--color-accent-1) r g b / 0.3);
+      }
+    }
+  }
+  /* firefox */
+  &:-moz-autofill {
+    background-color: var(--autofill-bg-color) !important;
+    color: var(--color-text) !important;
+    caret-color: var(--color-text) !important;
+  }
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.label {
+  position: absolute;
+  top: calc(1px + 0.75rem);
+  left: calc(1px + 1rem);
+  transition: transform var(--duration);
+  transform-origin: left center;
+
+  .input:focus + &,
+  &.hasValue {
+    transform: translateY(-0.85rem) scale(0.75);
+    color: rgb(from var(--color-text) r g b / 0.8);
+  }
+}
