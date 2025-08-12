@@ -10,13 +10,19 @@ class HttpError extends Error {
   }
 }
 
+type UseApiRequestOptions<ResponseData> = {
+  onSuccess?: (data: ResponseData) => void;
+  onError?: (error: unknown) => void;
+  testResult?: 'success' | 'error';
+};
+
 export type Status = 'idle' | 'loading' | 'success' | 'error';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const useApiRequest = <RequestBody = any, ResponseData = any>(
   url: string,
   method: string,
-  testResult?: 'success' | 'error',
+  { onSuccess, onError, testResult }: UseApiRequestOptions<ResponseData> = {},
 ) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -30,10 +36,17 @@ const useApiRequest = <RequestBody = any, ResponseData = any>(
 
     if (testResult) {
       setTimeout(() => {
-        setData({ message: 'Test' } as ResponseData);
         setIsLoading(false);
-        setIsError(testResult === 'error');
-        setIsSuccess(testResult === 'success');
+        if (testResult === 'error') {
+          setIsError(true);
+          onError?.(new Error('Test error'));
+        }
+        if (testResult === 'success') {
+          setIsSuccess(true);
+          const responseData = { message: 'Test success' } as ResponseData;
+          setData(responseData);
+          onSuccess?.(responseData);
+        }
       }, 2000);
       return;
     }
@@ -50,6 +63,7 @@ const useApiRequest = <RequestBody = any, ResponseData = any>(
       setData(responseData);
       setIsSuccess(true);
       setIsLoading(false);
+      onSuccess?.(responseData);
     } catch (error) {
       if (error instanceof HttpError) {
         console.error(error.message, error.response);
@@ -58,6 +72,7 @@ const useApiRequest = <RequestBody = any, ResponseData = any>(
       }
       setIsError(true);
       setIsLoading(false);
+      onError?.(error);
     }
   };
 

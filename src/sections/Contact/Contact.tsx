@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import FormInput from '../../components/FormInput';
 import FormStatusMessage from '../../components/FormStatusMessage';
 import FormSubmit from '../../components/FormSubmit';
@@ -32,18 +32,18 @@ const links = [
 
 const Contact = ({ ...props }: CustomSectionProps) => {
   const { isDarkMode } = useContext(DarkModeContext);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const { sendRequest, isLoading, isSuccess, status } =
-    useApiRequest<ContactRequestBody>('/api/contact', 'POST');
-  const [playSuccess] = useSound(success);
 
-  useEffect(() => {
-    if (isSuccess) {
-      playSuccess();
-    }
-  }, [isSuccess, playSuccess]);
+  const [playSuccess] = useSound(success);
+  const { sendRequest, isLoading, isSuccess, status } =
+    useApiRequest<ContactRequestBody>('/api/contact', 'POST', {
+      onSuccess: () => {
+        playSuccess();
+      },
+    });
 
   return (
     <Section
