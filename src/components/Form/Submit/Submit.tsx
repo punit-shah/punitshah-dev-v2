@@ -2,8 +2,8 @@ import { LoaderCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { Status } from '../../../hooks/useApiRequest';
 import Button from '../../Button';
+import { CheckIcon, SendIcon } from '../icons';
 import classes from './Submit.module.css';
-import { CheckIcon, SendIcon } from './icons';
 
 type SubmitProps = { status: Status };
 type Icon = 'plane' | 'loader' | 'check';
