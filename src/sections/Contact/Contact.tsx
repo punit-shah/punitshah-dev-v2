@@ -9,7 +9,8 @@ import useApiRequest from '../../hooks/useApiRequest';
 import useSound from '../../hooks/useSound';
 import classes from './Contact.module.css';
 import { GitHubIcon, LinkedInIcon } from './icons';
-import success from './success.mp3';
+import error from './sounds/error.mp3';
+import success from './sounds/success.mp3';
 
 type ContactRequestBody = {
   name: string;
@@ -38,10 +39,14 @@ const Contact = ({ ...props }: CustomSectionProps) => {
   const [message, setMessage] = useState('');
 
   const [playSuccess] = useSound(success);
+  const [playError] = useSound(error, { volume: 0.5 });
   const { sendRequest, isLoading, isSuccess, status } =
     useApiRequest<ContactRequestBody>('/api/contact', 'POST', {
       onSuccess: () => {
         playSuccess();
+      },
+      onError: () => {
+        playError();
       },
     });
 
