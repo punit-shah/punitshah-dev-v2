@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { motion, type MotionProps } from 'motion/react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { DarkModeContext } from '../../contexts/DarkMode';
 import { faces, OrbContext } from '../../contexts/Orb';
@@ -8,7 +9,7 @@ import Pixels from './Pixels';
 import { getRandomMessage } from './messages';
 import orbChirp from './orb-chirp.mp3';
 
-const Orb = () => {
+const Orb = (props: MotionProps) => {
   const { face, setFace } = useContext(OrbContext);
   const { isDarkMode } = useContext(DarkModeContext);
 
@@ -65,7 +66,7 @@ const Orb = () => {
   };
 
   return (
-    <div className={classNames(classes.container)}>
+    <motion.div className={classNames(classes.container)} {...props}>
       <div className={classes.inner}>
         <button
           className={classNames(classes.orb)}
@@ -92,7 +93,7 @@ const Orb = () => {
           {message}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
