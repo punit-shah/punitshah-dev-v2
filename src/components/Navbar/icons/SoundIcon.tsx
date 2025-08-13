@@ -6,6 +6,7 @@ const waveVariants: Variants = {
   enabled: (i: number) => ({
     opacity: 1,
     scale: 1,
+    x: 0,
     transition: { duration, delay: delay + i * 0.1 },
   }),
   disabled: (i: number) => ({
