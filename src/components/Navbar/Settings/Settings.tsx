@@ -1,9 +1,9 @@
-import { Moon, Sun, Volume2, VolumeX } from 'lucide-react';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../../contexts/DarkMode';
 import { SoundContext } from '../../../contexts/Sound';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import useSound from '../../../hooks/useSound';
+import { SoundIcon, SunMoonIcon } from '../icons';
 import classes from '../Navbar.module.css';
 import lightOff from '../sounds/light-off.mp3';
 import lightOn from '../sounds/light-on.mp3';
@@ -26,7 +26,7 @@ const Settings = () => {
     {
       key: 'darkModeToggle',
       label: isDarkMode ? 'Switch to light mode' : 'Switch to dark mode',
-      icon: isDarkMode ? <Moon /> : <Sun />,
+      icon: <SunMoonIcon isDark={isDarkMode} />,
       onClick: () => {
         toggleDarkMode();
 
@@ -40,7 +40,7 @@ const Settings = () => {
     {
       key: 'soundToggle',
       label: isSoundEnabled ? 'Disable sounds' : 'Enable sounds',
-      icon: isSoundEnabled ? <Volume2 /> : <VolumeX />,
+      icon: <SoundIcon isEnabled={isSoundEnabled} />,
       onClick: () => {
         toggleSound();
 
