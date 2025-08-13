@@ -1,17 +1,23 @@
+import { useReducedMotion } from 'motion/react';
 import { useRef } from 'react';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import Tooltip from '../../Tooltip';
 import classes from '../Navbar.module.css';
 import SectionLinkIndicator from '../SectionLinkIndicator';
 
-const onLinkClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
-  event.preventDefault();
-  const targetId = event.currentTarget.getAttribute('href');
-  if (targetId) {
-    const element = document.querySelector(targetId);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  }
-};
+const getClickHandler: (
+  prefersReducedMotion: boolean | null,
+) => React.MouseEventHandler<HTMLAnchorElement> =
+  (prefersReducedMotion) => (event) => {
+    event.preventDefault();
+    const targetId = event.currentTarget.getAttribute('href');
+    if (targetId) {
+      const element = document.querySelector(targetId);
+      element?.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      });
+    }
+  };
 
 export type SectionLinkProps = {
   label: string;
@@ -20,6 +26,7 @@ export type SectionLinkProps = {
 };
 
 const SectionLink = ({ label, sectionId, icon }: SectionLinkProps) => {
+  const prefersReducedMotion = useReducedMotion();
   const hasTooltip = useMediaQuery(
     '(min-width: 600px) and (min-height: 600px)',
   );
@@ -32,7 +39,7 @@ const SectionLink = ({ label, sectionId, icon }: SectionLinkProps) => {
     <a
       href={`#${sectionId}`}
       className={classes.link}
-      onClick={onLinkClick}
+      onClick={getClickHandler(prefersReducedMotion)}
       {...labelProp}
     >
       {icon}
