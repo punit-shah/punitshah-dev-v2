@@ -1,4 +1,4 @@
-import { motion, type Variants } from 'framer-motion';
+import { motion, type Variants } from 'motion/react';
 
 const duration = 0.15;
 const delay = 0.15;

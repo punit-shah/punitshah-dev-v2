@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
 import { SettingsIcon } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import classes from './SettingsMenu.module.css';

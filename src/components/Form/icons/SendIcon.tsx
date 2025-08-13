@@ -1,4 +1,4 @@
-import { motion, type AnimationDefinition, type Variants } from 'framer-motion';
+import { motion, type AnimationDefinition, type Variants } from 'motion/react';
 
 const variants: Variants = {
   send: {
