@@ -55,6 +55,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: var(--shadow-glow-0);
   animation: glowAndFloat 3s ease-in-out infinite;
   transition: box-shadow var(--duration);
   -webkit-tap-highlight-color: transparent;

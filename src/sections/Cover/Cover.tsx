@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { useContext } from 'react';
 import ColorSwitcher from '../../components/ColorSwitcher';
 import Orb from '../../components/Orb';
@@ -33,13 +34,29 @@ const Cover = ({ ...props }: CustomSectionProps) => {
       {...props}
     >
       <div className={classes.intro}>
-        <h1 className={classes.hey}>Hey, I'm&nbsp;{name}</h1>
-        <p className={classes.description}>
+        <motion.h1
+          className={classes.hey}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          Hey, I'm&nbsp;{name}
+        </motion.h1>
+        <motion.p
+          className={classes.description}
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+        >
           Frontend engineer focused on <ColorSwitcher>function</ColorSwitcher>{' '}
           and <StretchyText>feel</StretchyText>.
-        </p>
+        </motion.p>
       </div>
-      <Orb />
+      <Orb
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+      />
     </Section>
   );
 };

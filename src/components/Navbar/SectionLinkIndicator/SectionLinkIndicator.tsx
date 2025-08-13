@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import classes from './SectionLinkIndicator.module.css';

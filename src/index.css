@@ -145,6 +145,13 @@
   --color-success-fg: #2ecc71;
 }
 
+[data-reduced-motion] {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 *,
 *::before,
 *::after {

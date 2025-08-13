@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useReducedMotion } from 'motion/react';
 import { useState } from 'react';
 import Logo from '../../Logo';
 import classes from '../Navbar.module.css';
@@ -7,6 +8,8 @@ const LogoItem = () => {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isLogoFocusVisible, setIsLogoFocusVisible] = useState(false);
 
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <a
       href="#cover"
@@ -14,7 +17,9 @@ const LogoItem = () => {
       onClick={(event) => {
         event.preventDefault();
         const coverElement = document.querySelector('#cover');
-        coverElement?.scrollIntoView({ behavior: 'smooth' });
+        coverElement?.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        });
       }}
       onMouseEnter={() => {
         setIsLogoHovered(true);

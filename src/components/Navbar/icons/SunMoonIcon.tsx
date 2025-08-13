@@ -1,18 +1,18 @@
-import { motion, type Variants } from 'framer-motion';
+import { motion, type Variants } from 'motion/react';
 
 const duration = 0.15;
-const delay = 0.15;
+const delay = 0.1;
 const sunRayVariants: Variants = {
-  dark: { scale: 0, transition: { duration } },
-  light: { scale: 1, transition: { duration, delay: delay * 1.5 } },
+  dark: { opacity: 0, scale: 0, transition: { duration } },
+  light: { opacity: 1, scale: 1, transition: { duration, delay: delay * 1.5 } },
 };
 const sunCoreVariants: Variants = {
   dark: { opacity: 0, scale: 1.25, transition: { duration } },
   light: { opacity: 1, scale: 1, transition: { duration, delay } },
 };
 const moonVariants: Variants = {
-  dark: { opacity: 1, scale: 1, transition: { duration, delay } },
-  light: { opacity: 0, scale: 0.75, transition: { duration } },
+  dark: { opacity: 1, scale: 1, rotate: 0, transition: { duration, delay } },
+  light: { opacity: 0, scale: 0.75, rotate: -45, transition: { duration } },
 };
 
 type SunMoonIconProps = { isDark?: boolean };
