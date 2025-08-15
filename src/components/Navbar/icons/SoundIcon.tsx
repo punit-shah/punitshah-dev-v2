@@ -41,7 +41,7 @@ const SoundIcon = ({ isEnabled }: SoundIconProps) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    role="img"
+    aria-hidden="true"
     initial={false}
     animate={isEnabled ? 'enabled' : 'disabled'}
   >

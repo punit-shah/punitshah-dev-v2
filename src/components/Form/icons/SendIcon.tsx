@@ -33,7 +33,7 @@ const SendIcon = ({
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    role="img"
+    aria-hidden="true"
   >
     <motion.g
       variants={variants}

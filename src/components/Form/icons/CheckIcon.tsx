@@ -11,7 +11,7 @@ const CheckIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    role="img"
+    aria-hidden="true"
   >
     <motion.path
       d="M4 12l5 5L20 6"

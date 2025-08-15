@@ -12,7 +12,7 @@ const Logo = ({ size = 40, isHovered }: LogoProps) => (
     width={size}
     height={size}
     viewBox="0 0 100 100"
-    role="img"
+    aria-hidden="true"
   >
     <defs>
       <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">

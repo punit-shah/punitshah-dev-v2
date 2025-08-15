@@ -39,7 +39,7 @@ const SunMoonIcon = ({ isDark }: SunMoonIconProps) => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      role="img"
+      aria-hidden="true"
       initial={false}
       animate={isDark ? 'dark' : 'light'}
     >
