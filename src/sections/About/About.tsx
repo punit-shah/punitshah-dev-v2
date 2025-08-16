@@ -61,7 +61,7 @@ const About = ({ ...props }: CustomSectionProps) => {
           </div>
 
           <div className={classes.skills}>
-            <h4>Skills at a glance</h4>
+            <h3>Skills at a glance</h3>
             <ul className={classes.skillsList}>
               {skills.map((item) => (
                 <li key={item.label} className={classes.skill}>
