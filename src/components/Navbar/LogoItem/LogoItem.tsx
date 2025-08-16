@@ -11,34 +11,36 @@ const LogoItem = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <a
-      href="#cover"
-      className={classNames(classes.link, classes.logo)}
-      onClick={(event) => {
-        event.preventDefault();
-        const coverElement = document.querySelector('#cover');
-        coverElement?.scrollIntoView({
-          behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        });
-      }}
-      onMouseEnter={() => {
-        setIsLogoHovered(true);
-      }}
-      onMouseLeave={() => {
-        setIsLogoHovered(false);
-      }}
-      onFocus={(event) => {
-        if (event.currentTarget.matches(':focus-visible')) {
-          setIsLogoFocusVisible(true);
-        }
-      }}
-      onBlur={() => {
-        setIsLogoFocusVisible(false);
-      }}
-      aria-label="Scroll to top"
-    >
-      <Logo isHovered={isLogoHovered || isLogoFocusVisible} />
-    </a>
+    <div className={classes.logoContainer}>
+      <a
+        href="#cover"
+        className={classNames(classes.link, classes.logo)}
+        onClick={(event) => {
+          event.preventDefault();
+          const coverElement = document.querySelector('#cover');
+          coverElement?.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          });
+        }}
+        onMouseEnter={() => {
+          setIsLogoHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsLogoHovered(false);
+        }}
+        onFocus={(event) => {
+          if (event.currentTarget.matches(':focus-visible')) {
+            setIsLogoFocusVisible(true);
+          }
+        }}
+        onBlur={() => {
+          setIsLogoFocusVisible(false);
+        }}
+        aria-label="Scroll to top"
+      >
+        <Logo isHovered={isLogoHovered || isLogoFocusVisible} />
+      </a>
+    </div>
   );
 };
 

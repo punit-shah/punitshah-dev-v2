@@ -65,6 +65,17 @@
   }
 }
 
+.logoContainer {
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 600px) {
+    flex-direction: column;
+  }
+}
+
 .list {
   display: flex;
   justify-content: space-around;
@@ -72,6 +83,10 @@
   list-style: none;
   padding: 0;
   margin: 0;
+
+  &.settingsList {
+    flex: 1 0 0;
+  }
 
   @media (min-width: 600px) {
     flex-direction: column;

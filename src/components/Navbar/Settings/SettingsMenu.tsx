@@ -35,8 +35,10 @@ const SettingsMenu = ({ items }: SettingsMenuProps) => {
     };
   }, []);
 
-  const closedPosition = isHorizontal ? { x: -10 } : { y: 10 };
-  const openPosition = isHorizontal ? { x: 0 } : { y: 0 };
+  const closedPosition = isHorizontal
+    ? { x: -10, y: '50%' }
+    : { x: '50%', y: 10 };
+  const openPosition = isHorizontal ? { x: 0, y: '50%' } : { x: '50%', y: 0 };
 
   return (
     <div className={classNames(classes.container)} ref={containerRef}>

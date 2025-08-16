@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../../contexts/DarkMode';
 import { SoundContext } from '../../../contexts/Sound';
@@ -58,7 +59,7 @@ const Settings = () => {
   }
 
   return (
-    <ul className={classes.list}>
+    <ul className={classNames(classes.list, classes.settingsList)}>
       {items.map(({ key, label, icon, onClick }) => (
         <li key={key}>
           <button

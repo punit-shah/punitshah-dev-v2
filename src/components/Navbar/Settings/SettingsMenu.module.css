@@ -1,5 +1,9 @@
 .container {
+  flex: 1 0 0;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button {
@@ -19,7 +23,7 @@
 .menu {
   position: absolute;
   bottom: 100%;
-  right: 0;
+  right: 50%;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -36,7 +40,7 @@
 
   @media (min-width: 600px) {
     right: auto;
-    bottom: 0;
+    bottom: 50%;
     left: calc(100% + 0.25rem);
     flex-direction: row;
   }
