@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { PaletteIcon, PersonStandingIcon, Wrench, ZapIcon } from 'lucide-react';
 import { motion, type Variants } from 'motion/react';
+import FunFacts from '../../components/FunFacts';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import classes from './About.module.css';
 import { NextJsLogo, ReactLogo, StencilLogo, TypeScriptLogo } from './icons';
@@ -79,44 +80,7 @@ const About = ({ ...props }: CustomSectionProps) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className={classes.funFacts}>
-            <h3 className={classes.title}>Beyond the code</h3>
-            <ul className={classes.funFactsList}>
-              <li>
-                🧗‍♂️ Either climbing walls or dramatically falling off them (proof
-                lives{' '}
-                <a
-                  href="https://www.instagram.com/punclimbs/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  here
-                </a>
-                ).
-              </li>
-              <li>
-                🤘 If there's a heavy gig in London, you'll probably find me in
-                the mosh pit making questionable life choices.
-              </li>
-              <li>
-                ☕️ Coffee snobbery is my love language - a carefully brewed V60
-                at home, or a flat white in the wild.
-              </li>
-              <li>
-                🎮 I unwind by wandering around Hyrule and{' '}
-                <button
-                  type="button"
-                  className={classes.korokButton}
-                  onClick={() => {
-                    // todo: "Ya-ha-ha!"
-                  }}
-                >
-                  collecting Korok seeds
-                </button>
-                .
-              </li>
-            </ul>
-          </div>
+          <FunFacts />
         </motion.div>
       </div>
     </Section>
