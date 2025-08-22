@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { PaletteIcon, PersonStandingIcon, Wrench, ZapIcon } from 'lucide-react';
 import { motion, type Variants } from 'motion/react';
-import FunFacts from '../../components/FunFacts';
+import BeyondTheCode from '../../components/BeyondTheCode';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import classes from './About.module.css';
 import { NextJsLogo, ReactLogo, StencilLogo, TypeScriptLogo } from './icons';
@@ -80,7 +80,7 @@ const About = ({ ...props }: CustomSectionProps) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <FunFacts />
+          <BeyondTheCode />
         </motion.div>
       </div>
     </Section>

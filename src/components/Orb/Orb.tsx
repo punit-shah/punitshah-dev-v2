@@ -51,11 +51,13 @@ const Orb = (props: MotionProps) => {
       bubbleTimeout.current = null;
     }
 
+    // set face to happy, then reset after 0.8s
     setFace(faces.happy);
     happyFaceTimeout.current = setTimeout(() => {
       setFace(faces.smile);
     }, 800);
 
+    // show bubble with random message, then hide bubble after 2.5s
     setMessage(getRandomMessage({ isDarkMode }));
     setIsBubbleVisible(true);
     bubbleTimeout.current = setTimeout(() => {
