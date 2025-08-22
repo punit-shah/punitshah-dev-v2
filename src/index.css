@@ -10,6 +10,18 @@
   initial-value: #404040;
 }
 
+@property --color-0 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fff;
+}
+
+@property --color-100 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #000;
+}
+
 @property --color-accent-1 {
   syntax: '<color>';
   inherits: true;
@@ -100,6 +112,8 @@
   transition:
     --color-bg var(--duration),
     --color-text var(--duration),
+    --color-0 var(--duration),
+    --color-100 var(--duration),
     --color-accent-1 var(--duration),
     --color-accent-2 var(--duration),
     --color-accent-bg-mid var(--duration),
