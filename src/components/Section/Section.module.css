@@ -16,6 +16,7 @@
   }
 
   @media (min-width: 600px) {
+    padding-block-end: 1rem;
     padding-inline-start: calc(5% + 3.5rem);
   }
 
