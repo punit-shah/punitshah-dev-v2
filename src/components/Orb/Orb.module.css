@@ -41,6 +41,18 @@
 }
 
 .orb {
+  --glow-0: var(--shadow-glow-0);
+  --glow-50: var(--shadow-glow-1);
+  --glow-100: var(--shadow-glow-0);
+
+  --float-y-0: 0;
+  --float-y-50: -10px;
+  --float-y-100: 0;
+
+  --float-scale-0: 1;
+  --float-scale-50: 1.05;
+  --float-scale-100: 1;
+
   position: relative;
   width: 100px;
   height: 100px;
@@ -62,16 +74,16 @@
 }
 @keyframes glowAndFloat {
   0% {
-    box-shadow: var(--shadow-glow-0);
-    transform: translateY(0) scale(1);
+    box-shadow: var(--glow-0);
+    transform: translateY(var(--float-y-0)) scale(var(--float-scale-0));
   }
   50% {
-    box-shadow: var(--shadow-glow-1);
-    transform: translateY(-10px) scale(1.05);
+    box-shadow: var(--glow-50);
+    transform: translateY(var(--float-y-50)) scale(var(--float-scale-50));
   }
   100% {
-    box-shadow: var(--shadow-glow-0);
-    transform: translateY(0) scale(1);
+    box-shadow: var(--glow-100);
+    transform: translateY(var(--float-y-100)) scale(var(--float-scale-100));
   }
 }
 

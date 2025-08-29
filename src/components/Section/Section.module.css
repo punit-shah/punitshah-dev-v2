@@ -2,18 +2,31 @@
   display: flex;
   flex-direction: column;
   min-height: 100svh;
-  padding: 1rem 0 3.5rem;
+  width: 100%;
+  margin-inline: auto;
+  padding: 1rem 1rem 3.5rem;
+  overflow-x: clip;
+
+  &.centered {
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 500px) {
+    padding-inline: 5%;
+  }
 
   @media (min-width: 600px) {
-    padding: 1rem 0 1rem 3.5rem;
+    padding-block-end: 1rem;
+    padding-inline-start: calc(5% + 3.5rem);
   }
 
   @media (min-width: 600px) and (min-height: 600px) {
-    padding: 1rem 0 1rem 4.5rem;
+    padding-inline-start: calc(5% + 4.5rem);
   }
 
-  p {
-    margin: 0;
+  @media (min-width: 750px) {
+    padding-inline: calc(10% + 4.5rem) 10%;
   }
 }
 

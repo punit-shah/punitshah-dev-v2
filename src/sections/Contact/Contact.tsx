@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import Form, {
   type FormField,
   type FormStatusMessages,
@@ -38,13 +37,8 @@ const links = [
 ];
 
 const Contact = ({ ...props }: CustomSectionProps) => (
-  <Section
-    containerClassName={classNames(classes.container)}
-    title="Contact"
-    id="contact"
-    {...props}
-  >
-    <div className={classes.content}>
+  <Section title="Contact" id="contact" {...props}>
+    <div className={classes.container}>
       <Form
         fields={fields}
         apiEndpoint="/api/contact"
