@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import classes from './BeyondTheCode.module.css';
-import KorokOrb from './KorokOrb.tsx';
+import KorokOrb from './KorokOrb';
 
 const BeyondTheCode = () => {
   const [isKorokOrbVisible, setIsKorokOrbVisible] = useState(false);

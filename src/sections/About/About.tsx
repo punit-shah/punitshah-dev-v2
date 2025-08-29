@@ -42,6 +42,7 @@ const About = ({ ...props }: CustomSectionProps) => {
             <p>
               I'm a Senior Software Engineer at <strong>Turnitin</strong>, where
               I build tools that help educators and students work smarter.
+              <br />
               Before that, I worked at <strong>BBC</strong> and{' '}
               <strong>Checkout.com</strong>, shipping projects that reached
               millions of people.
@@ -49,9 +50,9 @@ const About = ({ ...props }: CustomSectionProps) => {
             <p>
               I write a lot of <strong>TypeScript</strong>, and I'm happiest
               working with <strong>React</strong>, though I've used plenty of
-              other UI frameworks and tech stacks. I care about accessibility,
-              performance, and I always make sure the things I build feel good
-              to use.
+              other UI frameworks and tech stacks.
+              <br />I care about accessibility, performance, and I always make
+              sure the things I build feel good to use.
             </p>
             <p>
               I also care about the <strong>developer experience</strong> behind
