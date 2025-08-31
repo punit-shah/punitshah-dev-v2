@@ -3,6 +3,7 @@
 }
 
 .container {
+  display: flex;
   flex-direction: column;
   gap: 6rem;
 
@@ -47,6 +48,7 @@
 }
 
 .description {
+  margin: 0;
   font-family: var(--font-techy);
   font-weight: 400;
   max-width: 500px;

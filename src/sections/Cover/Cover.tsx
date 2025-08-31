@@ -27,36 +27,33 @@ const Cover = ({ ...props }: CustomSectionProps) => {
   );
 
   return (
-    <Section
-      className={classes.section}
-      containerClassName={classes.container}
-      id="cover"
-      {...props}
-    >
-      <div className={classes.intro}>
-        <motion.h1
-          className={classes.hey}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-        >
-          Hey, I'm&nbsp;{name}
-        </motion.h1>
-        <motion.p
-          className={classes.description}
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-        >
-          Frontend engineer focused on <ColorSwitcher>function</ColorSwitcher>{' '}
-          and <StretchyText>feel</StretchyText>.
-        </motion.p>
+    <Section className={classes.section} id="cover" {...props}>
+      <div className={classes.container}>
+        <div className={classes.intro}>
+          <motion.h1
+            className={classes.hey}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
+            Hey, I'm&nbsp;{name}
+          </motion.h1>
+          <motion.p
+            className={classes.description}
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+          >
+            Frontend engineer focused on <ColorSwitcher>function</ColorSwitcher>{' '}
+            and <StretchyText>feel</StretchyText>.
+          </motion.p>
+        </div>
+        <Orb
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+        />
       </div>
-      <Orb
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-      />
     </Section>
   );
 };
