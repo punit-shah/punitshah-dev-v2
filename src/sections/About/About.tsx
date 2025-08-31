@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { PaletteIcon, PersonStandingIcon, Wrench, ZapIcon } from 'lucide-react';
 import { motion, type Variants } from 'motion/react';
 import BeyondTheCode from '../../components/BeyondTheCode';
+import IconStrip from '../../components/IconStrip';
 import Section, { type CustomSectionProps } from '../../components/Section';
 import classes from './About.module.css';
 import { NextJsLogo, ReactLogo, StencilLogo, TypeScriptLogo } from './icons';
@@ -64,13 +65,7 @@ const About = ({ ...props }: CustomSectionProps) => {
 
           <div className={classes.skills}>
             <h3>Skills at a glance</h3>
-            <ul className={classes.skillsList}>
-              {skills.map((item) => (
-                <li key={item.label} className={classes.skill}>
-                  {item.icon} <span>{item.label}</span>
-                </li>
-              ))}
-            </ul>
+            <IconStrip items={skills} />
           </div>
         </motion.div>
 
