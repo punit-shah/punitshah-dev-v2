@@ -48,8 +48,6 @@
 }
 
 .socials {
-  --gradient-direction: 90deg;
-
   position: relative;
   display: flex;
   flex-direction: column;
@@ -65,7 +63,7 @@
     width: 100%;
     height: 1px;
     background: linear-gradient(
-      var(--gradient-direction),
+      90deg,
       transparent 20%,
       rgb(from var(--color-accent-2) r g b / 0.6) 40%,
       rgb(from var(--color-accent-1) r g b / 0.6) 50%,

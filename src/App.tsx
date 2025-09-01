@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Providers from './contexts/Providers';
 import useScrollSpy from './hooks/useScrollSpy';
@@ -25,6 +26,7 @@ const App = () => {
       <About ref={aboutSectionRef} />
       <Projects ref={projectsSectionRef} />
       <Contact ref={contactSectionRef} />
+      <Footer />
     </Providers>
   );
 };
