@@ -13,24 +13,24 @@ const BeyondTheCode = () => {
 
         <ul className={classes.funFactsList}>
           <li>
-            🧗‍♂️ Either climbing walls or dramatically falling off them (proof
-            lives{' '}
+            🧗‍♂️ I climb a fair bit, mostly indoors - big fan of jumpy, dynamic,
+            coordination moves! ig:{' '}
             <a
-              href="https://www.instagram.com/punclimbs/"
+              href="https://www.instagram.com/punclimbs"
               target="_blank"
               rel="noopener noreferrer"
             >
-              here
+              @punclimbs
             </a>
-            ).
           </li>
           <li>
-            🤘 If there's a heavy gig in London, you'll probably find me in the
-            mosh pit making questionable life choices.
+            🤘 If there's a metalcore gig in London, you'll probably find me in
+            the mosh pit. Fave bands right now: Spiritbox, Motionless in White,
+            Dayseeker.
           </li>
           <li>
-            ☕️ Coffee snobbery is my love language - a carefully brewed V60 at
-            home, or a flat white in the wild.
+            ☕️ Weirdly passionate about coffee. Brew of choice: a V60 pour-over
+            with the most interesting beans I can find.
           </li>
           <li>
             🎮 I unwind by wandering around Hyrule and{' '}
