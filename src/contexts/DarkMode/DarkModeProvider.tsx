@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { DarkModeContext } from './DarkModeContext';
 
-type DarkModeProviderProps = { children: React.ReactNode };
+type DarkModeProviderProps = { children: ReactNode };
 
 export const DarkModeProvider = ({ children }: DarkModeProviderProps) => {
   const [isDarkMode, setIsDarkMode] = useState(false);

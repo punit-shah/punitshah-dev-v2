@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { SoundContext } from './SoundContext';
 
-type SoundProviderProps = { children: React.ReactNode };
+type SoundProviderProps = { children: ReactNode };
 
 const localStorageKey = 'isSoundEnabled';
 

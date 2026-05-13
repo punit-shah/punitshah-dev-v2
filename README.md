@@ -2,12 +2,18 @@
 
 ## Local development
 
-Requires [Node.js](https://nodejs.org/en/download) 22 or higher.
+Requires [Node.js](https://nodejs.org/en/download) 24 or higher, and a Vercel account.
 
 - Install dependencies
 
   ```
   npm install
+  ```
+
+- Link with a Vercel project
+
+  ```
+  npx vercel
   ```
 
 - Start development environment

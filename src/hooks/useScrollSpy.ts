@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 
-const useScrollSpy = (sectionRefs: React.RefObject<HTMLElement | null>[]) => {
+const useScrollSpy = (sectionRefs: RefObject<HTMLElement | null>[]) => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const observerRef = useRef<IntersectionObserver>(

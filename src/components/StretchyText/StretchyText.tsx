@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react';
 import classes from './StretchyText.module.css';
 
 type StretchyTextProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const StretchyText = ({ children }: StretchyTextProps) => {

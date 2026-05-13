@@ -1,5 +1,10 @@
 import classNames from 'classnames';
-import { useEffect, useState, type HTMLInputTypeAttribute } from 'react';
+import {
+  useEffect,
+  useState,
+  type HTMLInputTypeAttribute,
+  type ReactNode,
+} from 'react';
 import useApiRequest from '../../hooks/useApiRequest';
 import useSound from '../../hooks/useSound';
 import classes from './Form.module.css';
@@ -21,7 +26,7 @@ type FormProps = {
   fields?: Field[];
   apiEndpoint: string;
   statusMessages?: StatusMessages;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 };
 

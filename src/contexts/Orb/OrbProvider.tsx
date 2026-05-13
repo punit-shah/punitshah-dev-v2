@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { OrbContext } from './OrbContext';
 import { smile } from './faces';
 
-type OrbProviderProps = { children: React.ReactNode };
+type OrbProviderProps = { children: ReactNode };
 
 export const OrbProvider = ({ children }: OrbProviderProps) => {
   const [face, setFace] = useState(smile);

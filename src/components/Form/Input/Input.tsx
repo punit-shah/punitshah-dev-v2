@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type HTMLInputTypeAttribute } from 'react';
+import { type ChangeEvent, type HTMLInputTypeAttribute } from 'react';
 import classes from './Input.module.css';
 
 type InputProps = {
@@ -25,7 +25,7 @@ const Input = ({
   const inputProps = {
     className: classes.input,
     value,
-    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       onChange?.(e.target.value),
     ...rest,
   };

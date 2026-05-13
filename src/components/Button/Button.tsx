@@ -1,15 +1,21 @@
 import classNames from 'classnames';
 import { motion } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MouseEventHandler,
+  type ReactNode,
+} from 'react';
 import classes from './Button.module.css';
 
 type ButtonProps = {
   type?: 'submit' | 'reset' | 'button';
   className?: string;
-  children: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
-  onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
+  children: ReactNode;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onMouseEnter?: MouseEventHandler<HTMLButtonElement>;
+  onMouseLeave?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
 };
 

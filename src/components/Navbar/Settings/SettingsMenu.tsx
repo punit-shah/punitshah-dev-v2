@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { SettingsIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import classes from './SettingsMenu.module.css';
 
@@ -9,7 +9,7 @@ type SettingsMenuProps = {
   items: {
     key: string;
     label: string;
-    icon: React.ReactNode;
+    icon: ReactNode;
     onClick: () => void;
   }[];
 };

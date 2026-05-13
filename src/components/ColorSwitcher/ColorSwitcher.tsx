@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import useSound from '../../hooks/useSound';
 import classes from './ColorSwitcher.module.css';
 import changeColor from './change-color.mp3';
@@ -7,7 +7,7 @@ import changeColor from './change-color.mp3';
 const accentColors = ['purple', 'sunset', 'lime', 'pink', 'blue'];
 
 type ColorSwitcherProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 };
 

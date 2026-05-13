@@ -1,8 +1,9 @@
 import classNames from 'classnames';
+import type { ReactNode } from 'react';
 import classes from './IconStrip.module.css';
 
 export type IconStripItem = {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
 };
 

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import type { JSX } from 'react';
 import classes from './Tooltip.module.css';
 
 type Position = 'top' | 'bottom' | 'left' | 'right';
@@ -7,7 +8,7 @@ type TooltipProps = {
   text: string;
   position?: Position;
   hasTip?: boolean;
-} & React.JSX.IntrinsicElements['div'];
+} & JSX.IntrinsicElements['div'];
 
 const Tooltip = ({
   text,
