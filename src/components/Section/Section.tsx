@@ -1,11 +1,12 @@
 import classNames from 'classnames';
+import type { JSX, ReactNode } from 'react';
 import classes from './Section.module.css';
 
-type SectionProps = React.JSX.IntrinsicElements['section'] & {
+type SectionProps = JSX.IntrinsicElements['section'] & {
   title?: string;
   centered?: boolean;
   className?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export type CustomSectionProps = Omit<

@@ -1,5 +1,5 @@
 import { useReducedMotion } from 'motion/react';
-import { useRef } from 'react';
+import { useRef, type MouseEventHandler, type ReactNode } from 'react';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import Tooltip from '../../Tooltip';
 import classes from '../Navbar.module.css';
@@ -7,7 +7,7 @@ import SectionLinkIndicator from '../SectionLinkIndicator';
 
 const getClickHandler: (
   prefersReducedMotion: boolean | null,
-) => React.MouseEventHandler<HTMLAnchorElement> =
+) => MouseEventHandler<HTMLAnchorElement> =
   (prefersReducedMotion) => (event) => {
     event.preventDefault();
     const targetId = event.currentTarget.getAttribute('href');
@@ -22,7 +22,7 @@ const getClickHandler: (
 export type SectionLinkProps = {
   label: string;
   sectionId: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
 };
 
 const SectionLink = ({ label, sectionId, icon }: SectionLinkProps) => {

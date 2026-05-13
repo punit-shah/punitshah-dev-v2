@@ -2,9 +2,9 @@ import {
   MotionConfig as MotionReactConfig,
   useReducedMotion,
 } from 'motion/react';
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 
-type MotionConfigProps = { children: React.ReactNode };
+type MotionConfigProps = { children: ReactNode };
 const MotionConfig = ({ children }: MotionConfigProps) => {
   const prefersReducedMotion = useReducedMotion();
 
