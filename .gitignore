@@ -22,4 +22,4 @@ dist-ssr
 *.sw?
 
 .vercel
-.env
+.env*.local

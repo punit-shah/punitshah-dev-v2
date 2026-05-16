@@ -27,7 +27,7 @@ Requires [Node.js](https://nodejs.org/en/download) 24 or higher, and a Vercel ac
 The contact API requires the following environment variables to be set:
 
 ```sh
-## .env
+## .env.local
 
 # Recipient email address for contact form messages
 EMAIL_TO=recipient@example.com
