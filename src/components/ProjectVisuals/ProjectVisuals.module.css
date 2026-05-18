@@ -1,0 +1,47 @@
+.projectVisuals {
+  overflow: hidden;
+  position: relative;
+  border: solid 0.5px rgb(from var(--color-text) r g b / 0.15);
+  border-radius: 1rem;
+  background: rgb(from var(--color-text) r g b / 0.05);
+  backdrop-filter: blur(6px);
+  transition:
+    border-color var(--duration),
+    background var(--duration);
+}
+
+.carouselTrack {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.carouselButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+
+  .carouselIndicator {
+    border-radius: 2px;
+    height: 3px;
+    width: 6px;
+    background: rgb(from var(--color-text) r g b / 0.28);
+    transition:
+      background var(--duration),
+      width var(--duration);
+  }
+
+  &:hover .carouselIndicator {
+    background: rgb(from var(--color-text) r g b / 0.48);
+  }
+
+  &.active .carouselIndicator {
+    background: var(--color-accent-1);
+    width: 22px;
+  }
+}
