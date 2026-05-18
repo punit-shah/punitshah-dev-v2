@@ -12,6 +12,10 @@ export default tseslint.config([
     files: ['**/*.{ts,tsx}'],
     rules: {
       'object-shorthand': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
     },
     extends: [
       js.configs.recommended,
