@@ -2,11 +2,35 @@ import classNames from 'classnames';
 import { useReducedMotion } from 'motion/react';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { TRANSITION_DURATION } from '../../constants';
-import classes from './ProjectVisuals.module.css';
+import classes from './Carousel.module.css';
 
-type ProjectVisualsProps = { items: ReactNode[]; className?: string };
+type CarouselProps = {
+  items: ReactNode[];
+  className?: string;
+  labels?: {
+    carousel?: string;
+    dots?: string;
+    activeDot?: string;
+    inactiveDot?: string;
+    liveMessage?: string;
+  };
+};
 
-const ProjectVisuals = ({ items, className }: ProjectVisualsProps) => {
+const defaultLabels: Required<CarouselProps['labels']> = {
+  carousel: 'Carousel',
+  dots: 'Select item',
+  activeDot: 'Item {number}, current',
+  inactiveDot: 'Go to item {number}',
+  liveMessage: 'Item {index} of {total}',
+};
+
+const Carousel = ({
+  items,
+  className,
+  labels: providedLabels,
+}: CarouselProps) => {
+  const labels = { ...defaultLabels, ...providedLabels };
+
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [liveMessage, setLiveMessage] = useState('');
   const trackRef = useRef<HTMLUListElement>(null);
@@ -52,17 +76,21 @@ const ProjectVisuals = ({ items, className }: ProjectVisualsProps) => {
       return;
     }
 
-    setLiveMessage(`Visual ${activeItemIndex + 1} of ${items.length}`);
-  }, [activeItemIndex, items.length]);
+    setLiveMessage(
+      labels.liveMessage
+        .replace('{index}', String(activeItemIndex + 1))
+        .replace('{total}', String(items.length)),
+    );
+  }, [activeItemIndex, items.length, labels.liveMessage]);
 
   const isCarousel = items.length > 1;
 
   return (
     <div
-      className={classNames(classes.projectVisuals, className)}
+      className={classNames(classes.carousel, className)}
       role="region"
       aria-roledescription="carousel"
-      aria-label="Project visuals"
+      aria-label={labels.carousel}
     >
       <ul
         ref={trackRef}
@@ -89,7 +117,7 @@ const ProjectVisuals = ({ items, className }: ProjectVisualsProps) => {
         {items.map((item, itemIndex) => (
           <li
             key={itemIndex}
-            id={`visual-${itemIndex + 1}`}
+            id={`item-${itemIndex + 1}`}
             className={classes.carouselItem}
           >
             {item}
@@ -98,14 +126,10 @@ const ProjectVisuals = ({ items, className }: ProjectVisualsProps) => {
       </ul>
 
       {isCarousel && (
-        <div
-          className={classes.dots}
-          role="group"
-          aria-label="Select project visual"
-        >
+        <div className={classes.dots} role="group" aria-label={labels.dots}>
           {items.map((_, index) => {
             const isActive = index === activeItemIndex;
-            const visualNumber = index + 1;
+            const itemNumber = index + 1;
 
             return (
               <button
@@ -117,10 +141,10 @@ const ProjectVisuals = ({ items, className }: ProjectVisualsProps) => {
                 aria-current={isActive ? true : undefined}
                 aria-label={
                   isActive
-                    ? `Visual ${visualNumber}, current`
-                    : `Go to visual ${visualNumber}`
+                    ? labels.activeDot.replace('{number}', String(itemNumber))
+                    : labels.inactiveDot.replace('{number}', String(itemNumber))
                 }
-                aria-controls={`visual-${visualNumber}`}
+                aria-controls={`item-${itemNumber}`}
                 onClick={() => goToItem(index)}
               >
                 <div className={classes.dotInner} />
@@ -137,4 +161,4 @@ const ProjectVisuals = ({ items, className }: ProjectVisualsProps) => {
   );
 };
 
-export default ProjectVisuals;
+export default Carousel;
