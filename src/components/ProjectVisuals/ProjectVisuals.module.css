@@ -1,16 +1,39 @@
 .projectVisuals {
   overflow: hidden;
   position: relative;
-  border: solid 0.5px rgb(from var(--color-text) r g b / 0.15);
   border-radius: 1rem;
-  background: rgb(from var(--color-text) r g b / 0.05);
-  backdrop-filter: blur(6px);
-  transition:
-    border-color var(--duration),
-    background var(--duration);
+
+  &:has(.carouselTrack:focus-visible) {
+    outline: 2px solid var(--color-accent-1);
+    outline-offset: 2px;
+  }
 }
 
 .carouselTrack {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 1rem;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.carouselItem {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  height: 100%;
+}
+
+.dots {
   position: absolute;
   bottom: 1rem;
   left: 50%;
@@ -20,27 +43,33 @@
   align-items: center;
 }
 
-.carouselButton {
+.dotButton {
   cursor: pointer;
   background: none;
   border: none;
+  border-radius: 4px;
   padding: 0.25rem;
 
-  .carouselIndicator {
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-1);
+    outline-offset: 2px;
+  }
+
+  .dotInner {
     border-radius: 2px;
     height: 3px;
     width: 6px;
-    background: rgb(from var(--color-text) r g b / 0.28);
+    background: rgb(from var(--color-text) r g b / 0.5);
     transition:
       background var(--duration),
       width var(--duration);
   }
 
-  &:hover .carouselIndicator {
-    background: rgb(from var(--color-text) r g b / 0.48);
+  &:hover .dotInner {
+    background: var(--color-accent-2);
   }
 
-  &.active .carouselIndicator {
+  &.active .dotInner {
     background: var(--color-accent-1);
     width: 22px;
   }
