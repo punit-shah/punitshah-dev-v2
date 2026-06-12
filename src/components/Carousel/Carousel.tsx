@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useReducedMotion } from 'motion/react';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { TRANSITION_DURATION } from '../../constants';
@@ -13,6 +14,8 @@ type CarouselProps = {
     activeDot?: string;
     inactiveDot?: string;
     liveMessage?: string;
+    prevButton?: string;
+    nextButton?: string;
   };
 };
 
@@ -22,6 +25,8 @@ const defaultLabels: Required<CarouselProps['labels']> = {
   activeDot: 'Item {number}, current',
   inactiveDot: 'Go to item {number}',
   liveMessage: 'Item {index} of {total}',
+  prevButton: 'Previous item',
+  nextButton: 'Next item',
 };
 
 const Carousel = ({
@@ -124,6 +129,30 @@ const Carousel = ({
           </li>
         ))}
       </ul>
+
+      {isCarousel && (
+        <button
+          type="button"
+          className={classNames(classes.navButton, classes.prevButton)}
+          aria-label={labels.prevButton}
+          disabled={activeItemIndex === 0}
+          onClick={() => goToItem(activeItemIndex - 1)}
+        >
+          <ChevronLeft size={16} />
+        </button>
+      )}
+
+      {isCarousel && (
+        <button
+          type="button"
+          className={classNames(classes.navButton, classes.nextButton)}
+          aria-label={labels.nextButton}
+          disabled={activeItemIndex === items.length - 1}
+          onClick={() => goToItem(activeItemIndex + 1)}
+        >
+          <ChevronRight size={16} />
+        </button>
+      )}
 
       {isCarousel && (
         <div className={classes.dots} role="group" aria-label={labels.dots}>
