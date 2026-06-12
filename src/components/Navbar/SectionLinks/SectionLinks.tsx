@@ -1,5 +1,11 @@
 import { useReducedMotion } from 'motion/react';
-import { useRef, type MouseEventHandler, type ReactNode } from 'react';
+import {
+  useContext,
+  useRef,
+  type MouseEventHandler,
+  type ReactNode,
+} from 'react';
+import { ActiveSectionContext } from '../../../contexts/ActiveSection';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import Tooltip from '../../Tooltip';
 import classes from '../Navbar.module.css';
@@ -56,11 +62,11 @@ const SectionLink = ({ label, sectionId, icon }: SectionLinkProps) => {
 };
 
 type SectionsProps = {
-  activeSection: string | null;
   items?: SectionLinkProps[];
 };
 
-const SectionLinks = ({ activeSection, items = [] }: SectionsProps) => {
+const SectionLinks = ({ items = [] }: SectionsProps) => {
+  const { activeSection } = useContext(ActiveSectionContext);
   const itemsRef = useRef<Array<HTMLLIElement | null>>(items.map(() => null));
 
   return (

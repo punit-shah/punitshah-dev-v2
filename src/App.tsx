@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Providers from './contexts/Providers';
-import useScrollSpy from './hooks/useScrollSpy';
 import About from './sections/About';
 import Contact from './sections/Contact';
 import Cover from './sections/Cover';
@@ -13,15 +12,11 @@ const App = () => {
   const projectsSectionRef = useRef<HTMLElement>(null);
   const contactSectionRef = useRef<HTMLElement>(null);
 
-  const activeSection = useScrollSpy([
-    aboutSectionRef,
-    projectsSectionRef,
-    contactSectionRef,
-  ]);
-
   return (
-    <Providers>
-      <Navbar activeSection={activeSection} />
+    <Providers
+      sections={[aboutSectionRef, projectsSectionRef, contactSectionRef]}
+    >
+      <Navbar />
       <Cover />
       <About ref={aboutSectionRef} />
       <Projects ref={projectsSectionRef} />

@@ -11,14 +11,10 @@ const sectionLinks: SectionLinkItem[] = [
   { label: 'Contact', sectionId: 'contact', icon: <MessageCircle /> },
 ];
 
-type NavbarProps = {
-  activeSection: string | null;
-};
-
-const Navbar = ({ activeSection }: NavbarProps) => (
+const Navbar = () => (
   <nav className={classNames(classes.nav)}>
     <LogoItem />
-    <SectionLinks activeSection={activeSection} items={sectionLinks} />
+    <SectionLinks items={sectionLinks} />
     <Settings />
   </nav>
 );

@@ -1,16 +1,24 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, RefObject } from 'react';
+import { ActiveSectionProvider } from './ActiveSection/ActiveSectionProvider';
 import { DarkModeProvider } from './DarkMode/DarkModeProvider';
 import { MotionConfig } from './Motion';
 import { OrbProvider } from './Orb/OrbProvider';
 import { SoundProvider } from './Sound/SoundProvider';
 
-type ProvidersProps = { children: ReactNode };
+type ProvidersProps = {
+  sections: RefObject<HTMLElement | null>[];
+  children: ReactNode;
+};
 
-const Providers = ({ children }: ProvidersProps) => (
+const Providers = ({ sections, children }: ProvidersProps) => (
   <MotionConfig>
     <DarkModeProvider>
       <SoundProvider>
-        <OrbProvider>{children}</OrbProvider>
+        <OrbProvider>
+          <ActiveSectionProvider sections={sections}>
+            {children}
+          </ActiveSectionProvider>
+        </OrbProvider>
       </SoundProvider>
     </DarkModeProvider>
   </MotionConfig>
