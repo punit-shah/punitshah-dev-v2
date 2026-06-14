@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useReducedMotion } from 'motion/react';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { TRANSITION_DURATION } from '../../constants';
+import IconButton from '../IconButton';
 import classes from './Carousel.module.css';
 
 type CarouselProps = {
@@ -131,7 +132,7 @@ const Carousel = ({
       </ul>
 
       {isCarousel && (
-        <button
+        <IconButton
           type="button"
           className={classNames(classes.navButton, classes.prevButton)}
           aria-label={labels.prevButton}
@@ -139,11 +140,11 @@ const Carousel = ({
           onClick={() => goToItem(activeItemIndex - 1)}
         >
           <ChevronLeft size={16} />
-        </button>
+        </IconButton>
       )}
 
       {isCarousel && (
-        <button
+        <IconButton
           type="button"
           className={classNames(classes.navButton, classes.nextButton)}
           aria-label={labels.nextButton}
@@ -151,7 +152,7 @@ const Carousel = ({
           onClick={() => goToItem(activeItemIndex + 1)}
         >
           <ChevronRight size={16} />
-        </button>
+        </IconButton>
       )}
 
       {isCarousel && (
