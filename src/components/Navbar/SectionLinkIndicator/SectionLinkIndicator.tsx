@@ -1,18 +1,16 @@
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'motion/react';
-import { useEffect, useState, type RefObject } from 'react';
+import { useContext, useEffect, useState, type RefObject } from 'react';
+import { ActiveSectionContext } from '../../../contexts/ActiveSection';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import classes from './SectionLinkIndicator.module.css';
 
 type SectionLinkIndicatorProps = {
-  activeSection: string | null;
   itemsRef: RefObject<(HTMLLIElement | null)[]>;
 };
 
-const SectionLinkIndicator = ({
-  activeSection,
-  itemsRef,
-}: SectionLinkIndicatorProps) => {
+const SectionLinkIndicator = ({ itemsRef }: SectionLinkIndicatorProps) => {
+  const { activeSection } = useContext(ActiveSectionContext);
   const [isActive, setIsActive] = useState(false);
   const [position, setPosition] = useState(0);
   const [size, setSize] = useState(0);
