@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2023",
-    "module": "ESNext",
+    "module": "nodenext",
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

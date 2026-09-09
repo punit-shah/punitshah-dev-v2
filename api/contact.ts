@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { checkBotId } from 'botid/server';
 import { createTransport } from 'nodemailer';
 
 type RequestBody = {
@@ -11,6 +12,12 @@ export default async function contactHandler(
   request: VercelRequest,
   response: VercelResponse,
 ) {
+  const verification = await checkBotId();
+
+  if (verification.isBot) {
+    return response.status(403).json({ error: 'Access denied' });
+  }
+
   const transporter = createTransport({
     service: 'gmail',
     auth: {
