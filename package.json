@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "botid": "^1.5.11",
     "classnames": "^2.5.1",
     "lucide-react": "^0.536.0",
     "motion": "^12.23.12",
